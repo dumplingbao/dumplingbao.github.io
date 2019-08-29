@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="diss带码">
 <meta property="og:description" content="概述写这篇blog的原因，想找个node的ORM框架用用，确很难找到一篇对比分析这些ORM框架的文章，唯一找到了一篇，居然是通过star数来论英雄，我觉着很难服众，于是就找几个看看。后来又不想分析，因为我发现node这种野蛮生长，滋生这些ORM轮子比比皆是，远比我想象的多；后来又觉着可以写，作为一个java出身业余研究node的就想通过java的ORM框架来洞悉node这群ORM框架的是非曲直，于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T08:19:31.292Z">
+<meta property="og:updated_time" content="2019-08-29T08:20:15.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node之ORM框架">
 <meta name="twitter:description" content="概述写这篇blog的原因，想找个node的ORM框架用用，确很难找到一篇对比分析这些ORM框架的文章，唯一找到了一篇，居然是通过star数来论英雄，我觉着很难服众，于是就找几个看看。后来又不想分析，因为我发现node这种野蛮生长，滋生这些ORM轮子比比皆是，远比我想象的多；后来又觉着可以写，作为一个java出身业余研究node的就想通过java的ORM框架来洞悉node这群ORM框架的是非曲直，于">
@@ -410,6 +410,8 @@
 
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>写这篇blog的原因，想找个node的ORM框架用用，确很难找到一篇对比分析这些ORM框架的文章，唯一找到了一篇，居然是通过star数来论英雄，我觉着很难服众，于是就找几个看看。后来又不想分析，因为我发现node这种野蛮生长，滋生这些ORM轮子比比皆是，远比我想象的多；后来又觉着可以写，作为一个java出身业余研究node的就想通过java的ORM框架来洞悉node这群ORM框架的是非曲直，于是挑了几个框架小扯一篇。</p>
+<a id="more"></a>
+
 <h2 id="ORM框架"><a href="#ORM框架" class="headerlink" title="ORM框架"></a>ORM框架</h2><p>ORM框架：Object Relational Mapping，对象-关系-映射，所以说ORM框架就是用面向对象的方式和目前的关系型数据库做匹配，java开发者目前主流的hibernate、mybatis很熟悉了，JDBC原始驱动的方式想必也不在成为主流了。下面介绍几款node的ORM框架，介绍之前先介绍ORM的两种模式：</p>
 <p>Active Record 模式：活动记录模式，领域模型模式一个模型类对应关系型数据库中的一个表，模型类的一个实例对应表中的一行记录。这个不难理解，比较简单，但是不够灵活，再看另一种模式，比较一下</p>
 <p>Data Mapper 模式：数据映射模式，领域模型对象和数据表是松耦合关系，只进行业务逻辑的处理，和数据层解耦。需要一个实体管理器来将模型和持久化层做对应，这样一来，灵活性就高，当然复杂性也增加了。</p>
