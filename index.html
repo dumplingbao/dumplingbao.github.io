@@ -311,6 +311,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/iview-koa2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dumplingbao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="diss带码">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/05/iview-koa2/" itemprop="url">前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-05T15:03:36+08:00">
+                2019-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://travis-ci.org/iview/iview-admin" target="_blank" rel="noopener"><img src="https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square" alt></a><a href="https://github.com/vuejs/vue" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?style=flat-square" alt="vue"></a><a href="https://github.com/iview/iview" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/iview-3.2.2-brightgreen.svg?style=flat-square" alt="iview ui"></a></p>
+<p>后端源码：<a href="https://github.com/dumplingbao/dissplat" target="_blank" rel="noopener">https://github.com/dumplingbao/dissplat</a></p>
+<p>前端源码：<a href="https://github.com/dumplingbao/dissplat_web" target="_blank" rel="noopener">https://github.com/dumplingbao/dissplat_web</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.iviewui.com/" target="_blank" rel="noopener">iview</a>：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的</p>
+<p>koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的目前用的最多的Express，也不选阿里开源的框架egg，我们选择则目前比较新的koa2，写起来简单，也易于学习</p>
+<p>sequelize：这个是个nodejs的ORM框架，用的比较多，关于这个框架的介绍，可以看一下我的另一篇博客，node之ORM框架。</p>
+<p>搭建这个前后端分离的框架纯属娱乐加学习，写此博客就是把搭建过程介绍一下，也作为自己的一点心得吧。</p>
+<h2 id="后端-koa"><a href="#后端-koa" class="headerlink" title="后端-koa"></a>后端-koa</h2><p>先找个轮子，这里用狼叔的koa-generator来生成项目架构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-generator -g</span><br><span class="line">koa2 dissplat //项目名称</span><br></pre></td></tr></table></figure>
+
+<p>生成文档结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── bin</span><br><span class="line">├── public</span><br><span class="line">├── routes</span><br><span class="line">├── view</span><br><span class="line">├── package.json</span><br><span class="line">└── app.js</span><br></pre></td></tr></table></figure>
+
+<p>既然是轮子，直接就可以运行了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>系统自动创建users表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(node:15140) [SEQUELIZE0002] DeprecationWarning: The logging-option should be either a function or false. Default: console.log</span><br><span class="line">Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER auto_increment , `nickname` VARCHAR(255), `email` VARCHAR(128) UNIQUE, `password` VARCHAR(255), `created_at` DATETIME, `updated_at` DATETIME NOT NULL, `deleted_at` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;</span><br><span class="line">Executing (default): SHOW INDEX FROM `users`</span><br></pre></td></tr></table></figure>
+
+<h2 id="sequelize持久化ORM框架"><a href="#sequelize持久化ORM框架" class="headerlink" title="sequelize持久化ORM框架"></a>sequelize持久化ORM框架</h2><p>我们先按这个结构走，因为我们搭建前后端分离的框架，所以，public下面的图片、样式文件夹用不到，我们就把sequelize的model、dao、service、配置文件等放到public下面，删除public下面之前已有的文件</p>
+<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><p>public下面新建一个config文件夹，里面创建config.js，放数据库的配置信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">​    database: &#123;</span><br><span class="line">​        dbName: &apos;boblog&apos;,</span><br><span class="line">​        host: &apos;localhost&apos;,</span><br><span class="line">​        port: 3306,</span><br><span class="line">​        user: &apos;root&apos;,</span><br><span class="line">​        password: &apos;root&apos;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="db-js"><a href="#db-js" class="headerlink" title="db.js"></a>db.js</h3><p>新建一个utils文件夹，创建一个db.js，我们简单封装，创建一个连接数据库的工具类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const Sequelize = require(&apos;sequelize&apos;)</span><br><span class="line">const &#123;</span><br><span class="line">​    dbName,</span><br><span class="line">​    host,</span><br><span class="line">​    port,</span><br><span class="line">​    user,</span><br><span class="line">​    password</span><br><span class="line">&#125; = require(&apos;../config/config&apos;).database</span><br><span class="line">const sequelize = new Sequelize(dbName, user, password, &#123;</span><br><span class="line">​    dialect: &apos;mysql&apos;,</span><br><span class="line">​    host,</span><br><span class="line">​    port,</span><br><span class="line">​    logging: true,</span><br><span class="line">​    timezone: &apos;+08:00&apos;,</span><br><span class="line">​    define: &#123;</span><br><span class="line">​        // create_time &amp;&amp; update_time</span><br><span class="line">​        timestamps: true,</span><br><span class="line">​        // delete_time</span><br><span class="line">​        paranoid: true,</span><br><span class="line">​        createdAt: &apos;created_at&apos;,</span><br><span class="line">​        updatedAt: &apos;updated_at&apos;,</span><br><span class="line">​        deletedAt: &apos;deleted_at&apos;,</span><br><span class="line">​        // 把驼峰命名转换为下划线</span><br><span class="line">​        underscored: true,</span><br><span class="line">​        scopes: &#123;</span><br><span class="line">​            bh: &#123;</span><br><span class="line">​                attributes: &#123;</span><br><span class="line">​                    exclude: [&apos;password&apos;, &apos;updated_at&apos;, &apos;deleted_at&apos;, &apos;created_at&apos;]</span><br><span class="line">​                &#125;</span><br><span class="line">​            &#125;,</span><br><span class="line">​            iv: &#123;</span><br><span class="line">​                attributes: &#123;</span><br><span class="line">​                    exclude: [&apos;content&apos;, &apos;password&apos;, &apos;updated_at&apos;, &apos;deleted_at&apos;]</span><br><span class="line">​                &#125;</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 创建模型</span><br><span class="line">sequelize.sync(&#123;</span><br><span class="line">​    force: false</span><br><span class="line">&#125;)</span><br><span class="line">module.exports = &#123;</span><br><span class="line">​    sequelize</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="model"><a href="#model" class="headerlink" title="model"></a>model</h3><p>接下来新建一个model文件夹，创建一个user.js，创建一个user的model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">const moment = require(&apos;moment&apos;);</span><br><span class="line">const bcrypt = require(&apos;bcryptjs&apos;)</span><br><span class="line">const &#123;Sequelize, Model&#125; = require(&apos;sequelize&apos;)</span><br><span class="line">const &#123;db&#125; = require(&apos;../utils/db&apos;)</span><br><span class="line"></span><br><span class="line">class User extends Model &#123;&#125;</span><br><span class="line">User.init(&#123;</span><br><span class="line">    // attributes</span><br><span class="line">    id: &#123;</span><br><span class="line">        type: Sequelize.INTEGER,</span><br><span class="line">        primaryKey: true,</span><br><span class="line">        autoIncrement: true</span><br><span class="line">    &#125;,</span><br><span class="line">    // 昵称</span><br><span class="line">    nickname: Sequelize.STRING,</span><br><span class="line">    // 邮箱</span><br><span class="line">    email: &#123;</span><br><span class="line">        type: Sequelize.STRING(128),</span><br><span class="line">        unique: true</span><br><span class="line">    &#125;,</span><br><span class="line">    // 密码</span><br><span class="line">    password: &#123;</span><br><span class="line">        type: Sequelize.STRING,</span><br><span class="line">        set(val) &#123;</span><br><span class="line">            // 加密</span><br><span class="line">            const salt = bcrypt.genSaltSync(10);</span><br><span class="line">            // 生成加密密码</span><br><span class="line">            const psw = bcrypt.hashSync(val, salt);</span><br><span class="line">            this.setDataValue(&quot;password&quot;, psw);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created_at: &#123;</span><br><span class="line">        type: Sequelize.DATE,</span><br><span class="line">        get() &#123;</span><br><span class="line">            return moment(this.getDataValue(&apos;created_at&apos;)).format(&apos;YYYY-MM-DD&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    db,</span><br><span class="line">    modelName: &apos;users&apos;</span><br><span class="line">    // options</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h3><p>接下来新建一个dao文件夹，创建一个user.js，创建一个user的dao，负责CRUD</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">const &#123;User&#125; = require(&apos;../model/user&apos;)</span><br><span class="line">const bcrypt = require(&apos;bcryptjs&apos;)</span><br><span class="line">class UserDao &#123;</span><br><span class="line">​    // 创建用户</span><br><span class="line">​    static async createUser(v) &#123;</span><br><span class="line">​        const hasUser = await User.findOne(&#123;</span><br><span class="line">​            where: &#123;</span><br><span class="line">​                email: v.email,</span><br><span class="line">​                deleted_at: null</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;);</span><br><span class="line">​        </span><br><span class="line">​        if (hasUser) &#123;</span><br><span class="line">​            throw new global.errs.Existing(&apos;用户已存在&apos;);</span><br><span class="line"></span><br><span class="line">​        &#125;</span><br><span class="line">​        const user = new User();</span><br><span class="line">​        user.email = v.email;</span><br><span class="line">​        user.password = v.password;</span><br><span class="line">​        user.nickname = v.nickname;</span><br><span class="line">​        return user.save();</span><br><span class="line">​    &#125;</span><br><span class="line">​    // 验证密码</span><br><span class="line">​    static async verifyEmailPassword(email, plainPassword) &#123;</span><br><span class="line">​        // 查询用户是否存在</span><br><span class="line">​        const user = await User.findOne(&#123;</span><br><span class="line">​            where: &#123;</span><br><span class="line">​                email</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;)</span><br><span class="line">​        if (!user) &#123;</span><br><span class="line">​            throw new global.errs.AuthFailed(&apos;账号不存在&apos;)</span><br><span class="line">​        &#125;</span><br><span class="line">​        // 验证密码是否正确</span><br><span class="line">​        const correct = bcrypt.compareSync(plainPassword, user.password);</span><br><span class="line">​        if (!correct) &#123;</span><br><span class="line">​            throw new global.errs.AuthFailed(&apos;密码不正确&apos;)</span><br><span class="line">​        &#125;</span><br><span class="line">​        return user</span><br><span class="line">​    &#125;</span><br><span class="line">​    // 删除用户</span><br><span class="line">​    static async destroyUser(id) &#123;</span><br><span class="line">​        const user = await User.findOne(&#123;</span><br><span class="line">​            where: &#123;</span><br><span class="line">​                id,</span><br><span class="line">​                deleted_at: null</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;);</span><br><span class="line">​        if (!user) &#123;</span><br><span class="line">​            throw new global.errs.NotFound(&apos;没有找到此用户&apos;);</span><br><span class="line">​        &#125;</span><br><span class="line">​        user.destroy()</span><br><span class="line">​    &#125;</span><br><span class="line">​    // 获取用户详情</span><br><span class="line">​    static async getUserInfo(id) &#123;</span><br><span class="line">​        const user = await User.findOne(&#123;</span><br><span class="line">​            where: &#123;</span><br><span class="line">​                id</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;);</span><br><span class="line">​        if (!user) &#123;</span><br><span class="line">​            throw new global.errs.NotFound(&apos;没有找到用户信息&apos;);</span><br><span class="line">​        &#125;</span><br><span class="line">​        return user</span><br><span class="line">​    &#125;</span><br><span class="line">​    // 更新用户</span><br><span class="line">​    static async updateUser(id, v) &#123;</span><br><span class="line">​        const user = await User.findByPk(id);</span><br><span class="line">​        if (!user) &#123;</span><br><span class="line">​            throw new global.errs.NotFound(&apos;没有找到用户信息&apos;);</span><br><span class="line">​        &#125;</span><br><span class="line">​        user.email = v.get(&apos;query.email&apos;);</span><br><span class="line">​        user.password = v.get(&apos;query.password2&apos;);</span><br><span class="line">​        user.nickname = v.get(&apos;query.nickname&apos;);</span><br><span class="line">​        user.save();</span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">​    static async getUserList(page = 1) &#123;</span><br><span class="line">​        const pageSize = 10;</span><br><span class="line">​        const user = await User.findAndCountAll(&#123;</span><br><span class="line">​            limit: pageSize,//每页10条</span><br><span class="line">​            offset: (page - 1) * pageSize,</span><br><span class="line">​            where: &#123;</span><br><span class="line">​                deleted_at: null</span><br><span class="line">​            &#125;,</span><br><span class="line">​            order: [</span><br><span class="line">​                [&apos;created_at&apos;, &apos;DESC&apos;]</span><br><span class="line">​            ]</span><br><span class="line">​        &#125;)</span><br><span class="line">​        return &#123;</span><br><span class="line">​            data: user.rows,</span><br><span class="line">​            meta: &#123;</span><br><span class="line">​                current_page: parseInt(page),</span><br><span class="line">​                per_page: 10,</span><br><span class="line">​                count: user.count,</span><br><span class="line">​                total: user.count,</span><br><span class="line">​                total_pages: Math.ceil(user.count / 10),</span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">​    UserDao</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前端iview"><a href="#前端iview" class="headerlink" title="前端iview"></a>前端iview</h2><p>直接下载<a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">iview-admin</a>项目DEMO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># clone the project</span><br><span class="line">git clone https://github.com/iview/iview-admin.git</span><br><span class="line"></span><br><span class="line">// install dependencies</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">// develop</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── config  开发相关配置</span><br><span class="line">├── public  打包所需静态资源</span><br><span class="line">└── src</span><br><span class="line">├── api  AJAX请求</span><br><span class="line">└── assets  项目静态资源</span><br><span class="line">├── icons  自定义图标资源</span><br><span class="line">└── images  图片资源</span><br><span class="line">├── components  业务组件</span><br><span class="line">├── config  项目运行配置</span><br><span class="line">├── directive  自定义指令</span><br><span class="line">├── libs  封装工具函数</span><br><span class="line">├── locale  多语言文件</span><br><span class="line">├── mock  mock模拟数据</span><br><span class="line">├── router  路由配置</span><br><span class="line">├── store  Vuex配置</span><br><span class="line">├── view  页面文件</span><br><span class="line">└── tests  测试相关</span><br></pre></td></tr></table></figure>
+
+<p>效果图</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/dissplat/iview-login.jpg" alt="iview-login"></p>
+<h3 id="菜单修改"><a href="#菜单修改" class="headerlink" title="菜单修改"></a>菜单修改</h3><p>默认菜单读取routers.js，可以根据权限组控制，也可以根据权限读取菜单进行加载，菜单里面meta的配置说明如下，因为有些是路由，不显示在菜单里面，比如表单的CRUD操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * iview-admin中meta除了原生参数外可配置的参数:</span><br><span class="line"> * meta: &#123;</span><br><span class="line"> *  title: &#123; String|Number|Function &#125;</span><br><span class="line"> *         显示在侧边栏、面包屑和标签栏的文字</span><br><span class="line"> *         使用&apos;&#123;&#123; 多语言字段 &#125;&#125;&apos;形式结合多语言使用，例子看多语言的路由配置;</span><br><span class="line"> *         可以传入一个回调函数，参数是当前路由对象，例子看动态路由和带参路由</span><br><span class="line"> *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中，示例看QQ群路由配置</span><br><span class="line"> *  hideInMenu: (false) 设为true后在左侧菜单不会显示该页面选项</span><br><span class="line"> *  notCache: (false) 设为true后页面在切换标签后不会缓存，如果需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致</span><br><span class="line"> *  access: (null) 可访问该页面的权限数组，当前路由设置的权限会影响子路由</span><br><span class="line"> *  icon: (-) 该页面在左侧菜单、面包屑和标签导航处显示的图标，如果是自定义图标，需要在图标名称前加下划线&apos;_&apos;</span><br><span class="line"> *  beforeCloseName: (-) 设置该字段，则在关闭当前tab页时会去&apos;@/router/before-close.js&apos;里寻找该字段名对应的方法，作为关闭前的钩子函数</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/dissplat/iview-home.jpg" alt="iview-home"></p>
+<h2 id="简单构建"><a href="#简单构建" class="headerlink" title="简单构建"></a>简单构建</h2><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>将main.js里面的mock注释掉，mock拦截并模拟后台数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 实际打包时应该不引入mock</span><br><span class="line">/* eslint-disable */</span><br><span class="line">// if (process.env.NODE_ENV !== &apos;production&apos;) require(&apos;@/mock&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>config.js配置baseUrl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   \* @description api请求基础路径</span><br><span class="line">   */</span><br><span class="line">  baseUrl: &#123;</span><br><span class="line">​    dev: &apos;http://localhost:8888/&apos;,</span><br><span class="line">​    pro: &apos;http://localhost:8888/&apos;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="jwt获取token"><a href="#jwt获取token" class="headerlink" title="jwt获取token"></a>jwt获取token</h3><p>后端创建util.js 创建token</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const jwt = require(&apos;jsonwebtoken&apos;)</span><br><span class="line">const &#123;security&#125; = require(&apos;../config/config&apos;)</span><br><span class="line">// 颁布令牌</span><br><span class="line">const generateToken = function (uid, scope) &#123;</span><br><span class="line">​    const secretKey = security.secretKey;</span><br><span class="line">​    const expiresIn = security.expiresIn;</span><br><span class="line">​    const token = jwt.sign(&#123;</span><br><span class="line">​        uid,</span><br><span class="line">​        scope</span><br><span class="line">​    &#125;, secretKey, &#123;</span><br><span class="line">​        expiresIn: expiresIn</span><br><span class="line">​    &#125;)</span><br><span class="line">​    return token</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">​    generateToken,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前端请求过滤，请求加token验证，axios.js修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!config.url.includes(&apos;/login&apos;)) &#123;</span><br><span class="line">​        // const base64 = Base64.encode(token + &apos;:&apos;);</span><br><span class="line">​        config.headers[&apos;Authorization&apos;] = &apos;Basic &apos; + Base64.encode(Cookies.get(TOKEN_KEY) + &apos;:&apos;)</span><br><span class="line">​      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>后端采用basic-auth登录认证，见auth.js</p>
+<h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><p>iview前端axios配置，找到axios.js配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> getInsideConfig () &#123;</span><br><span class="line">​    const config = &#123;</span><br><span class="line">​      baseURL: this.baseUrl,</span><br><span class="line">​      changeOrigin: true,</span><br><span class="line">​      headers: &#123;</span><br><span class="line">​        &apos;Content-Type&apos;: &apos;application/json; charset=utf-8&apos;,</span><br><span class="line">​        &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;</span><br><span class="line">​      &#125;</span><br><span class="line">​    &#125;</span><br><span class="line">​    return config</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>后端设置CORS来解决跨域问题，配置app.js，需要安装npm对应的包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const cors = require(&apos;@koa/cors&apos;);</span><br><span class="line"></span><br><span class="line">app.use(cors(&#123;</span><br><span class="line">  origin: function (ctx) &#123;</span><br><span class="line">​      // if (ctx.url === &apos;/api&apos;) &#123;</span><br><span class="line">​      //     return &quot;*&quot;; // 允许来自所有域名请求</span><br><span class="line">​      // &#125;</span><br><span class="line">​      // return &apos;http://localhost:8080&apos;;</span><br><span class="line">​      return &quot;*&quot;; // 允许来自所有域名请求</span><br><span class="line">  &#125;,</span><br><span class="line">  exposeHeaders: [&apos;WWW-Authenticate&apos;, &apos;Server-Authorization&apos;],</span><br><span class="line">  maxAge: 5,</span><br><span class="line">  credentials: true,</span><br><span class="line">  allowMethods: [&apos;OPTIONS&apos;,&apos;GET&apos;, &apos;PUT&apos;,&apos;POST&apos;, &apos;DELETE&apos;], //设置允许的HTTP请求类型</span><br><span class="line">  allowHeaders: [&apos;Origin&apos;, &apos;Content-Type&apos;, &apos;Accept&apos;, &apos;Access-Control-Allow-Origin&apos;, &apos;Authorization&apos;, &apos;X-Requested-With&apos;],</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单封装"><a href="#简单封装" class="headerlink" title="简单封装"></a>简单封装</h2><p>后端-util文件下</p>
+<p>auth.js：访问认证</p>
+<p>error.js：异常错误封装</p>
+<p>help.js：请求封装</p>
+<p>util.js：jwt获取token</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/node-orm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,7 +1147,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -961,7 +1169,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
