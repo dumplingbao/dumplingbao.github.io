@@ -81,24 +81,21 @@
 
 
 
-<meta name="description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的目">
+<meta name="description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的">
 <meta name="keywords" content="node,koa2,sequelize">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/iview-koa2/index.html">
 <meta property="og:site_name" content="diss带码">
-<meta property="og:description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的目">
+<meta property="og:description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square">
-<meta property="og:image" content="https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?style=flat-square">
-<meta property="og:image" content="https://img.shields.io/badge/iview-3.2.2-brightgreen.svg?style=flat-square">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/dissplat/iview-login.jpg">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/dissplat/iview-home.jpg">
-<meta property="og:updated_time" content="2019-09-05T07:05:03.770Z">
+<meta property="og:updated_time" content="2019-09-05T07:07:52.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建">
-<meta name="twitter:description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的目">
-<meta name="twitter:image" content="https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square">
+<meta name="twitter:description" content="后端源码：https://github.com/dumplingbao/dissplat 前端源码：https://github.com/dumplingbao/dissplat_web 概述iview：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的 koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的">
+<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/dissplat/iview-login.jpg">
 
 
 
@@ -415,13 +412,16 @@
       
 
       
-        <p><a href="https://travis-ci.org/iview/iview-admin" target="_blank" rel="noopener"><img src="https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square" alt></a><a href="https://github.com/vuejs/vue" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?style=flat-square" alt="vue"></a><a href="https://github.com/iview/iview" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/iview-3.2.2-brightgreen.svg?style=flat-square" alt="iview ui"></a></p>
+        <!-- [![](https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square)](https://travis-ci.org/iview/iview-admin)[![vue](https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?style=flat-square)](https://github.com/vuejs/vue)[![iview ui](https://img.shields.io/badge/iview-3.2.2-brightgreen.svg?style=flat-square)](https://github.com/iview/iview) -->
+
 <p>后端源码：<a href="https://github.com/dumplingbao/dissplat" target="_blank" rel="noopener">https://github.com/dumplingbao/dissplat</a></p>
 <p>前端源码：<a href="https://github.com/dumplingbao/dissplat_web" target="_blank" rel="noopener">https://github.com/dumplingbao/dissplat_web</a></p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://www.iviewui.com/" target="_blank" rel="noopener">iview</a>：一套基于 Vue.js 的高质量UI 组件库，主流vue前端框架，比较适合前后端分离框架的搭建，当然你也可以选择其他的</p>
 <p>koa2：基于nodejs平台的下一代web开发框架，这里我们不选早期的目前用的最多的Express，也不选阿里开源的框架egg，我们选择则目前比较新的koa2，写起来简单，也易于学习</p>
 <p>sequelize：这个是个nodejs的ORM框架，用的比较多，关于这个框架的介绍，可以看一下我的另一篇博客，node之ORM框架。</p>
 <p>搭建这个前后端分离的框架纯属娱乐加学习，写此博客就是把搭建过程介绍一下，也作为自己的一点心得吧。</p>
+<a id="more"></a>
+
 <h2 id="后端-koa"><a href="#后端-koa" class="headerlink" title="后端-koa"></a>后端-koa</h2><p>先找个轮子，这里用狼叔的koa-generator来生成项目架构</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-generator -g</span><br><span class="line">koa2 dissplat //项目名称</span><br></pre></td></tr></table></figure>
 
