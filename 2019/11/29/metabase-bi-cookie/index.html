@@ -81,23 +81,24 @@
 
 
 
-<meta name="description" content="由于windows下启动Metabase存在不友好情况，启动linux消耗系统性能，影响工作效率，巧妙借助git-bash来启动Metabase，既可以避免windows下的坑，还特别的轻量级，甚至比cmd、vscode等命令窗口下启动都要快。">
+<meta name="description" content="概述​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。 ​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接">
 <meta name="keywords" content="BI,Metabase">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Metabase-BI系列03：win系统用git-bash启动Metabase">
-<meta property="og:url" content="http://yoursite.com/2019/11/08/metabase-bi-gitbash/index.html">
+<meta property="og:title" content="Metabase-BI系列04：cookie实现单点登录sso">
+<meta property="og:url" content="http://yoursite.com/2019/11/29/metabase-bi-cookie/index.html">
 <meta property="og:site_name" content="diss带码">
-<meta property="og:description" content="由于windows下启动Metabase存在不友好情况，启动linux消耗系统性能，影响工作效率，巧妙借助git-bash来启动Metabase，既可以避免windows下的坑，还特别的轻量级，甚至比cmd、vscode等命令窗口下启动都要快。">
+<meta property="og:description" content="概述​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。 ​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash01.jpg">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash02.jpg">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash04.jpg">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash03.jpg">
-<meta property="og:updated_time" content="2019-11-08T01:39:45.607Z">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/Metabase-cookie.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/api-session.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cookie-id.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/404.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cors.jpg">
+<meta property="og:updated_time" content="2019-11-29T15:28:49.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Metabase-BI系列03：win系统用git-bash启动Metabase">
-<meta name="twitter:description" content="由于windows下启动Metabase存在不友好情况，启动linux消耗系统性能，影响工作效率，巧妙借助git-bash来启动Metabase，既可以避免windows下的坑，还特别的轻量级，甚至比cmd、vscode等命令窗口下启动都要快。">
-<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash01.jpg">
+<meta name="twitter:title" content="Metabase-BI系列04：cookie实现单点登录sso">
+<meta name="twitter:description" content="概述​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。 ​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接">
+<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/Metabase-cookie.jpg">
 
 
 
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/08/metabase-bi-gitbash/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/29/metabase-bi-cookie/">
 
 
 
@@ -141,7 +142,7 @@
   </script>
 
 
-  <title>Metabase-BI系列03：win系统用git-bash启动Metabase | diss带码</title>
+  <title>Metabase-BI系列04：cookie实现单点登录sso | diss带码</title>
   
 
 
@@ -321,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/metabase-bi-gitbash/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/29/metabase-bi-cookie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dumplingbao">
@@ -338,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Metabase-BI系列03：win系统用git-bash启动Metabase</h1>
+          <h1 class="post-title" itemprop="name headline">Metabase-BI系列04：cookie实现单点登录sso</h1>
         
 
         <div class="post-meta">
@@ -350,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T09:37:34+08:00">
-                2019-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-29T23:27:12+08:00">
+                2019-11-29
               </time>
             
 
@@ -426,36 +427,42 @@
       
 
       
-        <p>由于windows下启动Metabase存在不友好情况，启动linux消耗系统性能，影响工作效率，巧妙借助git-bash来启动Metabase，既可以避免windows下的坑，还特别的轻量级，甚至比cmd、vscode等命令窗口下启动都要快。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。</p>
+<p>​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接受，那就可以用两个账户了。</p>
+<p>​    Metabase支持多种单点登录（sso）方式：</p>
 <a id="more"></a>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>git目前最好用的版本控制器了，github、gitlib、coding、码云等代码托管平台，都使用的git，而且git本身就是用于linux内核开发的版本控制工具。所以大部分开发者本身就用，只要装了git，就带有git-bash，就在git的安装目录下面。</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash01.jpg" alt="git-bash01"></p>
-<p>windows下cmd命令的文件格式：<code>E:\Profile Files</code>，<code>git-bash</code>下：<code>/e/Profile Files</code>，是不是很像linux。</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash02.jpg" alt="git-bash02"></p>
-<h2 id="git-bash启动Metabase"><a href="#git-bash启动Metabase" class="headerlink" title="git-bash启动Metabase"></a>git-bash启动Metabase</h2><p>其实很简单，就是进到Metabase目录下面启动，唯一需要注意的就是leiningen，leiningen是Metabase的项目构建和项目启动的组件，windows下安装配置是bat命令，所以直接在git-bash下，直接启动是找不到lein命令的。</p>
-<p>在<code>Metabase-BI系列01：二次开发环境(windows)搭建</code>下提到过<code>leiningen</code>的安装，直接福复制的命令，创建了个<code>bat</code>文件，这里你就需要下载官网的<a href="https://leiningen.org/#install" target="_blank" rel="noopener">lein script</a>，直接网页搜索<code>lein script</code>就能快速找到，这个是linux的lein的脚本命令，不需要扩展名，名称lein就可以，把脚本命令复制<code>lein安装目录/bin</code>进去，其他步骤一样，同样需要<code>leiningen-2.9.1-standalone.jar</code>。</p>
-<p>如果是用的zip包安装的，本身<code>bin</code>下面就有了lein这个linux脚本命令，只需要下载或者直接打包<code>leiningen-core-2.9.1.jar</code>，放到<code>安装目录/self-installs</code>下，缺少<code>jar</code>包会报缺少依赖错误。</p>
-<p>别忘了windows下面配置环境变量，如果需要在<code>git-bah</code>下配置环境变量应该也可以，环境变量位置：<code>git安装目录/etc/profile</code>，配置完需执行命令，使其生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LEIN_HOME=/e/metabase/lein/leiningen-2.9.1</span><br><span class="line">export PATH=$LEIN_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Google账号登录，这种方式在中国只能呵呵了</p>
+</li>
+<li><p>LDAP的方式，需要搭建一个LDAP统一认证的服务，这个麻烦点，Metabase提供配置LDAP功能，比较方便</p>
+</li>
+<li><p>基于SAML协议接入单点登录， SAML即安全断言标记语言，这个不是很熟，可以尝试一下</p>
+</li>
+<li><p>通过cookie实现单点，操作简单，但是比较受限，安全性低</p>
+</li>
+</ul>
+<p>这里介绍通过cookie实现简单的单点登录</p>
+<h2 id="Metabase-cookie"><a href="#Metabase-cookie" class="headerlink" title="Metabase-cookie"></a>Metabase-cookie</h2><h3 id="metabase-SESSION-ID"><a href="#metabase-SESSION-ID" class="headerlink" title="metabase.SESSION_ID"></a>metabase.SESSION_ID</h3><p>首先看一下Metabase里面的cookie， metabase.SESSION就是Metabase访问权限的令牌，path为“/”根目录下面，所以获取令牌，将把令牌塞到metabase.SESSION里就可以了。</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/Metabase-cookie.jpg" alt="Metabase-cookie"></p>
+<h3 id="api-session"><a href="#api-session" class="headerlink" title="/api/session/"></a>/api/session/</h3><p>Metabase doc API说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## `POST /api/session/`**</span><br><span class="line">Login.</span><br><span class="line">**##### PARAMS:**</span><br><span class="line">\* ***\*****`username`*****\*** value must be a non-blank string.</span><br><span class="line">\* ***\*****`password`*****\*** value must be a non-blank string.</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /安装目录/etc/profile</span><br></pre></td></tr></table></figure>
+<p>所以，我们需要调用/api/session/，传入用户和密码，获取令牌</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/api-session.jpg" alt="cookie01"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cookie-id.jpg" alt="cookie02"></p>
+<h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><p>直接访问Metabase的/api/session会存在跨域的问题</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/404.jpg" alt="404"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cors.jpg" alt="cors"></p>
+<p>修改Metabase后台允许跨域，Metabase后台用的Ring框架控制跳转，我们引入开源的<a href="https://github.com/r0man/ring-cors" target="_blank" rel="noopener">ring-cors</a>框架，配置允许跨域的域和请求，配置Metabase的<code>handler.clj</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(require &apos;[ring.middleware.cors :refer [wrap-cors]])</span><br><span class="line">(def handler</span><br><span class="line">  (wrap-cors my-routes :access-control-allow-origin [#&quot;http://example.com&quot;]</span><br><span class="line">                       :access-control-allow-methods [:get :put :post :delete]))</span><br></pre></td></tr></table></figure>
 
-<p>可以通过如下命令，查看环境变量是否生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo %LEIN_HOEM%  //windows下</span><br><span class="line">echo $LEIN_HOME   //git-bash下</span><br></pre></td></tr></table></figure>
+<h3 id="cookie共享问题"><a href="#cookie共享问题" class="headerlink" title="cookie共享问题"></a>cookie共享问题</h3><p>对于cookie来说，不同域下的cookie不共享，必须在同个顶级域下设置cookie，所以这也是这种cookie实现单点比较受限制的问题。</p>
+<p>对于统一域名不同端口的情况，直接将cookie放到path根目录“/”即可，因为域是相同的</p>
+<p>对于不同的二级域名的情况，放到顶级域名下即可</p>
+<p>如：aa.test.com和bb.test.com</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookies.set(&apos;metabase.SESSION&apos;, token, &#123; path: &apos;/&apos;,domain: &apos;.test.com&apos; &#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash04.jpg" alt="git-bash04"></p>
-<p>安装完启动<code>lien run</code></p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bash/git-bash03.jpg" alt="git-bash03"></p>
-<h2 id="git-bash打包Metabase驱动包"><a href="#git-bash打包Metabase驱动包" class="headerlink" title="git-bash打包Metabase驱动包"></a>git-bash打包Metabase驱动包</h2><p><code>Metabase</code>目录有个<code>module/dirviers</code>模块，下面放着<code>mongo</code>、<code>oracle</code>、<code>sparksql</code>等数据库驱动项目，可以直接到各个驱动下面执行<code>lein uberjar</code></p>
-<p>如果在<code>git-bash</code>下，我们就可以到<code>Metabase</code>安装目录下，执行命令，注意一定是安装目录下而不是安装目录<code>bin</code>下面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#Metabase的doc下有说明</span><br><span class="line"># Build the &apos;mongo&apos; driver 单独执行一个驱动</span><br><span class="line">./bin/build-driver.sh mongo</span><br><span class="line"># Build all drivers 打包所有驱动</span><br><span class="line">./bin/build-drivers.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-bash打包转换语言包"><a href="#git-bash打包转换语言包" class="headerlink" title="git-bash打包转换语言包"></a>git-bash打包转换语言包</h2><p><code>Metabase安装目录/bin/build-translation-frontend-resource</code>文件，进行语言包po到json的转换</p>
-<p>Metabase语言包（po）位置：<code>Metabase安装目录/local</code></p>
-<p>用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/i18n/build-translation-frontend-resource input.po output.json</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-bash缺点"><a href="#git-bash缺点" class="headerlink" title="git-bash缺点"></a>git-bash缺点</h2><p>git-bash目前发现唯一的一个缺点就是，控制台日志查找不方便，不如vscode直接在控制台<code>ctr+f</code>就能查找定位。</p>
+<p>关于cookie的介绍，推荐文章： <a href="https://www.cnblogs.com/hujunzheng/p/5744755.html" target="_blank" rel="noopener">https://www.cnblogs.com/hujunzheng/p/5744755.html</a> </p>
 
       
     </div>
@@ -503,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/06/metabase-bi-pit/" rel="next" title="Metabase-BI系列02：二次开发环境(windows)踩坑">
-                <i class="fa fa-chevron-left"></i> Metabase-BI系列02：二次开发环境(windows)踩坑
+              <a href="/2019/11/08/metabase-bi-gitbash/" rel="next" title="Metabase-BI系列03：win系统用git-bash启动Metabase">
+                <i class="fa fa-chevron-left"></i> Metabase-BI系列03：win系统用git-bash启动Metabase
               </a>
             
           </div>
@@ -513,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/29/metabase-bi-cookie/" rel="prev" title="Metabase-BI系列04：cookie实现单点登录sso">
-                Metabase-BI系列04：cookie实现单点登录sso <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/29/metabase-bi-bug01/" rel="prev" title="Metabase-BI系列05： 错误Unknown system variable 'session_track_schema'">
+                Metabase-BI系列05： 错误Unknown system variable 'session_track_schema' <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -717,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-bash启动Metabase"><span class="nav-number">2.</span> <span class="nav-text">git-bash启动Metabase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-bash打包Metabase驱动包"><span class="nav-number">3.</span> <span class="nav-text">git-bash打包Metabase驱动包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-bash打包转换语言包"><span class="nav-number">4.</span> <span class="nav-text">git-bash打包转换语言包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-bash缺点"><span class="nav-number">5.</span> <span class="nav-text">git-bash缺点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metabase-cookie"><span class="nav-number">2.</span> <span class="nav-text">Metabase-cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#metabase-SESSION-ID"><span class="nav-number">2.1.</span> <span class="nav-text">metabase.SESSION_ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#api-session"><span class="nav-number">2.2.</span> <span class="nav-text">/api/session/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域问题"><span class="nav-number">2.3.</span> <span class="nav-text">跨域问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie共享问题"><span class="nav-number">2.4.</span> <span class="nav-text">cookie共享问题</span></a></li></ol></li></ol></div>
             
 
           </div>
