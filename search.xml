@@ -40,6 +40,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Metabase-BI系列06：历史版本总结]]></title>
+    <url>%2F2019%2F11%2F08%2Fmetabase-bi-his%2F</url>
+    <content type="text"><![CDATA[​ 写这个内容的目的有两个： 最近对Metabase BI使用进行了一个梳理，包括二次开发的一个梳理 Metabase近来发布的0.33、0.34版本，变化较大，目前网上大部分你能搜到的，版本都是0.33之前的版本 ​ 所以以此为题，写了一篇，也为后面写一篇（Metabase-BI系列07：V0.33版本焕然一新）做个铺垫。 ​ 从Metabase官网上对历史版本从头到尾过了一遍，历史总能给人更好的回忆和警醒。就像只有通过看历史战争片，才能体会今天的幸福来之不易，通过Metabase的发版历史，同样能看出Metabase BI一步一步的变化和艰辛的发展。虽然无法体会历史场景的那一刻，但是可以了解当前的珍贵。少喝鸡汤，多写总结。 大版本Metabase开源以来，一共三个大版本，并在2019年4月23日推出企业版，当然是为了更快的发展和更好的发展。 v0.1x版本：开源，注重快速安装，功能略简陋，但五脏俱全，十个亿数据量分析测试，独特的分析图表的风格，吸引了大量用户使用并参与二次开发。 v0.2x版本：性能和功能逐步完善的版本，引入x-ray这种机器思想，可以看出0.2x版本对市面上的机器学习进行了研究分析，虽然没有突破BI的局限，但是确实也让人耳目一新。 v0.3x版本：逐渐成熟的版本，并在0.33版本进行了焕然一新的改动，在BI市场泛滥的时候，Metabase用其独特的风格吸引更多人关注，查询分析器、界面UI的改变确实很给力，详细介绍大家可以看我下一篇的文章。 版本明细v0.1x版本 v0.2x版本 v0.3x版本]]></content>
+      <categories>
+        <category>可视化工具</category>
+        <category>Metabase</category>
+      </categories>
+      <tags>
+        <tag>BI</tag>
+        <tag>Metabase</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Metabase-BI系列02：二次开发环境(windows)踩坑]]></title>
     <url>%2F2019%2F11%2F06%2Fmetabase-bi-pit%2F</url>
     <content type="text"><![CDATA[由于github源代码开发者用的linux或者mac来作为开发环境，所以存在windows环境下的不友好，有的甚至就是坑。甚至好多Metabase windows开发者也是用linux虚拟机来跑环境的。 当然如果通过虚拟机跑linux，或者用windows自带的Ubuntu进行开发，有些问题就不存在了，还有一种好的方式用git的bash环境去搭建，可参见：Metabase-BI系列03：win系统用git-bash启动Metabase。 坑一：git-clone源码编码LF问题git里面有 AutoCRLF 、 SafeCRLF 123456git config --global core.autocrlf true //提交转换为LF，检出转换为CRLF git config --global core.autocrlf false //提交检出都不转换 git config --global core.autocrlf input //提交转换为LF，检出不转换 git config --global core.safecrlf true //拒绝提交包含混合换行符文件 git config --global core.safecrlf false //允许提交包含混合换行符文件 git config --global core.safecrlf warn //提交包含混合换行符文件给出警告 如果： AutoCRLF 设置为ture，代码转换成CRLF，代码后台能跑起来，前台web端访问空白，js错误，各种property undefined 所以这种情况一定要将AutoCRLF 设置为false，而且是先设置false，再执行git clone 可以肯定的一点是，本身LF转CRLF就存在bug，所以就很容易出问题 坑二：yarn install时grep命令问题在install的时候，要去掉grep那条命令，此命令为linux命令，可见完全没有考虑windows环境的感受，当然你也可以尝试安装grep在windows下执行的程序 1&quot;preinstall&quot;: &quot;echo $npm_execpath | grep -q yarn || echo &apos;\\033[0;33mSorry, npm is not supported. Please use Yarn (https://yarnpkg.com/).\\033[0m&apos;&quot;, 坑三：lein ring server文件名扩展名报错123Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。Error encountered performing task &apos;ring&apos; with profile(s): &apos;base,system,user,provided,dev,ring&apos;Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。 这个问题是windows系统导致的，如果是win10或许可以解除这个长度限制，如果是win7或者更早的windows版本估计不好解决，就不能用热部署了，但是lein run是可以的 坑四：自动创建仪表板(数据透视)的问题登录首页后，一直发请求，html 500错误 123Request URL: http://localhost:3000/api/automagic-dashboards/database/2/candidatesRequest Method: GETStatus Code: 500 Server Error 后台报错，找不到目录文件 很明显是windows路径错误，可以特殊处理一下，找到src/metabase/util/files.clj 1234567891011(defn do-with-open-path-to-resource &quot;Impl for `with-open-path-to-resource`.&quot; [^String resource, f] (let [url (io/resource resource)] (when-not url (throw (FileNotFoundException. (trs &quot;Resource does not exist.&quot;)))) (if (url-inside-jar? url) (with-open [fs (jar-file-system-from-url url)]​ (f (get-path-in-filesystem fs &quot;/&quot; resource))) ; windows下修复数据透视路径subs去掉前缀 (f (get-path (subs (.getPath url) 1)))))) 坑五：数据源、中文汉化包不自动生成问题正常情况下会在，安装目录/plugins下生成数据库驱动包，如果没有新增数据库只能选择默认的几种数据库类型 正常情况下，安装目录/resources/frontend_client/app/locales下，生成多语言版本json windows下有些shell脚本命令是不能正常运行的，所以导致不能正常生成，可以直接下载放到相应目录底下，数据库驱动包也可以到module各个驱动目录下面直接lein uberjar生成，这种生成容易发生依赖包不一致报错的问题。 问题六：Metabase多版本jar包冲突Metabase里面有很多分支，有些是版本分支，如果用到新老板，就不要把不同版交叉使用，Metabase在运行时正常会检测并清理，一旦出现检查存在又不进行清除更新就会出现jar包冲突。]]></content>
