@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-29T15:31:51.463Z</updated>
+  <updated>2020-01-14T15:00:35.826Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Metabase-BI系列06：历史版本总结</title>
+    <link href="http://yoursite.com/2020/01/14/metabase-bi-his/"/>
+    <id>http://yoursite.com/2020/01/14/metabase-bi-his/</id>
+    <published>2020-01-14T15:00:00.000Z</published>
+    <updated>2020-01-14T15:00:35.826Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    写这个内容的目的有两个：</p><ol><li><p>最近对Metabase BI使用进行了一个梳理，包括二次开发的一个梳理</p></li><li><p>Metabase近来发布的0.33、0.34版本，变化较大，目前网上大部分你能搜到的，版本都是0.33之前的版本</p></li></ol><p>​    所以以此为题，写了一篇，也为后面写一篇（Metabase-BI系列07：V0.33版本焕然一新）做个铺垫。</p><p>​    从Metabase官网上对历史版本从头到尾过了一遍，历史总能给人更好的回忆和警醒。就像只有通过看历史战争片，才能体会今天的幸福来之不易，通过Metabase的发版历史，同样能看出Metabase BI一步一步的变化和艰辛的发展。虽然无法体会历史场景的那一刻，但是可以了解当前的珍贵。少喝鸡汤，多写总结。</p><a id="more"></a><h2 id="大版本"><a href="#大版本" class="headerlink" title="大版本"></a>大版本</h2><p>Metabase开源以来，一共三个大版本，并在2019年4月23日推出企业版，当然是为了更快的发展和更好的发展。</p><ul><li>v0.1x版本：开源，注重快速安装，功能略简陋，但五脏俱全，十个亿数据量分析测试，独特的分析图表的风格，吸引了大量用户使用并参与二次开发。</li><li>v0.2x版本：性能和功能逐步完善的版本，引入x-ray这种机器思想，可以看出0.2x版本对市面上的机器学习进行了研究分析，虽然没有突破BI的局限，但是确实也让人耳目一新。</li><li>v0.3x版本：逐渐成熟的版本，并在0.33版本进行了焕然一新的改动，在BI市场泛滥的时候，Metabase用其独特的风格吸引更多人关注，查询分析器、界面UI的改变确实很给力，详细介绍大家可以看我下一篇的文章。</li></ul><h2 id="版本明细"><a href="#版本明细" class="headerlink" title="版本明细"></a>版本明细</h2><h3 id="v0-1x版本"><a href="#v0-1x版本" class="headerlink" title="v0.1x版本"></a>v0.1x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase01.png" alt="v0.1x"></p><h3 id="v0-2x版本"><a href="#v0-2x版本" class="headerlink" title="v0.2x版本"></a>v0.2x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase02.png" alt="v0.2x"></p><h3 id="v0-3x版本"><a href="#v0-3x版本" class="headerlink" title="v0.3x版本"></a>v0.3x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase03.png" alt="v0.3x"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    写这个内容的目的有两个：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;最近对Metabase BI使用进行了一个梳理，包括二次开发的一个梳理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Metabase近来发布的0.33、0.34版本，变化较大，目前网上大部分你能搜到的，版本都是0.33之前的版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​    所以以此为题，写了一篇，也为后面写一篇（Metabase-BI系列07：V0.33版本焕然一新）做个铺垫。&lt;/p&gt;
+&lt;p&gt;​    从Metabase官网上对历史版本从头到尾过了一遍，历史总能给人更好的回忆和警醒。就像只有通过看历史战争片，才能体会今天的幸福来之不易，通过Metabase的发版历史，同样能看出Metabase BI一步一步的变化和艰辛的发展。虽然无法体会历史场景的那一刻，但是可以了解当前的珍贵。少喝鸡汤，多写总结。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+    
+    
+      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+    
+      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+    
+  </entry>
   
   <entry>
     <title>Metabase-BI系列05： 错误Unknown system variable &#39;session_track_schema&#39;</title>
@@ -82,40 +116,6 @@
     <summary type="html">
     
       &lt;p&gt;由于windows下启动Metabase存在不友好情况，启动linux消耗系统性能，影响工作效率，巧妙借助git-bash来启动Metabase，既可以避免windows下的坑，还特别的轻量级，甚至比cmd、vscode等命令窗口下启动都要快。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
-    
-    
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
-    
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Metabase-BI系列06：历史版本总结</title>
-    <link href="http://yoursite.com/2019/11/08/metabase-bi-his/"/>
-    <id>http://yoursite.com/2019/11/08/metabase-bi-his/</id>
-    <published>2019-11-08T01:37:34.000Z</published>
-    <updated>2020-01-14T14:38:36.370Z</updated>
-    
-    <content type="html"><![CDATA[<p>​    写这个内容的目的有两个：</p><ol><li><p>最近对Metabase BI使用进行了一个梳理，包括二次开发的一个梳理</p></li><li><p>Metabase近来发布的0.33、0.34版本，变化较大，目前网上大部分你能搜到的，版本都是0.33之前的版本</p></li></ol><p>​    所以以此为题，写了一篇，也为后面写一篇（Metabase-BI系列07：V0.33版本焕然一新）做个铺垫。</p><p>​    从Metabase官网上对历史版本从头到尾过了一遍，历史总能给人更好的回忆和警醒。就像只有通过看历史战争片，才能体会今天的幸福来之不易，通过Metabase的发版历史，同样能看出Metabase BI一步一步的变化和艰辛的发展。虽然无法体会历史场景的那一刻，但是可以了解当前的珍贵。少喝鸡汤，多写总结。</p><a id="more"></a><h2 id="大版本"><a href="#大版本" class="headerlink" title="大版本"></a>大版本</h2><p>Metabase开源以来，一共三个大版本，并在2019年4月23日推出企业版，当然是为了更快的发展和更好的发展。</p><ul><li>v0.1x版本：开源，注重快速安装，功能略简陋，但五脏俱全，十个亿数据量分析测试，独特的分析图表的风格，吸引了大量用户使用并参与二次开发。</li><li>v0.2x版本：性能和功能逐步完善的版本，引入x-ray这种机器思想，可以看出0.2x版本对市面上的机器学习进行了研究分析，虽然没有突破BI的局限，但是确实也让人耳目一新。</li><li>v0.3x版本：逐渐成熟的版本，并在0.33版本进行了焕然一新的改动，在BI市场泛滥的时候，Metabase用其独特的风格吸引更多人关注，查询分析器、界面UI的改变确实很给力，详细介绍大家可以看我下一篇的文章。</li></ul><h2 id="版本明细"><a href="#版本明细" class="headerlink" title="版本明细"></a>版本明细</h2><h3 id="v0-1x版本"><a href="#v0-1x版本" class="headerlink" title="v0.1x版本"></a>v0.1x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase01.png" alt="v0.1x"></p><h3 id="v0-2x版本"><a href="#v0-2x版本" class="headerlink" title="v0.2x版本"></a>v0.2x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase02.png" alt="v0.2x"></p><h3 id="v0-3x版本"><a href="#v0-3x版本" class="headerlink" title="v0.3x版本"></a>v0.3x版本</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/his/Metabase03.png" alt="v0.3x"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;​    写这个内容的目的有两个：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;最近对Metabase BI使用进行了一个梳理，包括二次开发的一个梳理&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Metabase近来发布的0.33、0.34版本，变化较大，目前网上大部分你能搜到的，版本都是0.33之前的版本&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;​    所以以此为题，写了一篇，也为后面写一篇（Metabase-BI系列07：V0.33版本焕然一新）做个铺垫。&lt;/p&gt;
-&lt;p&gt;​    从Metabase官网上对历史版本从头到尾过了一遍，历史总能给人更好的回忆和警醒。就像只有通过看历史战争片，才能体会今天的幸福来之不易，通过Metabase的发版历史，同样能看出Metabase BI一步一步的变化和艰辛的发展。虽然无法体会历史场景的那一刻，但是可以了解当前的珍贵。少喝鸡汤，多写总结。&lt;/p&gt;
     
     </summary>
     
