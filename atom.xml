@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-14T15:00:35.826Z</updated>
+  <updated>2020-01-15T01:48:21.125Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Metabase-BI系列07：V0.33版本焕然一新</title>
+    <link href="http://yoursite.com/2020/01/15/metabase-bi-v033/"/>
+    <id>http://yoursite.com/2020/01/15/metabase-bi-v033/</id>
+    <published>2020-01-15T04:00:00.000Z</published>
+    <updated>2020-01-15T01:48:21.125Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>2019年4月23日，Metabase官方发布声明，已获得A轮融资，NEA向Metabase投资了800万美元。很重要的一点是NEA具有与Tableau（关于tableau有兴趣可以去官网下载demo）进行孵化和合作的经验，与<a href="https://www.mongodb.com/" target="_blank" rel="noopener">MongoDB</a>，<a href="https://www.elastic.co/" target="_blank" rel="noopener">Elastic</a>，<a href="https://www.nginx.com/" target="_blank" rel="noopener">Nginx</a>和<a href="https://databricks.com/" target="_blank" rel="noopener">Databricks</a>等开源公司有广泛合作经验。</p><p>而且Metabase过去的一年中悄悄的发布企业版，虽然在Metabase企业版在论坛中已不是什么秘密，但是Metabase还是强调构建最好的开源产品始终是Metabase的重点。</p><p>很快Metabase于2019年6月24发布了v0.33 preview（预览版），8月19日发布v0.33正式版，并在12月19日双旦之前发布v0.34Holiday（假日版），通过v0.33预览版之后，会发现真的是焕然一新。</p><p>目前网上流通的Metabase相关的资料绝大部分都是v0.33之前版本，所以在此强调一下，v0.33不仅新而且值得一提，对于Metabase的意义也足够重要，所以将此版本单独写出来。</p><a id="more"></a><h2 id="更新记录表"><a href="#更新记录表" class="headerlink" title="更新记录表"></a>更新记录表</h2><table><thead><tr><th><strong>序号</strong></th><th><strong>版本</strong></th><th><strong>版本变化</strong></th><th align="left"><strong>描述</strong></th></tr></thead><tbody><tr><td>1.</td><td>V0.33 Preview</td><td>查询生成器</td><td align="left">1、创建关联表重构  2、分阶段进行数据聚合、分组、过滤、自定义字段等</td></tr><tr><td>2.</td><td>V0.33 Preview</td><td>探索模式</td><td align="left">1、数据可视化功能重构  2、汇总聚合功能调整</td></tr><tr><td>3.</td><td>V0.33 Preview</td><td>UI更新</td><td align="left">1、表格样式重新定义和调整  2、过滤器工作方式调整  3、数据呈现调整等等</td></tr><tr><td>4.</td><td>V0.33 Preview</td><td>删除sql预览功能</td><td align="left">去除功能，调整查询生成器中</td></tr><tr><td>5.</td><td>V0.33</td><td>查看表和可视化模式切换</td><td align="left">数据展示界面，增加表格和可视化两种数据切换模式</td></tr><tr><td>6.</td><td>V0.33</td><td>导航栏浏览数据源</td><td align="left">快捷入口，减少返回主页等中间操作</td></tr><tr><td>7.</td><td>V0.33</td><td>增强搜索</td><td align="left">包括问题、仪表板以及更细分，搜索功能加强</td></tr><tr><td>8.</td><td>V0.33</td><td>翻译政策调整</td><td align="left">制定新的翻译策略</td></tr><tr><td>9.</td><td>V0.34 Holiday</td><td>显示数据点上的值</td><td align="left">查看条形图时，我们将自动为您显示这些点上方的值</td></tr><tr><td>10.</td><td>V0.34 Holiday</td><td>新增mongo变量</td><td align="left">允许在本机（SQL）查询中使用变量</td></tr><tr><td>11.</td><td>V0.34 Holiday</td><td>时区修复</td><td align="left">1、 数据库驱动时区调整  2、 时间处理时区问题调整</td></tr><tr><td>12.</td><td>V0.34 Holiday</td><td>SQL编辑器升级</td><td align="left">1、 调整编辑器大小  2、 变量面板增加新图层</td></tr></tbody></table><h2 id="版本变化"><a href="#版本变化" class="headerlink" title="版本变化"></a>版本变化</h2><p>旧版本：V0.33预览版之前版本</p><p>新版本：V0.33预览版及之后版本</p><h3 id="旧版UI"><a href="#旧版UI" class="headerlink" title="旧版UI"></a>旧版UI</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/old_ui.jpg" alt="old_ui"></p><h3 id="新版UI"><a href="#新版UI" class="headerlink" title="新版UI"></a>新版UI</h3><p>数据、聚合等功能集成到生成器，隐藏后与旧版比较更加简洁，旧版功能集成在上方占据空间，但是各有所爱</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_ui.jpg" alt="new_ui"></p><h3 id="旧版生成器"><a href="#旧版生成器" class="headerlink" title="旧版生成器"></a>旧版生成器</h3><p>生成器是v0.33版本的叫法，旧版没有，我们姑且把数据、筛选、聚合、分组等功能都算在生成器里面</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/old_scq.jpg" alt="old_scq"></p><h3 id="新版生成器"><a href="#新版生成器" class="headerlink" title="新版生成器"></a>新版生成器</h3><p>新版生成器好像隐藏起来，像帘子上下展开而非弹窗的形式。</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_scq.jpg" alt="new_scq"></p><h3 id="新版动态图展示"><a href="#新版动态图展示" class="headerlink" title="新版动态图展示"></a>新版动态图展示</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/metabase01.gif" alt="Metabase01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/metabase02.gif" alt="Metabase02"></p><h3 id="旧版图表显示"><a href="#旧版图表显示" class="headerlink" title="旧版图表显示"></a>旧版图表显示</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/old_tubiao.jpg" alt="old_tubiao"></p><h3 id="新版图表显示"><a href="#新版图表显示" class="headerlink" title="新版图表显示"></a>新版图表显示</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_tubiao.jpg" alt="new_tubiao"></p><h3 id="旧版设置"><a href="#旧版设置" class="headerlink" title="旧版设置"></a>旧版设置</h3><p>弹窗是形式</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/old_setting.jpg" alt="old_setting"></p><h3 id="新版设置"><a href="#新版设置" class="headerlink" title="新版设置"></a>新版设置</h3><p>去掉原来弹窗模式</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_setting.jpg" alt="new_setting"></p><h3 id="旧版下载"><a href="#旧版下载" class="headerlink" title="旧版下载"></a>旧版下载</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/old_download.jpg" alt="old_download"></p><h3 id="新版下载"><a href="#新版下载" class="headerlink" title="新版下载"></a>新版下载</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_download.jpg" alt="new_download"></p><h3 id="新版数据源入口"><a href="#新版数据源入口" class="headerlink" title="新版数据源入口"></a>新版数据源入口</h3><p>增加快速数据入口</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_data.png" alt="new_data"></p><h3 id="新版搜索"><a href="#新版搜索" class="headerlink" title="新版搜索"></a>新版搜索</h3><p>增强搜索功能</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_search.png" alt="new_search"></p><h3 id="新版图表和数据切换"><a href="#新版图表和数据切换" class="headerlink" title="新版图表和数据切换"></a>新版图表和数据切换</h3><p>新版图表和实际数据能够快速切换</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_table01.png" alt="new_table01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_table02.png" alt="new_table02"></p><h3 id="新版优化sql查询"><a href="#新版优化sql查询" class="headerlink" title="新版优化sql查询"></a>新版优化sql查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/0.33/new_cx.png" alt="new_cx"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;2019年4月23日，Metabase官方发布声明，已获得A轮融资，NEA向Metabase投资了800万美元。很重要的一点是NEA具有与Tableau（关于tableau有兴趣可以去官网下载demo）进行孵化和合作的经验，与&lt;a href=&quot;https://www.mongodb.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MongoDB&lt;/a&gt;，&lt;a href=&quot;https://www.elastic.co/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Elastic&lt;/a&gt;，&lt;a href=&quot;https://www.nginx.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Nginx&lt;/a&gt;和&lt;a href=&quot;https://databricks.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Databricks&lt;/a&gt;等开源公司有广泛合作经验。&lt;/p&gt;
+&lt;p&gt;而且Metabase过去的一年中悄悄的发布企业版，虽然在Metabase企业版在论坛中已不是什么秘密，但是Metabase还是强调构建最好的开源产品始终是Metabase的重点。&lt;/p&gt;
+&lt;p&gt;很快Metabase于2019年6月24发布了v0.33 preview（预览版），8月19日发布v0.33正式版，并在12月19日双旦之前发布v0.34Holiday（假日版），通过v0.33预览版之后，会发现真的是焕然一新。&lt;/p&gt;
+&lt;p&gt;目前网上流通的Metabase相关的资料绝大部分都是v0.33之前版本，所以在此强调一下，v0.33不仅新而且值得一提，对于Metabase的意义也足够重要，所以将此版本单独写出来。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+    
+    
+      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+    
+      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+    
+  </entry>
   
   <entry>
     <title>Metabase-BI系列06：历史版本总结</title>
