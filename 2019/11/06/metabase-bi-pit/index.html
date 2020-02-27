@@ -90,11 +90,12 @@
 <meta property="og:description" content="由于github源代码开发者用的linux或者mac来作为开发环境，所以存在windows环境下的不友好，有的甚至就是坑。甚至好多Metabase windows开发者也是用linux虚拟机来跑环境的。 当然如果通过虚拟机跑linux，或者用windows自带的Ubuntu进行开发，有些问题就不存在了，还有一种好的方式用git的bash环境去搭建，可参见：Metabase-BI系列03：win系统">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/report-web.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/pit/node_env.png">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/metabase-automagic01.jpg">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/metabase-automagic02.jpg">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/Metabase-driver.jpg">
 <meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/language.jpg">
-<meta property="og:updated_time" content="2019-11-07T15:46:34.196Z">
+<meta property="og:updated_time" content="2020-01-21T02:20:50.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metabase-BI系列02：二次开发环境(windows)踩坑">
 <meta name="twitter:description" content="由于github源代码开发者用的linux或者mac来作为开发环境，所以存在windows环境下的不友好，有的甚至就是坑。甚至好多Metabase windows开发者也是用linux虚拟机来跑环境的。 当然如果通过虚拟机跑linux，或者用windows自带的Ubuntu进行开发，有些问题就不存在了，还有一种好的方式用git的bash环境去搭建，可参见：Metabase-BI系列03：win系统">
@@ -440,10 +441,16 @@
 <h2 id="坑二：yarn-install时grep命令问题"><a href="#坑二：yarn-install时grep命令问题" class="headerlink" title="坑二：yarn install时grep命令问题"></a>坑二：yarn install时grep命令问题</h2><p>在install的时候，要去掉grep那条命令，此命令为linux命令，可见完全没有考虑windows环境的感受，当然你也可以尝试安装grep在windows下执行的程序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;preinstall&quot;: &quot;echo $npm_execpath | grep -q yarn || echo &apos;\\033[0;33mSorry, npm is not supported. Please use Yarn (https://yarnpkg.com/).\\033[0m&apos;&quot;,</span><br></pre></td></tr></table></figure>
 
-<h2 id="坑三：lein-ring-server文件名扩展名报错"><a href="#坑三：lein-ring-server文件名扩展名报错" class="headerlink" title="坑三：lein ring server文件名扩展名报错"></a>坑三：lein ring server文件名扩展名报错</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。</span><br><span class="line">Error encountered performing task &apos;ring&apos; with profile(s): &apos;base,system,user,provided,dev,ring&apos;</span><br><span class="line">Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。</span><br></pre></td></tr></table></figure>
+<h2 id="坑三：NODE-ENV不是内部或外部命令"><a href="#坑三：NODE-ENV不是内部或外部命令" class="headerlink" title="坑三：NODE_ENV不是内部或外部命令"></a>坑三：NODE_ENV不是内部或外部命令</h2><p>在install的时候，NODE_ENV不是内部或者外部命令，其实这个还是linux和windows的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linux： NODE_ENV=hot </span><br><span class="line">windows: set NODE_ENV=hot</span><br></pre></td></tr></table></figure>
+
+<p>所以说windows下，直接加个set就可以了，或者去掉里面的，先set变量，再install。</p>
+<p>注意：这个是热部署的变量，如果需要热部署，这个命令不能少。</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/pit/node_env.png" alt="node_env"></p>
+<h2 id="坑四：lein-ring-server文件名扩展名报错"><a href="#坑四：lein-ring-server文件名扩展名报错" class="headerlink" title="坑四：lein ring server文件名扩展名报错"></a>坑四：lein ring server文件名扩展名报错</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。</span><br><span class="line">Error encountered performing task &apos;ring&apos; with profile(s): &apos;base,system,user,provided,dev,ring&apos;</span><br><span class="line">Compilation failed: Cannot run program &quot;java&quot; (in directory &quot;D:\metabase&quot;): CreateProcess error=206, 文件名或扩展名太长。</span><br></pre></td></tr></table></figure>
 
 <p>这个问题是windows系统导致的，如果是win10或许可以解除这个长度限制，如果是win7或者更早的windows版本估计不好解决，就不能用热部署了，但是lein run是可以的</p>
-<h2 id="坑四：自动创建仪表板-数据透视-的问题"><a href="#坑四：自动创建仪表板-数据透视-的问题" class="headerlink" title="坑四：自动创建仪表板(数据透视)的问题"></a>坑四：自动创建仪表板(数据透视)的问题</h2><p>登录首页后，一直发请求，html 500错误</p>
+<h2 id="坑五：自动创建仪表板-数据透视-的问题"><a href="#坑五：自动创建仪表板-数据透视-的问题" class="headerlink" title="坑五：自动创建仪表板(数据透视)的问题"></a>坑五：自动创建仪表板(数据透视)的问题</h2><p>登录首页后，一直发请求，html 500错误</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Request URL:  http://localhost:3000/api/automagic-dashboards/database/2/candidates</span><br><span class="line">Request Method: GET</span><br><span class="line">Status Code:  500 Server Error</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/metabase-automagic01.jpg" alt="automagic"></p>
@@ -452,12 +459,12 @@
 <p>很明显是windows路径错误，可以特殊处理一下，找到src/metabase/util/files.clj</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(defn do-with-open-path-to-resource</span><br><span class="line"> &quot;Impl for `with-open-path-to-resource`.&quot;</span><br><span class="line"> [^String resource, f]</span><br><span class="line"> (let [url (io/resource resource)]</span><br><span class="line">  (when-not url</span><br><span class="line">   (throw (FileNotFoundException. (trs &quot;Resource does not exist.&quot;))))</span><br><span class="line">  (if (url-inside-jar? url)</span><br><span class="line">   (with-open [fs (jar-file-system-from-url url)]</span><br><span class="line">​    (f (get-path-in-filesystem fs &quot;/&quot; resource)))</span><br><span class="line">   ; windows下修复数据透视路径subs去掉前缀</span><br><span class="line">   (f (get-path (subs (.getPath url) 1))))))</span><br></pre></td></tr></table></figure>
 
-<h2 id="坑五：数据源、中文汉化包不自动生成问题"><a href="#坑五：数据源、中文汉化包不自动生成问题" class="headerlink" title="坑五：数据源、中文汉化包不自动生成问题"></a>坑五：数据源、中文汉化包不自动生成问题</h2><p>正常情况下会在，安装目录/plugins下生成数据库驱动包，如果没有新增数据库只能选择默认的几种数据库类型</p>
+<h2 id="坑六：数据源、中文汉化包不自动生成问题"><a href="#坑六：数据源、中文汉化包不自动生成问题" class="headerlink" title="坑六：数据源、中文汉化包不自动生成问题"></a>坑六：数据源、中文汉化包不自动生成问题</h2><p>正常情况下会在，安装目录/plugins下生成数据库驱动包，如果没有新增数据库只能选择默认的几种数据库类型</p>
 <p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/Metabase-driver.jpg" alt="driver"></p>
 <p>正常情况下，安装目录/resources/frontend_client/app/locales下，生成多语言版本json</p>
 <p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/keng/language.jpg" alt="language"></p>
 <p>windows下有些shell脚本命令是不能正常运行的，所以导致不能正常生成，可以直接下载放到相应目录底下，数据库驱动包也可以到module各个驱动目录下面直接lein uberjar生成，这种生成容易发生依赖包不一致报错的问题。</p>
-<h2 id="问题六：Metabase多版本jar包冲突"><a href="#问题六：Metabase多版本jar包冲突" class="headerlink" title="问题六：Metabase多版本jar包冲突"></a>问题六：Metabase多版本jar包冲突</h2><p>Metabase里面有很多分支，有些是版本分支，如果用到新老板，就不要把不同版交叉使用，Metabase在运行时正常会检测并清理，一旦出现检查存在又不进行清除更新就会出现jar包冲突。</p>
+<h2 id="问题七：Metabase多版本jar包冲突"><a href="#问题七：Metabase多版本jar包冲突" class="headerlink" title="问题七：Metabase多版本jar包冲突"></a>问题七：Metabase多版本jar包冲突</h2><p>Metabase里面有很多分支，有些是版本分支，如果用到新老板，就不要把不同版交叉使用，Metabase在运行时正常会检测并清理，一旦出现检查存在又不进行清除更新就会出现jar包冲突。</p>
 
       
     </div>
@@ -601,7 +608,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -719,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#坑一：git-clone源码编码LF问题"><span class="nav-number">1.</span> <span class="nav-text">坑一：git-clone源码编码LF问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑二：yarn-install时grep命令问题"><span class="nav-number">2.</span> <span class="nav-text">坑二：yarn install时grep命令问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑三：lein-ring-server文件名扩展名报错"><span class="nav-number">3.</span> <span class="nav-text">坑三：lein ring server文件名扩展名报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑四：自动创建仪表板-数据透视-的问题"><span class="nav-number">4.</span> <span class="nav-text">坑四：自动创建仪表板(数据透视)的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑五：数据源、中文汉化包不自动生成问题"><span class="nav-number">5.</span> <span class="nav-text">坑五：数据源、中文汉化包不自动生成问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题六：Metabase多版本jar包冲突"><span class="nav-number">6.</span> <span class="nav-text">问题六：Metabase多版本jar包冲突</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#坑一：git-clone源码编码LF问题"><span class="nav-number">1.</span> <span class="nav-text">坑一：git-clone源码编码LF问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑二：yarn-install时grep命令问题"><span class="nav-number">2.</span> <span class="nav-text">坑二：yarn install时grep命令问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑三：NODE-ENV不是内部或外部命令"><span class="nav-number">3.</span> <span class="nav-text">坑三：NODE_ENV不是内部或外部命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑四：lein-ring-server文件名扩展名报错"><span class="nav-number">4.</span> <span class="nav-text">坑四：lein ring server文件名扩展名报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑五：自动创建仪表板-数据透视-的问题"><span class="nav-number">5.</span> <span class="nav-text">坑五：自动创建仪表板(数据透视)的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑六：数据源、中文汉化包不自动生成问题"><span class="nav-number">6.</span> <span class="nav-text">坑六：数据源、中文汉化包不自动生成问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题七：Metabase多版本jar包冲突"><span class="nav-number">7.</span> <span class="nav-text">问题七：Metabase多版本jar包冲突</span></a></li></ol></div>
             
 
           </div>
