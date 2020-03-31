@@ -5,9 +5,9 @@
   <subtitle>码动人生</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://dumplingbao.github.io/"/>
   <updated>2020-03-28T05:36:40.323Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://dumplingbao.github.io/</id>
   
   <author>
     <name>dumplingbao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Davinci-二次开发系列03：区域地图下钻与选择</title>
-    <link href="http://yoursite.com/2020/03/28/davinci-dev-map/"/>
-    <id>http://yoursite.com/2020/03/28/davinci-dev-map/</id>
+    <link href="https://dumplingbao.github.io/2020/03/28/davinci-dev-map/"/>
+    <id>https://dumplingbao.github.io/2020/03/28/davinci-dev-map/</id>
     <published>2020-03-28T04:00:00.000Z</published>
     <updated>2020-03-28T05:36:40.323Z</updated>
     
@@ -31,21 +31,21 @@
     
     </summary>
     
-      <category term="Davinci" scheme="http://yoursite.com/categories/Davinci/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Davinci" scheme="http://yoursite.com/tags/Davinci/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/tags/Davinci/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列11：看板模式扩展及使用</title>
-    <link href="http://yoursite.com/2020/03/24/metabase-bi-theme/"/>
-    <id>http://yoursite.com/2020/03/24/metabase-bi-theme/</id>
+    <link href="https://dumplingbao.github.io/2020/03/24/metabase-bi-theme/"/>
+    <id>https://dumplingbao.github.io/2020/03/24/metabase-bi-theme/</id>
     <published>2020-03-24T04:00:00.000Z</published>
     <updated>2020-03-24T15:43:49.748Z</updated>
     
@@ -57,21 +57,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Davinci-二次开发系列02：widget百度地图扩展</title>
-    <link href="http://yoursite.com/2020/03/19/davinci-dev-bmap/"/>
-    <id>http://yoursite.com/2020/03/19/davinci-dev-bmap/</id>
+    <link href="https://dumplingbao.github.io/2020/03/19/davinci-dev-bmap/"/>
+    <id>https://dumplingbao.github.io/2020/03/19/davinci-dev-bmap/</id>
     <published>2020-03-19T04:00:00.000Z</published>
     <updated>2020-03-23T15:23:24.383Z</updated>
     
@@ -84,21 +84,21 @@
     
     </summary>
     
-      <category term="Davinci" scheme="http://yoursite.com/categories/Davinci/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Davinci" scheme="http://yoursite.com/tags/Davinci/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/tags/Davinci/"/>
     
   </entry>
   
   <entry>
     <title>Davinci-二次开发系列01：开篇</title>
-    <link href="http://yoursite.com/2020/03/19/davinci-dev-kp/"/>
-    <id>http://yoursite.com/2020/03/19/davinci-dev-kp/</id>
+    <link href="https://dumplingbao.github.io/2020/03/19/davinci-dev-kp/"/>
+    <id>https://dumplingbao.github.io/2020/03/19/davinci-dev-kp/</id>
     <published>2020-03-19T04:00:00.000Z</published>
     <updated>2020-03-19T03:44:31.298Z</updated>
     
@@ -113,21 +113,21 @@
     
     </summary>
     
-      <category term="Davinci" scheme="http://yoursite.com/categories/Davinci/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Davinci" scheme="http://yoursite.com/tags/Davinci/"/>
+      <category term="Davinci" scheme="https://dumplingbao.github.io/tags/Davinci/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列10：新版透视表实现方案</title>
-    <link href="http://yoursite.com/2020/02/27/metabase-bi-tabfa/"/>
-    <id>http://yoursite.com/2020/02/27/metabase-bi-tabfa/</id>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/</id>
     <published>2020-02-27T14:40:00.000Z</published>
     <updated>2020-02-27T14:45:29.117Z</updated>
     
@@ -140,21 +140,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列09：透视表PR功能实现解析</title>
-    <link href="http://yoursite.com/2020/02/27/metabase-bi-tabjx/"/>
-    <id>http://yoursite.com/2020/02/27/metabase-bi-tabjx/</id>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/</id>
     <published>2020-02-27T14:40:00.000Z</published>
     <updated>2020-02-27T14:44:17.850Z</updated>
     
@@ -166,21 +166,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列08：一个关于透视表的PR</title>
-    <link href="http://yoursite.com/2020/02/27/metabase-bi-tabpr/"/>
-    <id>http://yoursite.com/2020/02/27/metabase-bi-tabpr/</id>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/</id>
     <published>2020-02-27T14:40:00.000Z</published>
     <updated>2020-02-27T15:31:33.240Z</updated>
     
@@ -192,21 +192,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列07：V0.33版本焕然一新</title>
-    <link href="http://yoursite.com/2020/01/15/metabase-bi-v033/"/>
-    <id>http://yoursite.com/2020/01/15/metabase-bi-v033/</id>
+    <link href="https://dumplingbao.github.io/2020/01/15/metabase-bi-v033/"/>
+    <id>https://dumplingbao.github.io/2020/01/15/metabase-bi-v033/</id>
     <published>2020-01-15T04:00:00.000Z</published>
     <updated>2020-01-15T01:48:21.125Z</updated>
     
@@ -221,21 +221,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列06：历史版本总结</title>
-    <link href="http://yoursite.com/2020/01/14/metabase-bi-his/"/>
-    <id>http://yoursite.com/2020/01/14/metabase-bi-his/</id>
+    <link href="https://dumplingbao.github.io/2020/01/14/metabase-bi-his/"/>
+    <id>https://dumplingbao.github.io/2020/01/14/metabase-bi-his/</id>
     <published>2020-01-14T15:00:00.000Z</published>
     <updated>2020-01-14T15:00:35.826Z</updated>
     
@@ -255,21 +255,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列05： 错误Unknown system variable &#39;session_track_schema&#39;</title>
-    <link href="http://yoursite.com/2019/11/29/metabase-bi-bug01/"/>
-    <id>http://yoursite.com/2019/11/29/metabase-bi-bug01/</id>
+    <link href="https://dumplingbao.github.io/2019/11/29/metabase-bi-bug01/"/>
+    <id>https://dumplingbao.github.io/2019/11/29/metabase-bi-bug01/</id>
     <published>2019-11-29T15:30:35.000Z</published>
     <updated>2019-11-29T15:31:51.463Z</updated>
     
@@ -281,21 +281,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列04：cookie实现单点登录sso</title>
-    <link href="http://yoursite.com/2019/11/29/metabase-bi-cookie/"/>
-    <id>http://yoursite.com/2019/11/29/metabase-bi-cookie/</id>
+    <link href="https://dumplingbao.github.io/2019/11/29/metabase-bi-cookie/"/>
+    <id>https://dumplingbao.github.io/2019/11/29/metabase-bi-cookie/</id>
     <published>2019-11-29T15:27:12.000Z</published>
     <updated>2019-11-29T15:28:49.025Z</updated>
     
@@ -309,21 +309,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列03：win系统用git-bash启动Metabase</title>
-    <link href="http://yoursite.com/2019/11/08/metabase-bi-gitbash/"/>
-    <id>http://yoursite.com/2019/11/08/metabase-bi-gitbash/</id>
+    <link href="https://dumplingbao.github.io/2019/11/08/metabase-bi-gitbash/"/>
+    <id>https://dumplingbao.github.io/2019/11/08/metabase-bi-gitbash/</id>
     <published>2019-11-08T01:37:34.000Z</published>
     <updated>2019-11-08T01:39:45.607Z</updated>
     
@@ -335,21 +335,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列02：二次开发环境(windows)踩坑</title>
-    <link href="http://yoursite.com/2019/11/06/metabase-bi-pit/"/>
-    <id>http://yoursite.com/2019/11/06/metabase-bi-pit/</id>
+    <link href="https://dumplingbao.github.io/2019/11/06/metabase-bi-pit/"/>
+    <id>https://dumplingbao.github.io/2019/11/06/metabase-bi-pit/</id>
     <published>2019-11-06T15:50:29.000Z</published>
     <updated>2020-01-21T02:20:50.629Z</updated>
     
@@ -362,21 +362,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>Metabase-BI系列01：二次开发环境(windows)搭建</title>
-    <link href="http://yoursite.com/2019/11/04/metabase-bi-dev/"/>
-    <id>http://yoursite.com/2019/11/04/metabase-bi-dev/</id>
+    <link href="https://dumplingbao.github.io/2019/11/04/metabase-bi-dev/"/>
+    <id>https://dumplingbao.github.io/2019/11/04/metabase-bi-dev/</id>
     <published>2019-11-04T15:54:03.000Z</published>
     <updated>2019-11-06T16:08:47.199Z</updated>
     
@@ -389,21 +389,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>BI、数据可视化工具浅析整理</title>
-    <link href="http://yoursite.com/2019/11/03/metabase-bi-datav/"/>
-    <id>http://yoursite.com/2019/11/03/metabase-bi-datav/</id>
+    <link href="https://dumplingbao.github.io/2019/11/03/metabase-bi-datav/"/>
+    <id>https://dumplingbao.github.io/2019/11/03/metabase-bi-datav/</id>
     <published>2019-11-03T08:21:04.000Z</published>
     <updated>2019-11-04T15:57:50.656Z</updated>
     
@@ -421,21 +421,21 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/categories/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
-      <category term="Metabase" scheme="http://yoursite.com/tags/Metabase/"/>
+      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
     
   </entry>
   
   <entry>
     <title>前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建</title>
-    <link href="http://yoursite.com/2019/09/05/iview-koa2/"/>
-    <id>http://yoursite.com/2019/09/05/iview-koa2/</id>
+    <link href="https://dumplingbao.github.io/2019/09/05/iview-koa2/"/>
+    <id>https://dumplingbao.github.io/2019/09/05/iview-koa2/</id>
     <published>2019-09-05T07:03:36.000Z</published>
     <updated>2019-09-05T07:07:52.707Z</updated>
     
@@ -454,21 +454,21 @@
     
     </summary>
     
-      <category term="node" scheme="http://yoursite.com/categories/node/"/>
+      <category term="node" scheme="https://dumplingbao.github.io/categories/node/"/>
     
     
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+      <category term="node" scheme="https://dumplingbao.github.io/tags/node/"/>
     
-      <category term="koa2" scheme="http://yoursite.com/tags/koa2/"/>
+      <category term="koa2" scheme="https://dumplingbao.github.io/tags/koa2/"/>
     
-      <category term="sequelize" scheme="http://yoursite.com/tags/sequelize/"/>
+      <category term="sequelize" scheme="https://dumplingbao.github.io/tags/sequelize/"/>
     
   </entry>
   
   <entry>
     <title>Node之ORM框架</title>
-    <link href="http://yoursite.com/2019/08/29/node-orm/"/>
-    <id>http://yoursite.com/2019/08/29/node-orm/</id>
+    <link href="https://dumplingbao.github.io/2019/08/29/node-orm/"/>
+    <id>https://dumplingbao.github.io/2019/08/29/node-orm/</id>
     <published>2019-08-29T08:09:32.000Z</published>
     <updated>2019-08-29T08:20:15.341Z</updated>
     
@@ -480,19 +480,19 @@
     
     </summary>
     
-      <category term="node" scheme="http://yoursite.com/categories/node/"/>
+      <category term="node" scheme="https://dumplingbao.github.io/categories/node/"/>
     
     
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+      <category term="node" scheme="https://dumplingbao.github.io/tags/node/"/>
     
-      <category term="orm" scheme="http://yoursite.com/tags/orm/"/>
+      <category term="orm" scheme="https://dumplingbao.github.io/tags/orm/"/>
     
   </entry>
   
   <entry>
     <title>持续集成部署-Travis CI</title>
-    <link href="http://yoursite.com/2019/08/22/travis-ci/"/>
-    <id>http://yoursite.com/2019/08/22/travis-ci/</id>
+    <link href="https://dumplingbao.github.io/2019/08/22/travis-ci/"/>
+    <id>https://dumplingbao.github.io/2019/08/22/travis-ci/</id>
     <published>2019-08-22T02:01:17.000Z</published>
     <updated>2019-08-26T12:07:38.547Z</updated>
     
@@ -506,19 +506,19 @@
     
     </summary>
     
-      <category term="持续集成" scheme="http://yoursite.com/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+      <category term="持续集成" scheme="https://dumplingbao.github.io/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://dumplingbao.github.io/tags/hexo/"/>
     
-      <category term="travis ci" scheme="http://yoursite.com/tags/travis-ci/"/>
+      <category term="travis ci" scheme="https://dumplingbao.github.io/tags/travis-ci/"/>
     
   </entry>
   
   <entry>
     <title>手绘风格的图表库（char.xkcd）</title>
-    <link href="http://yoursite.com/2019/08/20/char-xkcd/"/>
-    <id>http://yoursite.com/2019/08/20/char-xkcd/</id>
+    <link href="https://dumplingbao.github.io/2019/08/20/char-xkcd/"/>
+    <id>https://dumplingbao.github.io/2019/08/20/char-xkcd/</id>
     <published>2019-08-20T06:57:11.000Z</published>
     <updated>2019-10-29T11:58:54.072Z</updated>
     
@@ -531,19 +531,19 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="http://yoursite.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="BI" scheme="http://yoursite.com/tags/BI/"/>
+      <category term="透明创业实验" scheme="https://dumplingbao.github.io/tags/%E9%80%8F%E6%98%8E%E5%88%9B%E4%B8%9A%E5%AE%9E%E9%AA%8C/"/>
     
-      <category term="透明创业实验" scheme="http://yoursite.com/tags/%E9%80%8F%E6%98%8E%E5%88%9B%E4%B8%9A%E5%AE%9E%E9%AA%8C/"/>
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
   </entry>
   
   <entry>
     <title>【BLOG】hexo搭建blog教程</title>
-    <link href="http://yoursite.com/2019/08/16/hexo-createDemo/"/>
-    <id>http://yoursite.com/2019/08/16/hexo-createDemo/</id>
+    <link href="https://dumplingbao.github.io/2019/08/16/hexo-createDemo/"/>
+    <id>https://dumplingbao.github.io/2019/08/16/hexo-createDemo/</id>
     <published>2019-08-16T05:46:30.000Z</published>
     <updated>2019-08-20T07:06:59.720Z</updated>
     
@@ -561,10 +561,10 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="https://dumplingbao.github.io/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://dumplingbao.github.io/tags/hexo/"/>
     
   </entry>
   
