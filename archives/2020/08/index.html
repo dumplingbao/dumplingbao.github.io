@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="BI,Metabase,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,25 +81,13 @@
 
 
 
-<meta name="description" content="​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。">
-<meta name="keywords" content="BI,Metabase">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Metabase-BI系列09：透视表PR功能实现解析">
-<meta property="og:url" content="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="diss带码">
+<meta property="og:url" content="https://dumplingbao.github.io/archives/2020/08/index.html">
 <meta property="og:site_name" content="diss带码">
-<meta property="og:description" content="​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary01.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary01.jpg">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary03.jpg">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary02.jpg">
-<meta property="og:updated_time" content="2020-02-27T14:44:17.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Metabase-BI系列09：透视表PR功能实现解析">
-<meta name="twitter:description" content="​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。">
-<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif">
+<meta name="twitter:title" content="diss带码">
 
 
 
@@ -129,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/">
+  <link rel="canonical" href="https://dumplingbao.github.io/archives/2020/08/">
 
 
 
@@ -143,7 +131,7 @@
   </script>
 
 
-  <title>Metabase-BI系列09：透视表PR功能实现解析 | diss带码</title>
+  <title>归档 | diss带码</title>
   
 
 
@@ -172,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
     <a href="https://github.com/dumplingbao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -309,244 +297,72 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+        
+          
+        
+        嗯..! 目前共计 25 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2020">2020</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dumplingbao">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="diss带码">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2020/08/20/davinci-dev-newel/" itemprop="url">
+              
+                <span itemprop="name">Davinci-二次开发系列07：BI新元素尝试</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">Metabase-BI系列09：透视表PR功能实现解析</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-27T22:40:00+08:00">
-                2020-02-27
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2020-08-20T12:00:00+08:00" content="2020-08-20">
+          08-20
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
-                    <span itemprop="name">可视化工具</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Metabase/" itemprop="url" rel="index">
-                    <span itemprop="name">Metabase</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。</p>
-<a id="more"></a>
-<h2 id="效果呈现"><a href="#效果呈现" class="headerlink" title="效果呈现"></a>效果呈现</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif" alt="talbedt"></p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary01.png" alt="001">    </p>
-<p><strong><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary.png" alt="002"></strong></p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Metabase返回的数据结构，通过前端进行封装，版本之间会存在差别</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\meta\types\Dataset.js</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export type DatasetData = &#123;</span><br><span class="line">  cols: Column[],//列信息</span><br><span class="line">  columns: ColumnName[],//备注：新版本没有columns字段</span><br><span class="line">  rows: Row[],//行信息</span><br><span class="line">  rows_truncated?: number,</span><br><span class="line">  requested_timezone?: string,</span><br><span class="line">  results_timezone?: string,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary01.jpg" alt="summary01"></p>
-<h3 id="新增的图表类型"><a href="#新增的图表类型" class="headerlink" title="新增的图表类型"></a>新增的图表类型</h3><p>由于Metabase组件化的代码，所以作者新增图表类型，不影响原来的功能和代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\index.js</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import SummaryTable from &quot;./visualizations/SummaryTable&quot;;</span><br><span class="line"></span><br><span class="line">registerVisualization(SummaryTable);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary03.jpg" alt="summary03"></p>
-<h3 id="复杂表头图表设置项"><a href="#复杂表头图表设置项" class="headerlink" title="复杂表头图表设置项"></a>复杂表头图表设置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const emptyStateSerialized: SummaryTableSettings = &#123;</span><br><span class="line">  groupsSources: [],</span><br><span class="line">  columnsSource: [],</span><br><span class="line">  valuesSources: [],</span><br><span class="line">  unusedColumns: [],</span><br><span class="line">  columnNameToMetadata: &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>行显示字段：多个分组嵌套</li>
-<li>列显示字段：列字段只能有一个不支持多个进行嵌套</li>
-<li>聚合字段（度量）</li>
-<li>不可见字段：分组列表里面有，但是手动设置不显示的字段</li>
-</ul>
-<p>行和列字段支持功能：</p>
-<ul>
-<li>汇总</li>
-<li>排序</li>
-</ul>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary02.jpg" alt="summary02"></p>
-<h3 id="核心处理"><a href="#核心处理" class="headerlink" title="核心处理"></a>核心处理</h3><p>在原有的table基础上进行的修改，主要添加了这个js实现计算汇总及后续处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\lib\summary_table_datasetdata_builder.js</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">export const buildDatasetData = (//格式化数据集</span><br><span class="line">  settings: SummaryTableSettings,</span><br><span class="line">  mainResults: DatasetData,</span><br><span class="line">  resultsProvider: ResultProvider,</span><br><span class="line">): SummaryTableDatasetData =&gt; &#123;</span><br><span class="line">  const &#123; columnsHeaders, cols, dimensions &#125; = buildColumnHeaders(//生成列标题</span><br><span class="line">    settings,</span><br><span class="line">    mainResults,</span><br><span class="line">  );</span><br><span class="line">  const compressedColumnsHeaders = tryCompressColumnsHeaders(//压缩列标题处理</span><br><span class="line">    settings,</span><br><span class="line">    columnsHeaders,</span><br><span class="line">  );</span><br><span class="line">  const rowAssembler = getRowAssembler(columnsHeaders);//行数据装配</span><br><span class="line"></span><br><span class="line">  const queryPlan = getQueryPlan(//生成合计</span><br><span class="line">    settings,</span><br><span class="line">    canTotalizeBuilder(mainResults.cols),</span><br><span class="line">  );</span><br><span class="line">  const rows = combineData(rowAssembler, queryPlan, settings, resultsProvider);//合并数据</span><br><span class="line">  //生成列索引</span><br><span class="line">  const columnIndexToFirstInGroupIndexes = buildColumnIndexToFirstInGroupIndexes(</span><br><span class="line">    rows,</span><br><span class="line">    settings,</span><br><span class="line">  );</span><br><span class="line">  //生成行索引</span><br><span class="line">  const rowIndexesToColSpans = buildRowIndexesToColSpans(settings, rows, cols);</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    columnsHeaders: compressedColumnsHeaders,</span><br><span class="line">    cols,</span><br><span class="line">    columns: cols.map(p =&gt; p.name),</span><br><span class="line">    rows,</span><br><span class="line">    columnIndexToFirstInGroupIndexes,</span><br><span class="line">    isGrouped: columnIndex =&gt; columnIndex in columnIndexToFirstInGroupIndexes,</span><br><span class="line">    rowIndexesToColSpans,</span><br><span class="line">    dimensions,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="js组件（lodash）数据处理"><a href="#js组件（lodash）数据处理" class="headerlink" title="js组件（lodash）数据处理"></a>js组件（lodash）数据处理</h3><p>Lodash是一个著名的javascript原生库，不需要引入其他第三方依赖，像Jquery的一样，十分简洁，正是利用lodash实现数据的js处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;lodash.flatmap&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.get&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.invert&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.isequal&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.mapkeys&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.mapvalues&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.orderby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.partition&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.range&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">&quot;lodash.set&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.sortby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.unset&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.values&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.zip&quot;: &quot;^4.2.0&quot;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/BI/" rel="tag"># BI</a>
-          
-            <a href="/tags/Metabase/" rel="tag"># Metabase</a>
-          
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
-          
-          <div id="needsharebutton-postbottom">
-            <span class="btn">
-              <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </span>
-          </div>
-        
-        </div>
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/02/27/metabase-bi-tabpr/" rel="next" title="Metabase-BI系列08：一个关于透视表的PR">
-                <i class="fa fa-chevron-left"></i> Metabase-BI系列08：一个关于透视表的PR
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/27/metabase-bi-tabfa/" rel="prev" title="Metabase-BI系列10：新版透视表实现方案">
-                Metabase-BI系列10：新版透视表实现方案 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -554,15 +370,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC80NjA0OC8yMjU1OQ"></div>
-    </div>
-
-  
-
-
 
         </div>
         
@@ -583,17 +390,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -718,22 +516,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果呈现"><span class="nav-number">1.</span> <span class="nav-text">效果呈现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">2.1.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增的图表类型"><span class="nav-number">2.2.</span> <span class="nav-text">新增的图表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂表头图表设置项"><span class="nav-number">2.3.</span> <span class="nav-text">复杂表头图表设置项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心处理"><span class="nav-number">2.4.</span> <span class="nav-text">核心处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js组件（lodash）数据处理"><span class="nav-number">2.5.</span> <span class="nav-text">js组件（lodash）数据处理</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -881,10 +663,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -913,17 +691,6 @@
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 
