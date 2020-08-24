@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="BI,Davinci,">
 
 
 
@@ -81,17 +81,34 @@
 
 
 
-<meta name="description" content="一只程序猿，一只diss带码的程序猿一种态度，学习的态度一种总结，知识的巩固一种习惯，常态化行程一种蛋疼，无巧不成书">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://dumplingbao.github.io/about/index.html">
+<meta name="description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
+<meta name="keywords" content="BI,Davinci">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案">
+<meta property="og:url" content="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/index.html">
 <meta property="og:site_name" content="diss带码">
-<meta property="og:description" content="一只程序猿，一只diss带码的程序猿一种态度，学习的态度一种总结，知识的巩固一种习惯，常态化行程一种蛋疼，无巧不成书">
+<meta property="og:description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-22T02:19:57.005Z">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj01.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj07.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj08.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj09.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj10.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj11.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj02.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj03.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi01.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi02.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi03.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi04.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi05.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi06.jpg">
+<meta property="og:updated_time" content="2020-08-24T15:48:48.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="一只程序猿，一只diss带码的程序猿一种态度，学习的态度一种总结，知识的巩固一种习惯，常态化行程一种蛋疼，无巧不成书">
+<meta name="twitter:title" content="Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案">
+<meta name="twitter:description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
+<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg">
 
 
 
@@ -121,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://dumplingbao.github.io/about/">
+  <link rel="canonical" href="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/">
 
 
 
@@ -135,7 +152,7 @@
   </script>
 
 
-  <title>about | diss带码</title>
+  <title>Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案 | diss带码</title>
   
 
 
@@ -303,34 +320,288 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dumplingbao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="diss带码">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>一只程序猿，一只diss带码的程序猿<br>一种态度，学习的态度<br>一种总结，知识的巩固<br>一种习惯，常态化行程<br>一种蛋疼，无巧不成书</p>
-
+          <h1 class="post-title" itemprop="name headline">Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T12:00:00+08:00">
+                2020-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Davinci/" itemprop="url" rel="index">
+                    <span itemprop="name">Davinci</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-JDBC问题不仅限于Davinci，也不限于BI，一些实际应用中也会碰到）</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方案</th>
+<th>备注</th>
+<th>综述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>利用presto连接</td>
+<td>facebook开源SQL查询引擎</td>
+<td>优点：开源、免费、兼容性良好<br>缺点：需要单独部署服务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1、unityjdbc破解版<br>2、unityjdbc试用版</td>
+<td>商业化产品</td>
+<td>优点：集成简单、不需要单独部署<br>缺点：收费、_id字段值不显示<br>试用版本地mongo支持需要解决<br>破解版只能简单的查询、子查询等有问题，存在问题比较多</td>
+</tr>
+<tr>
+<td>3</td>
+<td>mongo-bi连接器</td>
+<td>mongo官方</td>
+<td>优点：官方出品、免费、兼容性极好<br>缺点：需要单独部署服务<br>推荐用此方式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>开源手写驱动包</td>
+<td>开源</td>
+<td>优点：灵活性可控<br>缺点：成本高、耗精力</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h1 id="利用presto连接"><a href="#利用presto连接" class="headerlink" title="利用presto连接"></a>利用presto连接</h1><p>​    Presto是一个facebook开源的分布式SQL查询引擎，而且支持跨库查询，当然也支持mongoDB，Davinci通过presto做类似的桥接，然后也能实现mongoDB的jdbc查询，如果公司使用presto，采用这种方案也是不错的选择，兼容性可以。</p>
+<p>​    这里我们重点介绍后面两种，没有实际进行尝试，大家可以尝试一下，简单介绍一下步骤：</p>
+<p>​    第一：首先需要安装presto-server服务，看好版本，支持MongoDB的才可以</p>
+<p>​    第二：配置mongodb.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connector.name=mongodb</span><br><span class="line">mongodb.seeds=ip:port</span><br><span class="line">mongodb.schema-collection=admin</span><br></pre></td></tr></table></figure>
+
+<p>​    第三：Davinci配置数据源    </p>
+<p>​    <code>jdbc:presto://ip:port/mongodb/test</code></p>
+<p>​    第四：view实现JDBC查询</p>
+<p>​    <code>select * from mongodb.数据库名.集合</code></p>
+<h1 id="unityjdbc"><a href="#unityjdbc" class="headerlink" title="unityjdbc"></a>unityjdbc</h1><p>​    由于<a href="http://www.unityjdbc.com/" target="_blank" rel="noopener">unityjdbc</a>是收费的，这里我们用网上的破解版和试用版都试一下。</p>
+<h2 id="官方试用版"><a href="#官方试用版" class="headerlink" title="官方试用版"></a>官方试用版</h2><p>​    第一：试用版，去官网<a href="http://www.unityjdbc.com/" target="_blank" rel="noopener">unityjdbc</a>下载<code>JDBC Driver for MongoDB</code>，这里我们用的是``这个版本下载地址：<a href="http://www.unityjdbc.com/download.php?type=mongodb" target="_blank" rel="noopener">http://www.unityjdbc.com/download.php?type=mongodb</a></p>
+<p>​    第二：下载下来的<code>UnityJDBC_Trial_Install.jar</code> 需要<code>java -jar</code>安装，安装完获取<code>unityJdbc.jar</code>（或者<code>mongodb_unityjdbc_full.jar这个jar</code>包也可以）</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg" alt="mongo_uj00"></p>
+<p>​    第三：<code>mongodb-driver</code>的依赖默认是注释掉的，将注释去掉，并将<code>unityJdbc.jar</code>引入到工程里面或者复制进去，在porm里面引入本地依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mongodb --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.mongodb&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mongodb-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.6.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;unityjdbc&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;unityjdbc&lt;/artifactId&gt;</span><br><span class="line">	&lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">	&lt;systemPath&gt;$&#123;project.basedir&#125;/lib/unityjdbc.jar&lt;/systemPath&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    第四：Davinci配置数据源（强调一下，我用官方的包，连接本地mongo报hostname的错误，就先用官方的测试库）</p>
+<p><code>jdbc:mongo://localhost:27017/数据库</code> </p>
+<p>官方测试地址 <code>jdbc:mongo://ds029847.mongolab.com:29847/tpch</code></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj01.jpg" alt="mongo-uj01"></p>
+<h3 id="创建view-id不能正常显示）"><a href="#创建view-id不能正常显示）" class="headerlink" title="创建view(_id不能正常显示）"></a>创建view(_id不能正常显示）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj07.jpg" alt="mongo_uj07"></p>
+<h3 id="创建widget"><a href="#创建widget" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj08.jpg" alt="mongo_uj08"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj09.jpg" alt="mongo_uj09"></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj10.jpg" alt="mongo_uj10"></p>
+<h3 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj11.jpg" alt="mongo_uj11"></p>
+<h2 id="网传破解版"><a href="#网传破解版" class="headerlink" title="网传破解版"></a>网传破解版</h2><p>试了一下分享出来的破解版，除去上面的安装步骤，直接引入即可</p>
+<p>创建数据源，这个包比试用版好的是本地mongo能直接使用</p>
+<p><code>jdbc:mongo://localhost:27017/数据库</code></p>
+<h3 id="创建view（-id不显示、集合列表不显示）"><a href="#创建view（-id不显示、集合列表不显示）" class="headerlink" title="创建view（_id不显示、集合列表不显示）"></a>创建view（_id不显示、集合列表不显示）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj02.jpg" alt="mongo_uj02"></p>
+<h3 id="创建widget-1"><a href="#创建widget-1" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj03.jpg" alt="mongo_uj03"></p>
+<p>从错误上来就不能很好的兼容，子查询关联查询更是不能正常使用</p>
+<h1 id="mongo-bi连接器"><a href="#mongo-bi连接器" class="headerlink" title="mongo-bi连接器"></a>mongo-bi连接器</h1><p>​    mongo官方没有提供mongo的JDBC驱动，但是提供了mongo-bi-connector，允许使用所选的BI工具通过标准SQL查询对MongoDB数据进行可视化。</p>
+<p>​    搜了一下资料，BI Connector 可以使用 SQL 或 ODBC 数据源方式直接访问 MongoDB，MongoDB 早期版本直接使用 Postgresql FDW 来实现 SQL 到 MQL 的转换，后来实现更加轻量级的 mongosqld 来支持 BI 工具的连接。这里我们就尝试一下mongosqld，来验证一下。</p>
+<h3 id="下载并安装mongo-bi-connector"><a href="#下载并安装mongo-bi-connector" class="headerlink" title="下载并安装mongo-bi-connector"></a>下载并安装mongo-bi-connector</h3><p>​    官方下载：<a href="https://www.mongodb.com/try/download/bi-connector，支持windows、linux版本" target="_blank" rel="noopener">https://www.mongodb.com/try/download/bi-connector，支持windows、linux版本</a></p>
+<p>​    默认安装即可</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>​    默认配置即可，如果有mongo做了限制，或者调整端口，修改<code>mongosqld-config.yml</code>，详细配置看官网</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">net:</span><br><span class="line">  bindIp: &quot;127.0.0.1&quot; # To bind to multiple IP addresses</span><br><span class="line">  port: 3307</span><br><span class="line">  mongodb:</span><br><span class="line">  net:</span><br><span class="line">    uri: &quot;mongodb://127.0.0.1:27017&quot;</span><br><span class="line">    ssl:</span><br><span class="line">      enabled: false</span><br><span class="line">    auth:</span><br><span class="line">      username: xxx</span><br><span class="line">      password: xxx</span><br><span class="line">      source: xxx</span><br><span class="line">      mechanism: SCRAM-SHA-1</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动mongosqld"><a href="#启动mongosqld" class="headerlink" title="启动mongosqld"></a>启动mongosqld</h3><p>​    我使用的windows版本双击<code>mongosqld.exe</code>运行即可</p>
+<h3 id="maven引入依赖包"><a href="#maven引入依赖包" class="headerlink" title="maven引入依赖包"></a>maven引入依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 这个包必须有 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;5.1.44&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 非必须，这个是JDBC认证插件，如果你做测试或者你的mongo本身在裸奔，就没必要了 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;5.1.42&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建数据源"><a href="#创建数据源" class="headerlink" title="创建数据源"></a>创建数据源</h3><p>备注：这里使用mysql即可</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi01.jpg" alt="mongo-bi01"></p>
+<h3 id="创建view（-id和集合列表均正常）"><a href="#创建view（-id和集合列表均正常）" class="headerlink" title="创建view（_id和集合列表均正常）"></a>创建view（_id和集合列表均正常）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi02.jpg" alt="mongo-bi02"></p>
+<h3 id="创建widget-2"><a href="#创建widget-2" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi03.jpg" alt="mongo-bi03"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi04.jpg" alt="mongo-bi04"></p>
+<h3 id="子查询-1"><a href="#子查询-1" class="headerlink" title="子查询"></a>子查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi05.jpg" alt="mongo-bi05"></p>
+<h3 id="关联查询-1"><a href="#关联查询-1" class="headerlink" title="关联查询"></a>关联查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi06.jpg" alt="mongo-bi06"></p>
+<h1 id="开源手写驱动包"><a href="#开源手写驱动包" class="headerlink" title="开源手写驱动包"></a>开源手写驱动包</h1><p>​    这个绝对是一个解决方案，其实工作中就会封装mongo的一些比如关联查询类似的组件，写这个驱动包也未必没有优势，我觉着如果上面的方案兼容sql的场景如果存在问题，那么自己写的驱动包改造就容易的多，第三方的包就没那么好改了。</p>
+<p>​    这里推荐一个mongo的JDBC开源驱动包，如果有自己想写的想法仅供参考。</p>
+<p>​    连接：<a href="https://gitee.com/f4haofeng/mongodb-jdbc/tree/master/src/main/java/com/mongodb" target="_blank" rel="noopener">https://gitee.com/f4haofeng/mongodb-jdbc/tree/master/src/main/java/com/mongodb</a></p>
+<h1 id="综上所述"><a href="#综上所述" class="headerlink" title="综上所述"></a>综上所述</h1><p>​    其实，表格里面已经比较了，根据个人需求选择即可，还是推荐使用mongo官方的BI连接器的方式，虽然我们没有对性能进行比较，但从使用性、兼容性、子查询、关联查询等方面比较，BI连接器的方式完全能够胜任。</p>
+<h1 id="交流学习"><a href="#交流学习" class="headerlink" title="交流学习"></a>交流学习</h1><p>学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BI/" rel="tag"># BI</a>
+          
+            <a href="/tags/Davinci/" rel="tag"># Davinci</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/20/davinci-dev-newel/" rel="next" title="Davinci-二次开发系列07：BI新元素尝试">
+                <i class="fa fa-chevron-left"></i> Davinci-二次开发系列07：BI新元素尝试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -368,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -494,6 +774,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用presto连接"><span class="nav-number">1.</span> <span class="nav-text">利用presto连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unityjdbc"><span class="nav-number">2.</span> <span class="nav-text">unityjdbc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方试用版"><span class="nav-number">2.1.</span> <span class="nav-text">官方试用版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view-id不能正常显示）"><span class="nav-number">2.1.1.</span> <span class="nav-text">创建view(_id不能正常显示）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建widget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">2.1.3.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联查询"><span class="nav-number">2.1.4.</span> <span class="nav-text">关联查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网传破解版"><span class="nav-number">2.2.</span> <span class="nav-text">网传破解版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view（-id不显示、集合列表不显示）"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建view（_id不显示、集合列表不显示）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">创建widget</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongo-bi连接器"><span class="nav-number">3.</span> <span class="nav-text">mongo-bi连接器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并安装mongo-bi-connector"><span class="nav-number">3.0.1.</span> <span class="nav-text">下载并安装mongo-bi-connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">3.0.2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mongosqld"><span class="nav-number">3.0.3.</span> <span class="nav-text">启动mongosqld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven引入依赖包"><span class="nav-number">3.0.4.</span> <span class="nav-text">maven引入依赖包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据源"><span class="nav-number">3.0.5.</span> <span class="nav-text">创建数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view（-id和集合列表均正常）"><span class="nav-number">3.0.6.</span> <span class="nav-text">创建view（_id和集合列表均正常）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget-2"><span class="nav-number">3.0.7.</span> <span class="nav-text">创建widget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询-1"><span class="nav-number">3.0.8.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联查询-1"><span class="nav-number">3.0.9.</span> <span class="nav-text">关联查询</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#开源手写驱动包"><span class="nav-number">4.</span> <span class="nav-text">开源手写驱动包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综上所述"><span class="nav-number">5.</span> <span class="nav-text">综上所述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交流学习"><span class="nav-number">6.</span> <span class="nav-text">交流学习</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
