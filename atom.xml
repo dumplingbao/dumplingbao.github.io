@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dumplingbao.github.io/"/>
-  <updated>2020-09-03T15:31:01.731Z</updated>
+  <updated>2020-09-03T15:39:53.598Z</updated>
   <id>https://dumplingbao.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://dumplingbao.github.io/2020/09/03/github-custom-home/"/>
     <id>https://dumplingbao.github.io/2020/09/03/github-custom-home/</id>
     <published>2020-09-03T15:28:35.000Z</published>
-    <updated>2020-09-03T15:31:01.731Z</updated>
+    <updated>2020-09-03T15:39:53.598Z</updated>
     
-    <content type="html"><![CDATA[<p><i><b>github自定义主页秀</b></i></p><hr><p>​    <code>github</code>支持自定义主页已经有一段时间了，今天尝试了一下。详细教程可以从网上搜索一下，比较简单，也可以直接到我的<code>github</code>（下面有链接）复制一下，记得点赞奥。</p><a id="more"></a><h3 id="sunglasses-秀一秀"><a href="#sunglasses-秀一秀" class="headerlink" title=":sunglasses: 秀一秀"></a>:sunglasses: 秀一秀</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/github/github01.jpg" alt="github01"></p><h3 id="🔨-创建"><a href="#🔨-创建" class="headerlink" title="🔨 创建"></a>🔨 创建</h3><p>​    很简单，创建与github账号同名公开的仓库，并初始化<code>README.md</code>，完成</p><h3 id="🔧-美景"><a href="#🔧-美景" class="headerlink" title="🔧 美景"></a>🔧 美景</h3><p>​    每日刷新或者随机（自己去选对应的类型的api）</p><p>​    <a href="https://api.lyiqk.cn/" target="_blank" rel="noopener">https://api.lyiqk.cn/</a></p><p>​    备注：<code>github</code>由于缓存了图片，不会每次都刷新</p><p>​    建议用必应每日一图：<a href="https://api.lyiqk.cn/bing" target="_blank" rel="noopener">https://api.lyiqk.cn/bing</a></p><h3 id="🔑-我的自定义主页"><a href="#🔑-我的自定义主页" class="headerlink" title="🔑 我的自定义主页"></a>🔑 我的自定义主页</h3><p>​    连接地址：<a href="https://github.com/dumplingbao/dumplingbao" target="_blank" rel="noopener">https://github.com/dumplingbao/dumplingbao</a></p><p>​    备注：由于是<code>markdown</code>格式，预览效果与实际展示有所不同</p>]]></content>
+    <content type="html"><![CDATA[<p><i><b>github自定义主页秀</b></i></p><hr><p>​    <code>github</code>支持自定义主页已经有一段时间了，今天尝试了一下。详细教程可以从网上搜索一下，比较简单，也可以直接到我的<code>github</code>（下面有链接）复制一下，记得点赞奥。</p><a id="more"></a><h3 id="😎-秀一秀"><a href="#😎-秀一秀" class="headerlink" title="😎 秀一秀"></a>😎 秀一秀</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/github/github01.jpg" alt="github01"></p><h3 id="🔨-创建"><a href="#🔨-创建" class="headerlink" title="🔨 创建"></a>🔨 创建</h3><p>​    很简单，创建与github账号同名公开的仓库，并初始化<code>README.md</code>，完成</p><h3 id="🔧-美景"><a href="#🔧-美景" class="headerlink" title="🔧 美景"></a>🔧 美景</h3><p>​    每日刷新或者随机（自己去选对应的类型的api）</p><p>​    <a href="https://api.lyiqk.cn/" target="_blank" rel="noopener">https://api.lyiqk.cn/</a></p><p>​    备注：<code>github</code>由于缓存了图片，不会每次都刷新</p><p>​    建议用必应每日一图：<a href="https://api.lyiqk.cn/bing" target="_blank" rel="noopener">https://api.lyiqk.cn/bing</a></p><h3 id="🔑-我的自定义主页"><a href="#🔑-我的自定义主页" class="headerlink" title="🔑 我的自定义主页"></a>🔑 我的自定义主页</h3><p>​    连接地址：<a href="https://github.com/dumplingbao/dumplingbao" target="_blank" rel="noopener">https://github.com/dumplingbao/dumplingbao</a></p><p>​    备注：由于是<code>markdown</code>格式，预览效果与实际展示有所不同</p>]]></content>
     
     <summary type="html">
     
