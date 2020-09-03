@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dumplingbao.github.io/"/>
-  <updated>2020-08-24T15:48:48.572Z</updated>
+  <updated>2020-09-03T15:31:01.731Z</updated>
   <id>https://dumplingbao.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github自定义主页秀</title>
+    <link href="https://dumplingbao.github.io/2020/09/03/github-custom-home/"/>
+    <id>https://dumplingbao.github.io/2020/09/03/github-custom-home/</id>
+    <published>2020-09-03T15:28:35.000Z</published>
+    <updated>2020-09-03T15:31:01.731Z</updated>
+    
+    <content type="html"><![CDATA[<p><i><b>github自定义主页秀</b></i></p><hr><p>​    <code>github</code>支持自定义主页已经有一段时间了，今天尝试了一下。详细教程可以从网上搜索一下，比较简单，也可以直接到我的<code>github</code>（下面有链接）复制一下，记得点赞奥。</p><a id="more"></a><h3 id="sunglasses-秀一秀"><a href="#sunglasses-秀一秀" class="headerlink" title=":sunglasses: 秀一秀"></a>:sunglasses: 秀一秀</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/github/github01.jpg" alt="github01"></p><h3 id="🔨-创建"><a href="#🔨-创建" class="headerlink" title="🔨 创建"></a>🔨 创建</h3><p>​    很简单，创建与github账号同名公开的仓库，并初始化<code>README.md</code>，完成</p><h3 id="🔧-美景"><a href="#🔧-美景" class="headerlink" title="🔧 美景"></a>🔧 美景</h3><p>​    每日刷新或者随机（自己去选对应的类型的api）</p><p>​    <a href="https://api.lyiqk.cn/" target="_blank" rel="noopener">https://api.lyiqk.cn/</a></p><p>​    备注：<code>github</code>由于缓存了图片，不会每次都刷新</p><p>​    建议用必应每日一图：<a href="https://api.lyiqk.cn/bing" target="_blank" rel="noopener">https://api.lyiqk.cn/bing</a></p><h3 id="🔑-我的自定义主页"><a href="#🔑-我的自定义主页" class="headerlink" title="🔑 我的自定义主页"></a>🔑 我的自定义主页</h3><p>​    连接地址：<a href="https://github.com/dumplingbao/dumplingbao" target="_blank" rel="noopener">https://github.com/dumplingbao/dumplingbao</a></p><p>​    备注：由于是<code>markdown</code>格式，预览效果与实际展示有所不同</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;i&gt;&lt;b&gt;github自定义主页秀&lt;/b&gt;&lt;/i&gt;&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;p&gt;​    &lt;code&gt;github&lt;/code&gt;支持自定义主页已经有一段时间了，今天尝试了一下。详细教程可以从网上搜索一下，比较简单，也可以直接到我的&lt;code&gt;github&lt;/code&gt;（下面有链接）复制一下，记得点赞奥。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="github" scheme="https://dumplingbao.github.io/categories/github/"/>
+    
+    
+      <category term="github" scheme="https://dumplingbao.github.io/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案</title>
@@ -321,17 +346,18 @@
   </entry>
   
   <entry>
-    <title>Metabase-BI系列08：一个关于透视表的PR</title>
-    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/"/>
-    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/</id>
+    <title>Metabase-BI系列10：新版透视表实现方案</title>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/</id>
     <published>2020-02-27T14:40:00.000Z</published>
-    <updated>2020-02-27T15:31:33.240Z</updated>
+    <updated>2020-02-27T14:45:29.117Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。</p><a id="more"></a><h2 id="透视表和交叉表区别"><a href="#透视表和交叉表区别" class="headerlink" title="透视表和交叉表区别"></a>透视表和交叉表区别</h2><p>​    关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点</p><ol><li>透视表是一种常见的数据汇总工具，进行数据聚合</li><li>交叉表是专指分组频率的</li><li>交叉表是一种特殊的透视表</li></ol><h2 id="Metabase透视表"><a href="#Metabase透视表" class="headerlink" title="Metabase透视表"></a>Metabase透视表</h2><p>​    Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。</p><p>​    效果图如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary.png" alt="table_summary"></p><h2 id="介绍这个PR"><a href="#介绍这个PR" class="headerlink" title="介绍这个PR"></a>介绍这个PR</h2><p>PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><p>2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。</p><p>这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。</p><ul><li>有184次提交记录</li><li>Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论</li><li>此复杂表头的表格，支持sql查询方式。</li><li>对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化</li><li>r-hot用js进行了实现，但是存在js精度不够导致的数据偏差</li><li>r-hot对性能进行了优化</li><li>有人热衷，有人关注</li><li>open了很长时间</li><li>最终还是关闭了</li></ul><p>这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。</p><p>​    这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。</p><p>​    sql查询效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary03.png" alt="table_summary03"></p><h2 id="Metabase透视表展示"><a href="#Metabase透视表展示" class="headerlink" title="Metabase透视表展示"></a>Metabase透视表展示</h2><p>Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。</p><ul><li>必须是两个分组列，才默认开启，可以关闭</li><li>超过两个分组列，不支持透视表</li></ul><p>新版透视表如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb.jpg" alt="new01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb01.jpg" alt="new01"></p><p>旧版效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb.jpg" alt="old"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb01.jpg" alt="old02"></p>]]></content>
+    <content type="html"><![CDATA[<p>​    之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。</p><p>​    详情可以到github上看一下,PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><a id="more"></a><p>​    效果如下：</p><p>​    <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif" alt="dt"></p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>​    准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。</p><p>​    由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。</p><p>​    作者就是新加了一种可视化图表的类型：</p><p>​    <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_ksh.jpg" alt="tableksh"></p><p>​    所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。</p><p>​    注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容</p><p>​    但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary04.jpg" alt="summary04"></p><h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p>​    Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。</p><p>找到<code>代码目录/src/metabase/query_processor/middleware/dev.clj</code>中的代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;; 放开columns权限，将columns换个名字就可以了，这里我加了AA</span><br><span class="line">(complement :columnsAA)</span><br><span class="line">&quot;QP results should no longer include :columns.&quot;))</span><br></pre></td></tr></table></figure><h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>​    如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  columns = []</span><br><span class="line">  if(cols.length&gt;0)&#123;</span><br><span class="line">​    cols.map(item=&gt;&#123;</span><br><span class="line">​      columns.push(item.name)</span><br><span class="line">​    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><pre><code>备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。&lt;/p&gt;
+      &lt;p&gt;​    之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。&lt;/p&gt;
+&lt;p&gt;​    详情可以到github上看一下,PR：&lt;a href=&quot;https://github.com/metabase/metabase/pull/8427&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Metabase pull request #8427&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -373,18 +399,17 @@
   </entry>
   
   <entry>
-    <title>Metabase-BI系列10：新版透视表实现方案</title>
-    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/"/>
-    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabfa/</id>
+    <title>Metabase-BI系列08：一个关于透视表的PR</title>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/</id>
     <published>2020-02-27T14:40:00.000Z</published>
-    <updated>2020-02-27T14:45:29.117Z</updated>
+    <updated>2020-02-27T15:31:33.240Z</updated>
     
-    <content type="html"><![CDATA[<p>​    之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。</p><p>​    详情可以到github上看一下,PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><a id="more"></a><p>​    效果如下：</p><p>​    <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif" alt="dt"></p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>​    准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。</p><p>​    由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。</p><p>​    作者就是新加了一种可视化图表的类型：</p><p>​    <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_ksh.jpg" alt="tableksh"></p><p>​    所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。</p><p>​    注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容</p><p>​    但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary04.jpg" alt="summary04"></p><h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p>​    Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。</p><p>找到<code>代码目录/src/metabase/query_processor/middleware/dev.clj</code>中的代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;; 放开columns权限，将columns换个名字就可以了，这里我加了AA</span><br><span class="line">(complement :columnsAA)</span><br><span class="line">&quot;QP results should no longer include :columns.&quot;))</span><br></pre></td></tr></table></figure><h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>​    如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  columns = []</span><br><span class="line">  if(cols.length&gt;0)&#123;</span><br><span class="line">​    cols.map(item=&gt;&#123;</span><br><span class="line">​      columns.push(item.name)</span><br><span class="line">​    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><pre><code>备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。</p><a id="more"></a><h2 id="透视表和交叉表区别"><a href="#透视表和交叉表区别" class="headerlink" title="透视表和交叉表区别"></a>透视表和交叉表区别</h2><p>​    关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点</p><ol><li>透视表是一种常见的数据汇总工具，进行数据聚合</li><li>交叉表是专指分组频率的</li><li>交叉表是一种特殊的透视表</li></ol><h2 id="Metabase透视表"><a href="#Metabase透视表" class="headerlink" title="Metabase透视表"></a>Metabase透视表</h2><p>​    Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。</p><p>​    效果图如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary.png" alt="table_summary"></p><h2 id="介绍这个PR"><a href="#介绍这个PR" class="headerlink" title="介绍这个PR"></a>介绍这个PR</h2><p>PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><p>2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。</p><p>这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。</p><ul><li>有184次提交记录</li><li>Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论</li><li>此复杂表头的表格，支持sql查询方式。</li><li>对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化</li><li>r-hot用js进行了实现，但是存在js精度不够导致的数据偏差</li><li>r-hot对性能进行了优化</li><li>有人热衷，有人关注</li><li>open了很长时间</li><li>最终还是关闭了</li></ul><p>这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。</p><p>​    这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。</p><p>​    sql查询效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary03.png" alt="table_summary03"></p><h2 id="Metabase透视表展示"><a href="#Metabase透视表展示" class="headerlink" title="Metabase透视表展示"></a>Metabase透视表展示</h2><p>Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。</p><ul><li>必须是两个分组列，才默认开启，可以关闭</li><li>超过两个分组列，不支持透视表</li></ul><p>新版透视表如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb.jpg" alt="new01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb01.jpg" alt="new01"></p><p>旧版效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb.jpg" alt="old"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb01.jpg" alt="old02"></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;​    之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。&lt;/p&gt;
-&lt;p&gt;​    详情可以到github上看一下,PR：&lt;a href=&quot;https://github.com/metabase/metabase/pull/8427&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Metabase pull request #8427&lt;/a&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。&lt;/p&gt;
     
     </summary>
     
@@ -555,33 +580,6 @@
     
       &lt;p&gt;由于github源代码开发者用的linux或者mac来作为开发环境，所以存在windows环境下的不友好，有的甚至就是坑。甚至好多Metabase windows开发者也是用linux虚拟机来跑环境的。&lt;/p&gt;
 &lt;p&gt;当然如果通过虚拟机跑linux，或者用windows自带的Ubuntu进行开发，有些问题就不存在了，还有一种好的方式用git的bash环境去搭建，可参见：&lt;code&gt;Metabase-BI系列03：win系统用git-bash启动Metabase&lt;/code&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
-    
-    
-      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
-    
-      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Metabase-BI系列01：二次开发环境(windows)搭建</title>
-    <link href="https://dumplingbao.github.io/2019/11/04/metabase-bi-dev/"/>
-    <id>https://dumplingbao.github.io/2019/11/04/metabase-bi-dev/</id>
-    <published>2019-11-04T15:54:03.000Z</published>
-    <updated>2019-11-06T16:08:47.199Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://link.jianshu.com/?t=http://www.metabase.com/" target="_blank" rel="noopener">Metabase</a> 官网介绍：是一种简单、开源的方式，让公司中的每个人都可以通过它来提问和学习数据。</p><p>如果了解更多BI工具，可看我的另一篇文章：BI、数据可视化工具浅析整理。</p><a id="more"></a><p>Metabase特点：</p><ul><li>开源免费</li><li>适合看运行数据： 提问的方式，业务人员自己就可以做数据分析</li><li>报表自动化，数据可视化</li><li>权限管理控制</li><li>数据共享，操作简单</li><li>可以与ETL结合</li><li>支持与业务系统做集成</li></ul><h2 id="二次开发"><a href="#二次开发" class="headerlink" title="二次开发"></a>二次开发</h2><p>前端框架：React + Redux等相关框架，基于yarn的开发环境，webpack构建</p><p>后端开发：metabase后端语言采用clojure，Ring和toucan等开发框架</p><p>补充：</p><p>前端框架：React + Redux + D3（图表工具）</p><p>后端框架：Clojure + RING（中间件） + Compojure（路由框架） + Toucan（ORM框架）</p><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>github地址： <a href="https://github.com/metabase/metabase" target="_blank" rel="noopener">https://github.com/metabase/metabase</a> </p><p>安装git工具，clone源代码</p><h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul><li>idea 需安装clojure相关插件， Cursive和Leinigen </li><li>vscode 安装 calva和clojure插件</li></ul><h2 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h2><h3 id="Leiningen"><a href="#Leiningen" class="headerlink" title="Leiningen"></a>Leiningen</h3><p>Leiningen用于自动化Clojure项目，例如创建项目、抓取依赖包、编译、运行、测试、此外，Leiningen可以为项目生成maven风格的“pom”文件以进行互操作。</p><p>安装过程：</p><p>第一步：</p><p>官网下载<a href="https://github.com/technomancy/leiningen/releases" target="_blank" rel="noopener">zip包</a>和<a href="https://leiningen.org/#install" target="_blank" rel="noopener">bat文件</a></p><p>第二步：</p><p>自定义Leiningen安装目录，并在安装目录下面，创建bin文件夹和self-installs文件夹</p><p>将bat文件，lein.bat放到bin目录下面</p><p>将zip包修改后缀为jar，然后放到self-installs文件夹中，如：leiningen-2.9.1-standalone.jar</p><p>备注：也可以直接找安装版安装即可</p><p>第三步：</p><p>配置环境变量，创建LEIN_HOME变量，配置%LEIN_HOME%\bin目录到path中</p><p>运行命令lein repl :start，该命令会先启动REPL服务端，接着启动REPL客户端连接所启动的REPL服务端</p><p>到此，Leiningen安装到了windows上</p><h3 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h3><p>下载地址：<a href="https://yarnpkg.com/en/docs/install" target="_blank" rel="noopener">https://yarnpkg.com/en/docs/install</a></p><h3 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h3><p>安装最新版本</p><h2 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h2><p>windows二次开发环境部署，采用yarn，不建议用npm，容易出问题，推荐编辑工具vscode</p><p>初始化</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure><p>前端编译</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run build</span><br></pre></td></tr></table></figure><p>后端运行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lein run</span><br></pre></td></tr></table></figure><p>访问默认端口3000</p><p><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></p><p>有个配置引导，数据可以直接选稍后配置，其余下一步即可</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/Metabase-home.jpg" alt="Mb-home"></p><h2 id="Metabase自身默认数据库修改"><a href="#Metabase自身默认数据库修改" class="headerlink" title="Metabase自身默认数据库修改"></a>Metabase自身默认数据库修改</h2><p>Metabase默认使用的H2数据库，如果想改用本地mysql需要，修改环境变量（或者启动之前设置一下），如果直接运行不生效，建议重启一下电脑</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set MB_DB_TYPE=mysql</span><br><span class="line">set MB_DB_DBNAME=metabase</span><br><span class="line">set MB_DB_PORT=3306</span><br><span class="line">set MB_DB_USER=root</span><br><span class="line">set MB_DB_PASS=123456</span><br><span class="line">set MB_DB_HOST=localhost</span><br></pre></td></tr></table></figure><p>注意一：myql数据库创建用utf-8，utf8mb4有可能出现问题</p><p>注意二：如果碰到 1709 – 索引列大小太大.最大列大小为767字节问题</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//查看</span><br><span class="line">SHOW VARIABLES LIKE &apos;storage_engine&apos;;//默认应该是MyISAM，修改为InnoDB，这个修改最好改配置文件</span><br><span class="line">SHOW variables like &apos;innodb_large_prefix&apos;</span><br><span class="line">SHOW variables like &apos;innodb_file_format&apos;</span><br><span class="line">//修改</span><br><span class="line">SET GLOBAL INNODB_LARGE_PREFIX = ON;</span><br><span class="line">SET GLOBAL INNODB_LARGE_PREFIX = ON;</span><br><span class="line">SET GLOBAL innodb_file_format = BARRACUDA;</span><br></pre></td></tr></table></figure><h2 id="Metabase默认DEMO数据库-H2工具"><a href="#Metabase默认DEMO数据库-H2工具" class="headerlink" title="Metabase默认DEMO数据库+H2工具"></a>Metabase默认DEMO数据库+H2工具</h2><p>Metabase默认是数据库是H2数据库，连接工具直接去<a href="http://www.h2database.com/html/main.html" target="_blank" rel="noopener">H2</a>官网下载即可</p><p>连接配置，你可以直接到Metabase本身数据里面去找，表：metabase_database</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;db&quot;:&quot;/E:/XXXX/metabase-master/resources/sample-dataset.db;USER=GUEST;PASSWORD=guest&quot;&#125;</span><br></pre></td></tr></table></figure><p>可以直接看到数据库，用户名和密码，注意配置连接直接访问数据库文件就可以，不能多个应用同时访问</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/H2/H2-login.jpg" alt="H2-login"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/H2/H2-home.jpg" alt="H2-home"></p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>lein repl：打开REPL环境。</p><p>前端编译：yarn build</p><p>前端热部署：yarn build-hot</p><p>后端运行：lein run</p><p>后端热部署：lein ring server</p><p>lein uberjar：打包项目，包含依赖项。得到jar后就跟平常的jar没有区别了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://link.jianshu.com/?t=http://www.metabase.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Metabase&lt;/a&gt; 官网介绍：是一种简单、开源的方式，让公司中的每个人都可以通过它来提问和学习数据。&lt;/p&gt;
-&lt;p&gt;如果了解更多BI工具，可看我的另一篇文章：BI、数据可视化工具浅析整理。&lt;/p&gt;
     
     </summary>
     
