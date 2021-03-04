@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dumplingbao.github.io/"/>
-  <updated>2021-03-01T16:45:11.576Z</updated>
+  <updated>2021-03-04T16:36:44.698Z</updated>
   <id>https://dumplingbao.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>验证码：五福临门</title>
+    <link href="https://dumplingbao.github.io/2021/03/05/bless-01/"/>
+    <id>https://dumplingbao.github.io/2021/03/05/bless-01/</id>
+    <published>2021-03-04T16:00:00.000Z</published>
+    <updated>2021-03-04T16:36:44.698Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一看"><a href="#一看" class="headerlink" title="一看"></a>一看</h2><p>​        验证码这个既熟悉又常用的功能，一提起来你就会想起各种各样的验证码，一个偶然的机会，就冒出来做个验证码，慢慢的就演变成现在的五福临门验证码。先看一下效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/bless.gif" alt="bless"></p><a id="more"></a><h2 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h2><ol><li>春节前看到一篇关于验证码的文章，动态刷新、滑动验证，这里的动，总感觉没有“动”</li><li>加上之前做的游鱼，就想让它动起来，所以最初就是在滑块验证码的基础上，让滑块在外面游动起来</li><li>后来支付宝集五福，让我突然感觉可以考虑，五个福字随机掉下来一个在外面游动，然后滑动原位置，正好符合春节的气息</li><li>再后来参与了支付宝打印福字的活动，然后就手写了五福，这样不仅是随机五福，还可以随机不同主题的五福了</li><li>春节前开始的，前期做了技术验证，春节陆陆续续进行了实现</li><li>后来找资料做轨迹校验，断断续续，今天暂时把前端部分发出来，后端验证决定后续再补一篇</li></ol><p>​        下面是个设计效果图：</p><p>​    <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/wflm.png" alt="wflm"></p><h2 id="认知"><a href="#认知" class="headerlink" title="认知"></a>认知</h2><p>​        验证码虽然已经司空见惯了，但是还是想讲一下验证的一些接触，从中也能体会乐趣。</p><p>​        起初进入技术行业，还是一个验证码不流行的阶段，计算机识别技术更是起步，所以扭曲、污染的文字无法辨识，所以最初见到的就是4个字母数字，一条飞线。</p><p>​        <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/01.png" alt="01"></p><p>​        慢慢的越来越流行，越来越多样，越来越看不懂</p><p>​        <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/02.png" alt="02"></p><p>​        越来越烧脑，亦或是恶搞</p><p>​        <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/03.png" alt="03"></p><p>​        新时代的验证码越来越多样，出现了两极分化，一种让你赏心悦目，一种让你抢不到票</p><p>​            <img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/yzm.jpg" alt="yzm"></p><p>​        验证码在技术里面或许是小场面，但却蕴藏着大智慧，而且是紧跟时代的产物，根据人们需求的变化而变化，当然破解和识别技术的提升也在嘶声呐喊和“催更”</p><p>​    </p><h2 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h2><p>​        验证码可以防止：恶意破解密码、<a href="https://baike.baidu.com/item/刷票/6540942" target="_blank" rel="noopener">刷票</a>、论坛灌水等</p><ul><li><p>软件包：成熟的插件和软件包，直接引入使用就可以了</p></li><li><p>第三方：网易易盾等，购买按官方文档使用</p><p>网易易盾：<a href="https://dun.163.com/" target="_blank" rel="noopener">https://dun.163.com/</a></p></li><li><p>无痕验证：阿里云-人机验证</p></li></ul><p>​        <a href="https://help.aliyun.com/product/28308.html" target="_blank" rel="noopener">https://help.aliyun.com/product/28308.html</a></p><p>​        用过阿里云的都知道，阿里云登录输入账号密码就可以了，点击登录也没有多余的操作，以为就没有验证，其实阿里做的是无痕验证，即使没有可视化的验证码出现，其实已经对你登录做了人机的校验了，所以不要以为没有可见的验证码就误以为没有验证。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>​        技术栈：前端nodejs+vue，后端java+redis</p><p>​        滑块验证：vue-drag-drop</p><p>​        游动：animateplus</p><p>​        目前的前端部分演示demo（目前只支持pc端）：<a href="http://bless.disscode.cn/#/loginSlider" target="_blank" rel="noopener">http://bless.disscode.cn/#/loginSlider</a></p><h2 id="五福临门"><a href="#五福临门" class="headerlink" title="五福临门"></a>五福临门</h2><p>一曰寿，二曰富，三曰康宁，四曰攸好德，五曰考终命</p><p>五福含意：第一福是“长寿”、第二福是“富贵”、第三福是“康宁”、第四福是“好德”、第五福是“善终”。有人简称为寿富康德善。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一看&quot;&gt;&lt;a href=&quot;#一看&quot; class=&quot;headerlink&quot; title=&quot;一看&quot;&gt;&lt;/a&gt;一看&lt;/h2&gt;&lt;p&gt;​        验证码这个既熟悉又常用的功能，一提起来你就会想起各种各样的验证码，一个偶然的机会，就冒出来做个验证码，慢慢的就演变成现在的五福临门验证码。先看一下效果图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/2021/bless/bless.gif&quot; alt=&quot;bless&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="验证码" scheme="https://dumplingbao.github.io/categories/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    
+    
+      <category term="验证码" scheme="https://dumplingbao.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>开源论坛：社区选择Discourse</title>
@@ -142,9 +165,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -169,9 +192,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -199,9 +222,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -251,9 +274,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -278,9 +301,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -304,9 +327,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -357,9 +380,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -386,9 +409,9 @@
     
     </summary>
     
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
@@ -425,17 +448,17 @@
   </entry>
   
   <entry>
-    <title>Metabase-BI系列08：一个关于透视表的PR</title>
-    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/"/>
-    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/</id>
+    <title>Metabase-BI系列09：透视表PR功能实现解析</title>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/</id>
     <published>2020-02-27T14:40:00.000Z</published>
-    <updated>2020-02-27T15:31:33.240Z</updated>
+    <updated>2020-02-27T14:44:17.850Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。</p><a id="more"></a><h2 id="透视表和交叉表区别"><a href="#透视表和交叉表区别" class="headerlink" title="透视表和交叉表区别"></a>透视表和交叉表区别</h2><p>​    关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点</p><ol><li>透视表是一种常见的数据汇总工具，进行数据聚合</li><li>交叉表是专指分组频率的</li><li>交叉表是一种特殊的透视表</li></ol><h2 id="Metabase透视表"><a href="#Metabase透视表" class="headerlink" title="Metabase透视表"></a>Metabase透视表</h2><p>​    Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。</p><p>​    效果图如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary.png" alt="table_summary"></p><h2 id="介绍这个PR"><a href="#介绍这个PR" class="headerlink" title="介绍这个PR"></a>介绍这个PR</h2><p>PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><p>2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。</p><p>这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。</p><ul><li>有184次提交记录</li><li>Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论</li><li>此复杂表头的表格，支持sql查询方式。</li><li>对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化</li><li>r-hot用js进行了实现，但是存在js精度不够导致的数据偏差</li><li>r-hot对性能进行了优化</li><li>有人热衷，有人关注</li><li>open了很长时间</li><li>最终还是关闭了</li></ul><p>这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。</p><p>​    这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。</p><p>​    sql查询效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary03.png" alt="table_summary03"></p><h2 id="Metabase透视表展示"><a href="#Metabase透视表展示" class="headerlink" title="Metabase透视表展示"></a>Metabase透视表展示</h2><p>Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。</p><ul><li>必须是两个分组列，才默认开启，可以关闭</li><li>超过两个分组列，不支持透视表</li></ul><p>新版透视表如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb.jpg" alt="new01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb01.jpg" alt="new01"></p><p>旧版效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb.jpg" alt="old"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb01.jpg" alt="old02"></p>]]></content>
+    <content type="html"><![CDATA[<p>​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。</p><a id="more"></a><h2 id="效果呈现"><a href="#效果呈现" class="headerlink" title="效果呈现"></a>效果呈现</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif" alt="talbedt"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary01.png" alt="001">    </p><p><strong><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary.png" alt="002"></strong></p><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Metabase返回的数据结构，通过前端进行封装，版本之间会存在差别</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\meta\types\Dataset.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export type DatasetData = &#123;</span><br><span class="line">  cols: Column[],//列信息</span><br><span class="line">  columns: ColumnName[],//备注：新版本没有columns字段</span><br><span class="line">  rows: Row[],//行信息</span><br><span class="line">  rows_truncated?: number,</span><br><span class="line">  requested_timezone?: string,</span><br><span class="line">  results_timezone?: string,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary01.jpg" alt="summary01"></p><h3 id="新增的图表类型"><a href="#新增的图表类型" class="headerlink" title="新增的图表类型"></a>新增的图表类型</h3><p>由于Metabase组件化的代码，所以作者新增图表类型，不影响原来的功能和代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\index.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import SummaryTable from &quot;./visualizations/SummaryTable&quot;;</span><br><span class="line"></span><br><span class="line">registerVisualization(SummaryTable);</span><br></pre></td></tr></table></figure><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary03.jpg" alt="summary03"></p><h3 id="复杂表头图表设置项"><a href="#复杂表头图表设置项" class="headerlink" title="复杂表头图表设置项"></a>复杂表头图表设置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const emptyStateSerialized: SummaryTableSettings = &#123;</span><br><span class="line">  groupsSources: [],</span><br><span class="line">  columnsSource: [],</span><br><span class="line">  valuesSources: [],</span><br><span class="line">  unusedColumns: [],</span><br><span class="line">  columnNameToMetadata: &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li>行显示字段：多个分组嵌套</li><li>列显示字段：列字段只能有一个不支持多个进行嵌套</li><li>聚合字段（度量）</li><li>不可见字段：分组列表里面有，但是手动设置不显示的字段</li></ul><p>行和列字段支持功能：</p><ul><li>汇总</li><li>排序</li></ul><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary02.jpg" alt="summary02"></p><h3 id="核心处理"><a href="#核心处理" class="headerlink" title="核心处理"></a>核心处理</h3><p>在原有的table基础上进行的修改，主要添加了这个js实现计算汇总及后续处理</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\lib\summary_table_datasetdata_builder.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">export const buildDatasetData = (//格式化数据集</span><br><span class="line">  settings: SummaryTableSettings,</span><br><span class="line">  mainResults: DatasetData,</span><br><span class="line">  resultsProvider: ResultProvider,</span><br><span class="line">): SummaryTableDatasetData =&gt; &#123;</span><br><span class="line">  const &#123; columnsHeaders, cols, dimensions &#125; = buildColumnHeaders(//生成列标题</span><br><span class="line">    settings,</span><br><span class="line">    mainResults,</span><br><span class="line">  );</span><br><span class="line">  const compressedColumnsHeaders = tryCompressColumnsHeaders(//压缩列标题处理</span><br><span class="line">    settings,</span><br><span class="line">    columnsHeaders,</span><br><span class="line">  );</span><br><span class="line">  const rowAssembler = getRowAssembler(columnsHeaders);//行数据装配</span><br><span class="line"></span><br><span class="line">  const queryPlan = getQueryPlan(//生成合计</span><br><span class="line">    settings,</span><br><span class="line">    canTotalizeBuilder(mainResults.cols),</span><br><span class="line">  );</span><br><span class="line">  const rows = combineData(rowAssembler, queryPlan, settings, resultsProvider);//合并数据</span><br><span class="line">  //生成列索引</span><br><span class="line">  const columnIndexToFirstInGroupIndexes = buildColumnIndexToFirstInGroupIndexes(</span><br><span class="line">    rows,</span><br><span class="line">    settings,</span><br><span class="line">  );</span><br><span class="line">  //生成行索引</span><br><span class="line">  const rowIndexesToColSpans = buildRowIndexesToColSpans(settings, rows, cols);</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    columnsHeaders: compressedColumnsHeaders,</span><br><span class="line">    cols,</span><br><span class="line">    columns: cols.map(p =&gt; p.name),</span><br><span class="line">    rows,</span><br><span class="line">    columnIndexToFirstInGroupIndexes,</span><br><span class="line">    isGrouped: columnIndex =&gt; columnIndex in columnIndexToFirstInGroupIndexes,</span><br><span class="line">    rowIndexesToColSpans,</span><br><span class="line">    dimensions,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="js组件（lodash）数据处理"><a href="#js组件（lodash）数据处理" class="headerlink" title="js组件（lodash）数据处理"></a>js组件（lodash）数据处理</h3><p>Lodash是一个著名的javascript原生库，不需要引入其他第三方依赖，像Jquery的一样，十分简洁，正是利用lodash实现数据的js处理。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;lodash.flatmap&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.get&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.invert&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.isequal&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.mapkeys&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.mapvalues&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.orderby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.partition&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.range&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">&quot;lodash.set&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.sortby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.unset&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.values&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.zip&quot;: &quot;^4.2.0&quot;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。&lt;/p&gt;
+      &lt;p&gt;​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。&lt;/p&gt;
     
     </summary>
     
@@ -451,17 +474,17 @@
   </entry>
   
   <entry>
-    <title>Metabase-BI系列09：透视表PR功能实现解析</title>
-    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/"/>
-    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabjx/</id>
+    <title>Metabase-BI系列08：一个关于透视表的PR</title>
+    <link href="https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/"/>
+    <id>https://dumplingbao.github.io/2020/02/27/metabase-bi-tabpr/</id>
     <published>2020-02-27T14:40:00.000Z</published>
-    <updated>2020-02-27T14:44:17.850Z</updated>
+    <updated>2020-02-27T15:31:33.240Z</updated>
     
-    <content type="html"><![CDATA[<p>​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。</p><a id="more"></a><h2 id="效果呈现"><a href="#效果呈现" class="headerlink" title="效果呈现"></a>效果呈现</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_dt.gif" alt="talbedt"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary01.png" alt="001">    </p><p><strong><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/table_summary.png" alt="002"></strong></p><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>Metabase返回的数据结构，通过前端进行封装，版本之间会存在差别</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\meta\types\Dataset.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export type DatasetData = &#123;</span><br><span class="line">  cols: Column[],//列信息</span><br><span class="line">  columns: ColumnName[],//备注：新版本没有columns字段</span><br><span class="line">  rows: Row[],//行信息</span><br><span class="line">  rows_truncated?: number,</span><br><span class="line">  requested_timezone?: string,</span><br><span class="line">  results_timezone?: string,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary01.jpg" alt="summary01"></p><h3 id="新增的图表类型"><a href="#新增的图表类型" class="headerlink" title="新增的图表类型"></a>新增的图表类型</h3><p>由于Metabase组件化的代码，所以作者新增图表类型，不影响原来的功能和代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\index.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import SummaryTable from &quot;./visualizations/SummaryTable&quot;;</span><br><span class="line"></span><br><span class="line">registerVisualization(SummaryTable);</span><br></pre></td></tr></table></figure><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary03.jpg" alt="summary03"></p><h3 id="复杂表头图表设置项"><a href="#复杂表头图表设置项" class="headerlink" title="复杂表头图表设置项"></a>复杂表头图表设置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const emptyStateSerialized: SummaryTableSettings = &#123;</span><br><span class="line">  groupsSources: [],</span><br><span class="line">  columnsSource: [],</span><br><span class="line">  valuesSources: [],</span><br><span class="line">  unusedColumns: [],</span><br><span class="line">  columnNameToMetadata: &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li>行显示字段：多个分组嵌套</li><li>列显示字段：列字段只能有一个不支持多个进行嵌套</li><li>聚合字段（度量）</li><li>不可见字段：分组列表里面有，但是手动设置不显示的字段</li></ul><p>行和列字段支持功能：</p><ul><li>汇总</li><li>排序</li></ul><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/newtab/summary02.jpg" alt="summary02"></p><h3 id="核心处理"><a href="#核心处理" class="headerlink" title="核心处理"></a>核心处理</h3><p>在原有的table基础上进行的修改，主要添加了这个js实现计算汇总及后续处理</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frontend\src\metabase\visualizations\lib\summary_table_datasetdata_builder.js</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">export const buildDatasetData = (//格式化数据集</span><br><span class="line">  settings: SummaryTableSettings,</span><br><span class="line">  mainResults: DatasetData,</span><br><span class="line">  resultsProvider: ResultProvider,</span><br><span class="line">): SummaryTableDatasetData =&gt; &#123;</span><br><span class="line">  const &#123; columnsHeaders, cols, dimensions &#125; = buildColumnHeaders(//生成列标题</span><br><span class="line">    settings,</span><br><span class="line">    mainResults,</span><br><span class="line">  );</span><br><span class="line">  const compressedColumnsHeaders = tryCompressColumnsHeaders(//压缩列标题处理</span><br><span class="line">    settings,</span><br><span class="line">    columnsHeaders,</span><br><span class="line">  );</span><br><span class="line">  const rowAssembler = getRowAssembler(columnsHeaders);//行数据装配</span><br><span class="line"></span><br><span class="line">  const queryPlan = getQueryPlan(//生成合计</span><br><span class="line">    settings,</span><br><span class="line">    canTotalizeBuilder(mainResults.cols),</span><br><span class="line">  );</span><br><span class="line">  const rows = combineData(rowAssembler, queryPlan, settings, resultsProvider);//合并数据</span><br><span class="line">  //生成列索引</span><br><span class="line">  const columnIndexToFirstInGroupIndexes = buildColumnIndexToFirstInGroupIndexes(</span><br><span class="line">    rows,</span><br><span class="line">    settings,</span><br><span class="line">  );</span><br><span class="line">  //生成行索引</span><br><span class="line">  const rowIndexesToColSpans = buildRowIndexesToColSpans(settings, rows, cols);</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    columnsHeaders: compressedColumnsHeaders,</span><br><span class="line">    cols,</span><br><span class="line">    columns: cols.map(p =&gt; p.name),</span><br><span class="line">    rows,</span><br><span class="line">    columnIndexToFirstInGroupIndexes,</span><br><span class="line">    isGrouped: columnIndex =&gt; columnIndex in columnIndexToFirstInGroupIndexes,</span><br><span class="line">    rowIndexesToColSpans,</span><br><span class="line">    dimensions,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="js组件（lodash）数据处理"><a href="#js组件（lodash）数据处理" class="headerlink" title="js组件（lodash）数据处理"></a>js组件（lodash）数据处理</h3><p>Lodash是一个著名的javascript原生库，不需要引入其他第三方依赖，像Jquery的一样，十分简洁，正是利用lodash实现数据的js处理。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;lodash.flatmap&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.get&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.invert&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.isequal&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">&quot;lodash.mapkeys&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.mapvalues&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.orderby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.partition&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.range&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">&quot;lodash.set&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.sortby&quot;: &quot;^4.6.0&quot;,</span><br><span class="line">&quot;lodash.unset&quot;: &quot;^4.1.2&quot;,</span><br><span class="line">&quot;lodash.values&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">&quot;lodash.zip&quot;: &quot;^4.2.0&quot;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。</p><a id="more"></a><h2 id="透视表和交叉表区别"><a href="#透视表和交叉表区别" class="headerlink" title="透视表和交叉表区别"></a>透视表和交叉表区别</h2><p>​    关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点</p><ol><li>透视表是一种常见的数据汇总工具，进行数据聚合</li><li>交叉表是专指分组频率的</li><li>交叉表是一种特殊的透视表</li></ol><h2 id="Metabase透视表"><a href="#Metabase透视表" class="headerlink" title="Metabase透视表"></a>Metabase透视表</h2><p>​    Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。</p><p>​    效果图如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary.png" alt="table_summary"></p><h2 id="介绍这个PR"><a href="#介绍这个PR" class="headerlink" title="介绍这个PR"></a>介绍这个PR</h2><p>PR：<a href="https://github.com/metabase/metabase/pull/8427" target="_blank" rel="noopener">Metabase pull request #8427</a></p><p>2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。</p><p>这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。</p><ul><li>有184次提交记录</li><li>Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论</li><li>此复杂表头的表格，支持sql查询方式。</li><li>对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化</li><li>r-hot用js进行了实现，但是存在js精度不够导致的数据偏差</li><li>r-hot对性能进行了优化</li><li>有人热衷，有人关注</li><li>open了很长时间</li><li>最终还是关闭了</li></ul><p>这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。</p><p>​    这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。</p><p>​    sql查询效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/table_summary03.png" alt="table_summary03"></p><h2 id="Metabase透视表展示"><a href="#Metabase透视表展示" class="headerlink" title="Metabase透视表展示"></a>Metabase透视表展示</h2><p>Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。</p><ul><li>必须是两个分组列，才默认开启，可以关闭</li><li>超过两个分组列，不支持透视表</li></ul><p>新版透视表如下：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb.jpg" alt="new01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/new_tsb01.jpg" alt="new01"></p><p>旧版效果图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb.jpg" alt="old"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/table/old_tsb01.jpg" alt="old02"></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;​    上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。&lt;/p&gt;
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。&lt;/p&gt;
     
     </summary>
     
@@ -551,34 +574,6 @@
     <summary type="html">
     
       &lt;p&gt;Metabase连接mysql5.6.16-log版本数据库报错：Unknown system variable ‘session_track_schema’&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="Metabase" scheme="https://dumplingbao.github.io/categories/Metabase/"/>
-    
-    
-      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
-    
-      <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Metabase-BI系列04：cookie实现单点登录sso</title>
-    <link href="https://dumplingbao.github.io/2019/11/29/metabase-bi-cookie/"/>
-    <id>https://dumplingbao.github.io/2019/11/29/metabase-bi-cookie/</id>
-    <published>2019-11-29T15:27:12.000Z</published>
-    <updated>2019-11-29T15:28:49.025Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。</p><p>​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接受，那就可以用两个账户了。</p><p>​    Metabase支持多种单点登录（sso）方式：</p><a id="more"></a><ul><li><p>Google账号登录，这种方式在中国只能呵呵了</p></li><li><p>LDAP的方式，需要搭建一个LDAP统一认证的服务，这个麻烦点，Metabase提供配置LDAP功能，比较方便</p></li><li><p>基于SAML协议接入单点登录， SAML即安全断言标记语言，这个不是很熟，可以尝试一下</p></li><li><p>通过cookie实现单点，操作简单，但是比较受限，安全性低</p></li></ul><p>这里介绍通过cookie实现简单的单点登录</p><h2 id="Metabase-cookie"><a href="#Metabase-cookie" class="headerlink" title="Metabase-cookie"></a>Metabase-cookie</h2><h3 id="metabase-SESSION-ID"><a href="#metabase-SESSION-ID" class="headerlink" title="metabase.SESSION_ID"></a>metabase.SESSION_ID</h3><p>首先看一下Metabase里面的cookie， metabase.SESSION就是Metabase访问权限的令牌，path为“/”根目录下面，所以获取令牌，将把令牌塞到metabase.SESSION里就可以了。</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/Metabase-cookie.jpg" alt="Metabase-cookie"></p><h3 id="api-session"><a href="#api-session" class="headerlink" title="/api/session/"></a>/api/session/</h3><p>Metabase doc API说明如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## `POST /api/session/`**</span><br><span class="line">Login.</span><br><span class="line">**##### PARAMS:**</span><br><span class="line">\* ***\*****`username`*****\*** value must be a non-blank string.</span><br><span class="line">\* ***\*****`password`*****\*** value must be a non-blank string.</span><br></pre></td></tr></table></figure><p>所以，我们需要调用/api/session/，传入用户和密码，获取令牌</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/api-session.jpg" alt="cookie01"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cookie-id.jpg" alt="cookie02"></p><h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><p>直接访问Metabase的/api/session会存在跨域的问题</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/404.jpg" alt="404"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Metabase/cookie/cors.jpg" alt="cors"></p><p>修改Metabase后台允许跨域，Metabase后台用的Ring框架控制跳转，我们引入开源的<a href="https://github.com/r0man/ring-cors" target="_blank" rel="noopener">ring-cors</a>框架，配置允许跨域的域和请求，配置Metabase的<code>handler.clj</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(require &apos;[ring.middleware.cors :refer [wrap-cors]])</span><br><span class="line">(def handler</span><br><span class="line">  (wrap-cors my-routes :access-control-allow-origin [#&quot;http://example.com&quot;]</span><br><span class="line">                       :access-control-allow-methods [:get :put :post :delete]))</span><br></pre></td></tr></table></figure><h3 id="cookie共享问题"><a href="#cookie共享问题" class="headerlink" title="cookie共享问题"></a>cookie共享问题</h3><p>对于cookie来说，不同域下的cookie不共享，必须在同个顶级域下设置cookie，所以这也是这种cookie实现单点比较受限制的问题。</p><p>对于统一域名不同端口的情况，直接将cookie放到path根目录“/”即可，因为域是相同的</p><p>对于不同的二级域名的情况，放到顶级域名下即可</p><p>如：aa.test.com和bb.test.com</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookies.set(&apos;metabase.SESSION&apos;, token, &#123; path: &apos;/&apos;,domain: &apos;.test.com&apos; &#125;)</span><br></pre></td></tr></table></figure><p>关于cookie的介绍，推荐文章： <a href="https://www.cnblogs.com/hujunzheng/p/5744755.html" target="_blank" rel="noopener">https://www.cnblogs.com/hujunzheng/p/5744755.html</a> </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;​    Metabase 可以作为独立的BI平台，本身就有用户组和权限组。而且Metabase支持报表的分享和iframe嵌入的方式进行报表的呈现，我们可以通过这种方式进行数据的呈现。&lt;/p&gt;
-&lt;p&gt;​    我们需要登录Metabase系统进行报表创建和发布，如果业务平台有权限的用户想通过业务平台用户进入到Metabase里面，就需要进行单点登录，因为用户不可能登录两个平台用两个账户，当然如果用户能够接受，那就可以用两个账户了。&lt;/p&gt;
-&lt;p&gt;​    Metabase支持多种单点登录（sso）方式：&lt;/p&gt;
     
     </summary>
     
