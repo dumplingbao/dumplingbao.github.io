@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BI,Metabase,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="diss带码" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="AI（ Artificial Intelligence ）：人工智能 BI（ Business Intelligence ）：商业智能 BI商业智能，个人感觉商业化了一些，而且感觉没有把数据的价值体现的名称上，也不知道为什么不直接一点叫DI（Data Intelligence ）。 AI和BI似乎不可分割，起码相辅相成。AI似乎更火热，BI提出更早一些，似乎有点过气和传统的感觉，但是想想，可视化数">
+<meta name="keywords" content="BI,Metabase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BI、数据可视化工具浅析整理">
+<meta property="og:url" content="https://dumplingbao.github.io/2019/11/03/metabase-bi-datav/index.html">
+<meta property="og:site_name" content="diss带码">
+<meta property="og:description" content="AI（ Artificial Intelligence ）：人工智能 BI（ Business Intelligence ）：商业智能 BI商业智能，个人感觉商业化了一些，而且感觉没有把数据的价值体现的名称上，也不知道为什么不直接一点叫DI（Data Intelligence ）。 AI和BI似乎不可分割，起码相辅相成。AI似乎更火热，BI提出更早一些，似乎有点过气和传统的感觉，但是想想，可视化数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bi/cognos.png">
+<meta property="og:image" content="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/0287021751/p7711.gif">
+<meta property="og:image" content="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/3287021751/p7714.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/163ce7bfcdcd0cc9a0e1ac66b6e488fdbba1ad0e/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f372f392f313662643463643032333861343162613f773d3138393726683d39343026663d706e6726733d343934343737">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bi/demoBI.jpg">
+<meta property="og:updated_time" content="2021-11-26T18:18:19.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BI、数据可视化工具浅析整理">
+<meta name="twitter:description" content="AI（ Artificial Intelligence ）：人工智能 BI（ Business Intelligence ）：商业智能 BI商业智能，个人感觉商业化了一些，而且感觉没有把数据的价值体现的名称上，也不知道为什么不直接一点叫DI（Data Intelligence ）。 AI和BI似乎不可分割，起码相辅相成。AI似乎更火热，BI提出更早一些，似乎有点过气和传统的感觉，但是想想，可视化数">
+<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bi/cognos.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://dumplingbao.github.io/2019/11/03/metabase-bi-datav/">
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "1f5f8285"
+    });
+  daovoice('update');
+  </script>
+
+
+  <title>BI、数据可视化工具浅析整理 | diss带码</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?40938d12db48fd72f6eb0aef5714771c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/dumplingbao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">diss带码</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">码动人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2019/11/03/metabase-bi-datav/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dumplingbao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="diss带码">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BI、数据可视化工具浅析整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-03T16:21:04+08:00">
+                2019-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Metabase/" itemprop="url" rel="index">
+                    <span itemprop="name">Metabase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>AI（ Artificial Intelligence ）：人工智能</p>
+<p>BI（ Business Intelligence ）：商业智能</p>
+<p>BI商业智能，个人感觉商业化了一些，而且感觉没有把数据的价值体现的名称上，也不知道为什么不直接一点叫DI（Data Intelligence ）。</p>
+<p>AI和BI似乎不可分割，起码相辅相成。AI似乎更火热，BI提出更早一些，似乎有点过气和传统的感觉，但是想想，可视化数据展示、数据可视化，这些名词或许目前更流行，其实应该都算是BI的变种，个人感觉似乎又有点去商业化，起码不叫什么商业可视化。</p>
+<p>阿里云推出了大数据和人工智能DataV数据可视化、 Quick BI等等产品，且不说做到什么程度，加上手机、大屏的时代发展，就会发现数据的价值也越来越大。</p>
+<p>由于工作对BI牵扯甚多，近来使用Metabase，准备写一下Metabase系列，就已BI、数据可视化做引子，查找资料总结了一下，后续会更新修改。这里不讲AI，不谈商业，通过搜索网上资料进行整理，就说一下接触的或者市面上BI、数据可视化的工具。</p>
+<p>这里进行分类：重量级（商用+服务）、轻量级（开源）、商业级（服务），其它（心血来潮的一些小项目：GitDataV、DataVisualization）</p>
+<a id="more"></a>
+
+<h2 id="重量级（商用-服务）"><a href="#重量级（商用-服务）" class="headerlink" title="重量级（商用+服务）"></a>重量级（商用+服务）</h2><h3 id="IBM-Cognos"><a href="#IBM-Cognos" class="headerlink" title="IBM Cognos"></a>IBM Cognos</h3><p>IBM Cognos 起初是加拿大的一家公司，后来被IBM收购。功能非常强大，可以自身创建package、立方体数据模型，通过ETL工具进行数据清洗，然后定时抽取IBM Cognos模型，自身实现配置化集群和负载均衡等功能，能够处理大规模，多系统（财务、资金、业务、人力资源等等）数据，进行数据整合，配套工具完善且非常多，此外</p>
+<ul>
+<li>扩展性比较强，尤其对多系统数据处理</li>
+<li>权限、数据集成完善</li>
+<li>网关、应用服务器、内容管理器组件灵活</li>
+<li>比较重，数据量小就大材小用，一般建行等大企业用多</li>
+<li>不知道现在是否支持nosql类型的数据库</li>
+<li>支持导出备份及导入等操作</li>
+</ul>
+<p>1、技术架构：java + BS架构</p>
+<p>2、适用范围：</p>
+<p>​    政府单位、大型企业</p>
+<p>3、安装部署：</p>
+<p>​    weblogic、websphere、tomcat等集成部署</p>
+<p>4、数据源：oracle、db2、mysql关系型数据库</p>
+<p>5、可视化：</p>
+<ul>
+<li>支持各种图表展示</li>
+<li>支持各种下钻及功能性扩展</li>
+<li>展示组件强大</li>
+</ul>
+<p>6、支持文档：</p>
+<ul>
+<li>安装文档齐全</li>
+<li>集成部署补丁包完善</li>
+<li>资料论坛可查找资料，因为大型企业使用，所以个人分享的资料较少</li>
+</ul>
+<p>7、权限管理：支持权限控制</p>
+<p>8、二次开发：利用cognos自身特性进行扩展及集成开发，源代码不开放</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bi/cognos.png" alt="cognos"></p>
+<h3 id="赛思"><a href="#赛思" class="headerlink" title="赛思"></a>赛思</h3><p>赛思是国内用的比较多的BI工具，是武汉东方赛思软件公司开发的，目前政府、金融等单位使用的多。赛思大数据平台，为政府部门、企业或是IT公司的大数据项目提供全方位的平台支持。也有数据的提取、加工、调度等强大的功能。服务团队规模有保障，解决方案完善，但是目前对nosql数据库支持欠缺。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>Tableau</li>
+<li>Microsoft (Power BI)</li>
+<li>SAS (Visual Analytics)</li>
+<li>AWS(Athena and Kinesis)</li>
+<li>Google (Dataproc and Big Query)</li>
+<li>Fusionex (Giant) </li>
+<li>Zendesk (Zime) </li>
+<li>SAP（BO）</li>
+<li>Oracle（BIEE）</li>
+</ul>
+<h2 id="轻量级（开源）"><a href="#轻量级（开源）" class="headerlink" title="轻量级（开源）"></a>轻量级（开源）</h2><h3 id="Superset"><a href="#Superset" class="headerlink" title="Superset"></a>Superset</h3><p>github地址： <a href="https://github.com/apache/incubator-superset" target="_blank" rel="noopener">https://github.com/apache/incubator-superset</a> </p>
+<p>1、技术架构：</p>
+<p>后端：Python + Flask（ Web 应用框架 ） +SQLAlchemy（orm框架）</p>
+<p>前端：React + Redux +D3</p>
+<p>2、适用范围：</p>
+<ul>
+<li><p>开发/分析人员做好看板，业务人员浏览看板数据</p>
+</li>
+<li><p>业务人员可自行编辑图表，查看满足条件的结果</p>
+</li>
+</ul>
+<p>3、安装部署：</p>
+<p>​    docker方式的安装部署最简单</p>
+<p>4、数据源：支持各种数据源，包括Hive、Kylin等</p>
+<p>5、可视化：</p>
+<ul>
+<li><p>支持的图表类型多，达47种</p>
+</li>
+<li><p>图表可视化选项少，例如，数据格式选项偏少，如需添加，需要修改配置文件</p>
+</li>
+<li><p>可在看板中添加筛选框，支持在不同条件下查看</p>
+</li>
+<li><p>不支持图表和看板分组管理</p>
+</li>
+<li><p>没有提供图表的下钻功能，不支持多图表间的复杂联动</p>
+</li>
+<li><p>不支持跨库的表关联查询</p>
+</li>
+<li><p>支持其他图标库扩展</p>
+</li>
+</ul>
+<p>6、支持文档：</p>
+<ul>
+<li><p>安装部署和快速入门方面的文档详细</p>
+</li>
+<li><p>但具体功能和图表制作方面的介绍文档需要搜索资料</p>
+</li>
+<li><p>整体文档资料相当简陋</p>
+</li>
+</ul>
+<p>7、邮件通知：不支持</p>
+<p>8、权限管理：</p>
+<ul>
+<li><p>报表权限设置较复杂、繁琐</p>
+</li>
+<li><p>可实现对菜单、数据源、数据表、字段、图表、看板等权限控制</p>
+</li>
+</ul>
+<p>10、二次开发：</p>
+<ul>
+<li><p>支持 RESTful API</p>
+</li>
+<li><p>原属Airbnb的开源项目，有大公司团队维护，版本更新、Bug修复、二次开发有较大保障</p>
+</li>
+<li><p>也有说代码维护迭代，不活跃</p>
+</li>
+</ul>
+<h3 id="Redash"><a href="#Redash" class="headerlink" title="Redash"></a>Redash</h3><p>github地址： <a href="https://github.com/getredash/redash" target="_blank" rel="noopener">https://github.com/getredash/redash</a> </p>
+<p>1、技术架构：Python + Flask + AngularJS + SQLAlchemy</p>
+<p>2、适用范围：由于是对SQL查询结果进行可视化，需要开发/分析人员做好看板，业务人员浏览看板数据。</p>
+<p>3、安装部署：</p>
+<ul>
+<li><p>安装部署相对较麻烦</p>
+</li>
+<li><p>参考部署文档</p>
+</li>
+</ul>
+<p>4、数据源：支持数据源比superset少，不支持Kylin</p>
+<p>5、可视化：</p>
+<ul>
+<li><p>支持的图表类型不如Superset多，仅12种</p>
+</li>
+<li><p>图表可视化选项多</p>
+</li>
+<li><p>不支持在看板种添加筛选框</p>
+</li>
+<li><p>不支持图表和看板分组管理</p>
+</li>
+<li><p>没有提供图表的下钻功能，不支持多图表间的复杂联动</p>
+</li>
+<li><p>不支持跨库的表关联查询</p>
+</li>
+</ul>
+<p>6、支持文档：</p>
+<ul>
+<li><p>提供快速入门教程</p>
+</li>
+<li><p>每一个功能模块都有文档且条理清晰</p>
+</li>
+</ul>
+<p>7、邮件通知：支持定时发送邮件</p>
+<p>8、权限管理：权限设置简单，仅控制用户组对数据源的权限（只有两个权限：Full access或View only）</p>
+<p>9、二次开发：</p>
+<p>​    提供完整的 RESTful API 接口</p>
+<p>10、源代码：代码质量比Superset要好，但比Metabase差一点</p>
+<h3 id="Metabase"><a href="#Metabase" class="headerlink" title="Metabase"></a>Metabase</h3><p>github地址： <a href="https://github.com/metabase/metabase" target="_blank" rel="noopener">https://github.com/metabase/metabase</a> </p>
+<p>1、技术架构：</p>
+<p>前端框架：React + Redux + D3（图表工具）</p>
+<p>后端框架：Clojure + RING（中间件） + Compojure（路由框架） + Toucan（ORM框架）</p>
+<p>2、适用范围：</p>
+<p>​    界面漂亮、友好，使用体验好，适合业务人员使用</p>
+<p>3、安装部署：</p>
+<ul>
+<li>windows下安装部署非常简单</li>
+<li>docker部署简单</li>
+</ul>
+<p>4、数据源：支持数据源少（12种），不支持Hive、Kylin（硬伤）</p>
+<p>5、创建步骤：连接数据源–&gt;图表–&gt;看板–&gt;定时任务</p>
+<p>6、可视化：</p>
+<ul>
+<li><p>支持的图表类型不如superset多，仅14种</p>
+</li>
+<li><p>图表可视化选项多，例如，提供数据格式多，设置灵活</p>
+</li>
+<li><p>可在看板中添加筛选框，支持在不同条件下查看</p>
+</li>
+<li><p>通过创建集合，支持图表、看板、定时任务分组管理</p>
+</li>
+<li><p>提供图表的简单钻取功能，不支持图表间的复杂联动</p>
+</li>
+<li><p>不支持跨库的表关联查询</p>
+</li>
+</ul>
+<p>7、支持文档：</p>
+<p>​    安装部署、快速入门、具体功能、API等方面的文档详细</p>
+<p>8、邮件通知：支持定时发送邮件</p>
+<p>9、权限管理：</p>
+<ul>
+<li><p>权限设置单一，只有访问权限</p>
+</li>
+<li><p>仅实现对数据源、数据表、图表、集合等权限控制</p>
+</li>
+</ul>
+<p>10、二次开发：提供完整的API文档，即使完全不会 Clojure，依然可以凭借丰富的 API 与文档完成许多二次开发。</p>
+<p>11、源代码：</p>
+<ul>
+<li>代码质量最好，结构清晰，整洁度高</li>
+<li>clojure语法，函数式编程，学习成本较高</li>
+</ul>
+<h3 id="Zeppelin"><a href="#Zeppelin" class="headerlink" title="Zeppelin"></a>Zeppelin</h3><p>github地址：<a href="https://github.com/apache/zeppelin" target="_blank" rel="noopener">https://github.com/apache/zeppelin</a></p>
+<p>严格意义上说，Zeppelin更像是一个notebook，而不是一个单纯的BI工具，来自Apache项目</p>
+<p>1、技术架构：</p>
+<p>​    交互式数据分析开源框架，支持多种语言， 包括Scala、Python、SparkSQL、Hive、Markdown、Shell等 </p>
+<p>2、适用范围：似乎更适合开发人员</p>
+<p>3、可视化：不支持sql查询</p>
+<h3 id="SQLPad"><a href="#SQLPad" class="headerlink" title="SQLPad"></a>SQLPad</h3><p>github地址：<a href="https://github.com/rickbergfalk/sqlpad" target="_blank" rel="noopener">https://github.com/rickbergfalk/sqlpad</a></p>
+<p>SQLPad是一个基于Nodejs开发的直接在浏览器运行SQL查询并对结果进行可视化展示工具 </p>
+<p>1、适用范围：适合开发人员</p>
+<p>2、数据源： MySQL, Postgres, SQL Server, Vertica, Crate, Presto等 </p>
+<p>3、可视化：特别支持sql，与Zeppelin不同，看名字就能看出来</p>
+<h3 id="CBoard"><a href="#CBoard" class="headerlink" title="CBoard"></a>CBoard</h3><p>github地址：<a href="https://github.com/yzhang921/CBoard" target="_blank" rel="noopener">https://github.com/yzhang921/CBoard</a></p>
+<p>1、技术架构：</p>
+<p>后端：Spring+MyBatis </p>
+<p>前端： ngularJS1和Bootstrap </p>
+<p>2、特点：</p>
+<ul>
+<li>国人开发的一款可视化工具</li>
+<li>交互设计的不错，但是感觉有点奇怪</li>
+<li>Java系</li>
+</ul>
+<h3 id="Davinci"><a href="#Davinci" class="headerlink" title="Davinci"></a>Davinci</h3><p>github地址： <a href="https://github.com/edp963/davinci" target="_blank" rel="noopener">https://github.com/edp963/davinci</a> </p>
+<p>1、技术架构：宜信开发的达芬奇，Java</p>
+<p>2、可视化：功能还是比较全面的，只是在国内还没有大范围的使用</p>
+<h2 id="商业级（服务）"><a href="#商业级（服务）" class="headerlink" title="商业级（服务）"></a>商业级（服务）</h2><h3 id="FineBI"><a href="#FineBI" class="headerlink" title="FineBI"></a>FineBI</h3><p>1、技术架构：java开发</p>
+<p>后端：spring mvc + Hibernate</p>
+<p>前端：fineui</p>
+<p>2、适用范围：</p>
+<ul>
+<li><p>开发/数据人员准备好数据，数据人员/业务人员分析。</p>
+</li>
+<li><p>业务人员完全可自行分析、制作可视化。整个数据分析流程分工明确。</p>
+</li>
+</ul>
+<p>3、安装部署：</p>
+<p>​    直接官网下载电脑适配的版本安装激活即可</p>
+<p>4、数据源：支持各种数据源，Apache Kylin、Derby、HP Vertica、IBM DB2、Informix、Sql Server、MySQL、Oracle、Pivotal Greenplum Database、Postgresql、ADS、Amazon Redshift、Apache Impala、Apache Phoenix、Gbase 8A、Gbase8S、Gbase 8T、Hadoop Hive、Kingbase、Presto、SAP HANA、SAP Sybase、Spark、Transwarp Inceptor、Hbase等主流的一些关系型数据库及非关系数据库MongoDB等</p>
+<p>5、可视化：</p>
+<ul>
+<li><p>支持的图表类型多，达47种</p>
+</li>
+<li><p>图表可视化选项少，例如，数据格式选项偏少，如需添加，需要修改配置文件</p>
+</li>
+<li><p>可在看板中添加筛选框，支持在不同条件下查看</p>
+</li>
+<li><p>不支持图表和看板分组管理</p>
+</li>
+<li><p>没有提供图表的下钻功能，不支持多图表间的复杂联动</p>
+</li>
+<li><p>不支持跨库的表关联查询</p>
+</li>
+</ul>
+<p>6、支持文档：</p>
+<ul>
+<li><p>安装部署和快速入门方面的文档详细，还有教学视频</p>
+</li>
+<li><p>但具体功能和图表制作方面的介绍文档几乎没有</p>
+</li>
+</ul>
+<p>7、邮件通知：支持</p>
+<p>8、权限管理：</p>
+<ul>
+<li><p>有一套完整的数据、业务包、报表、人员部门权限管理，有流程节点。</p>
+</li>
+<li><p>可实现数据源、数据表、字段、图表、看板等权限控制</p>
+</li>
+</ul>
+<p>9、二次开发：</p>
+<ul>
+<li><p>不支持java层面的开发</p>
+</li>
+<li><p>只有web接口</p>
+</li>
+<li><p>能与.NET集成、JBPM工作流集成、CAS单点登录</p>
+</li>
+</ul>
+<p>10、源代码：不公开，商业产品团队运营。</p>
+<h3 id="DataV（阿里云）"><a href="#DataV（阿里云）" class="headerlink" title="DataV（阿里云）"></a>DataV（阿里云）</h3><p>DataV旨让更多的人看到数据可视化的魅力，帮助非专业的工程师通过图形化的界面轻松搭建专业水准的可视化应用，满足您会议展览、业务监控、风险预警、地理信息分析等多种业务的展示需求。</p>
+<p>1、配备多种场景模板</p>
+<p>2、多种图表组件支持</p>
+<p>3、支持多种数据源</p>
+<p>4、配置比较快速灵活</p>
+<p> <img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/0287021751/p7711.gif" alt="datav01"></p>
+<p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/3287021751/p7714.png" alt="datav02"></p>
+<h3 id="Sugar（百度）"><a href="#Sugar（百度）" class="headerlink" title="Sugar（百度）"></a>Sugar（百度）</h3><p>连接地址： <a href="https://cloud.baidu.com/product/sugar.html" target="_blank" rel="noopener">https://cloud.baidu.com/product/sugar.html</a> </p>
+<h3 id="小马BI"><a href="#小马BI" class="headerlink" title="小马BI"></a>小马BI</h3><p>连接地址： <a href="https://xiaoma.qq.com/#/" target="_blank" rel="noopener">https://xiaoma.qq.com/#/</a> </p>
+<h3 id="网易有数"><a href="#网易有数" class="headerlink" title="网易有数"></a>网易有数</h3><p>连接地址：<a href="https://bigdata.163yun.com/" target="_blank" rel="noopener">https://bigdata.163yun.com/</a> </p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="GitDataV"><a href="#GitDataV" class="headerlink" title="GitDataV"></a>GitDataV</h3><p>github地址： <a href="https://github.com/HongqingCao/GitDataV" target="_blank" rel="noopener">https://github.com/HongqingCao/GitDataV</a> </p>
+<p> GitDataV，是一个github“大数据可视化平台”，通过它你可以更直观的看到你在github里的一些数据：<br>个人信息(✔)，仓库stars情况(✔)，仓库语言分类(✔)<br>仓库公开数量(✔)、粉丝数量(✔)、跟随数量(✔)、仓库数据(✔)、最近你的操作(✔)<br>最近的粉丝(✔)、最近的跟随(✔)、最新信息(✔)<br>左上角箭头小彩蛋： 全屏(✔)、 国际化语言切换（✔）、返回首页（✔） </p>
+<p><img src="https://camo.githubusercontent.com/163ce7bfcdcd0cc9a0e1ac66b6e488fdbba1ad0e/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f372f392f313662643463643032333861343162613f773d3138393726683d39343026663d706e6726733d343934343737" alt="gitdatav02"></p>
+<h3 id="DataVisualization"><a href="#DataVisualization" class="headerlink" title="DataVisualization"></a>DataVisualization</h3><p>github地址： <a href="https://github.com/SimonZhangITer/DataVisualization" target="_blank" rel="noopener">https://github.com/SimonZhangITer/DataVisualization</a> </p>
+<blockquote>
+<p>将数据通过图表的形式展现出来将大大的提升可读性和阅读效率</p>
+</blockquote>
+<blockquote>
+<p>本例包含柱状图、折线图、散点图、热力图、复杂柱状图、预览面板等</p>
+</blockquote>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/bi/demoBI.jpg" alt="dd"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BI/" rel="tag"># BI</a>
+          
+            <a href="/tags/Metabase/" rel="tag"># Metabase</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/05/iview-koa2/" rel="next" title="前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建">
+                <i class="fa fa-chevron-left"></i> 前端（iview）+后端（nodejs+koa2+sequelize）分离框架搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/04/metabase-bi-dev/" rel="prev" title="Metabase-BI系列01：二次开发环境(windows)搭建">
+                Metabase-BI系列01：二次开发环境(windows)搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NjA0OC8yMjU1OQ"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="dumplingbao">
+            
+              <p class="site-author-name" itemprop="name">dumplingbao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dumplingbao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bmm_java@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9877ae06aeaa" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/3005093235/profile?topnav=1&wvr=6" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5d5a62176fb9a06b2548e58c/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.acfun.cn/u/2176158.aspx" title="AcFun-九星之歌" target="_blank">AcFun-九星之歌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://space.bilibili.com/16873486/" title="B站-铃木爱理暗中观察团团长" target="_blank">B站-铃木爱理暗中观察团团长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jandan.net/" title="煎蛋" target="_blank">煎蛋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重量级（商用-服务）"><span class="nav-number">1.</span> <span class="nav-text">重量级（商用+服务）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IBM-Cognos"><span class="nav-number">1.1.</span> <span class="nav-text">IBM Cognos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赛思"><span class="nav-number">1.2.</span> <span class="nav-text">赛思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轻量级（开源）"><span class="nav-number">2.</span> <span class="nav-text">轻量级（开源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Superset"><span class="nav-number">2.1.</span> <span class="nav-text">Superset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redash"><span class="nav-number">2.2.</span> <span class="nav-text">Redash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metabase"><span class="nav-number">2.3.</span> <span class="nav-text">Metabase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zeppelin"><span class="nav-number">2.4.</span> <span class="nav-text">Zeppelin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQLPad"><span class="nav-number">2.5.</span> <span class="nav-text">SQLPad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBoard"><span class="nav-number">2.6.</span> <span class="nav-text">CBoard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Davinci"><span class="nav-number">2.7.</span> <span class="nav-text">Davinci</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商业级（服务）"><span class="nav-number">3.</span> <span class="nav-text">商业级（服务）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FineBI"><span class="nav-number">3.1.</span> <span class="nav-text">FineBI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataV（阿里云）"><span class="nav-number">3.2.</span> <span class="nav-text">DataV（阿里云）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sugar（百度）"><span class="nav-number">3.3.</span> <span class="nav-text">Sugar（百度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小马BI"><span class="nav-number">3.4.</span> <span class="nav-text">小马BI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网易有数"><span class="nav-number">3.5.</span> <span class="nav-text">网易有数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">4.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitDataV"><span class="nav-number">4.1.</span> <span class="nav-text">GitDataV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataVisualization"><span class="nav-number">4.2.</span> <span class="nav-text">DataVisualization</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dumplingbao</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

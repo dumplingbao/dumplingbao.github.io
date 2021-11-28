@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BI,Davinci,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="diss带码" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
+<meta name="keywords" content="BI,Davinci">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案">
+<meta property="og:url" content="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/index.html">
+<meta property="og:site_name" content="diss带码">
+<meta property="og:description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj01.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj07.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj08.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj09.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj10.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj11.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj02.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj03.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi01.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi02.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi03.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi04.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi05.jpg">
+<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi06.jpg">
+<meta property="og:updated_time" content="2021-11-26T18:18:19.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案">
+<meta name="twitter:description" content="​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-J">
+<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/">
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "1f5f8285"
+    });
+  daovoice('update');
+  </script>
+
+
+  <title>Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案 | diss带码</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?40938d12db48fd72f6eb0aef5714771c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/dumplingbao" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">diss带码</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">码动人生</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2020/08/24/davinci-dev-mongo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dumplingbao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="diss带码">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Davinci-二次开发系列08：mongoDB（JDBC查询）四种解决方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T12:00:00+08:00">
+                2020-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化工具</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Davinci/" itemprop="url" rel="index">
+                    <span itemprop="name">Davinci</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>​    关于Davinci使用mongoDB的问题，就一直没有断过。我们不管怎么评价mongoDB，似乎年轻的mongoDB俨然是主流数据库了。而且现在对于BI来说能不能支持主流的NoSQL数据库，已经成为一个很重要的衡量标准。目前BI通过JDBC的方式访问NoSQL数据库还是首选，但是mongo官方未提供JDBC驱动包，这里介绍四种mongo-JDBC查询数据的解决方案：（备注：mongo-JDBC问题不仅限于Davinci，也不限于BI，一些实际应用中也会碰到）</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方案</th>
+<th>备注</th>
+<th>综述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>利用presto连接</td>
+<td>facebook开源SQL查询引擎</td>
+<td>优点：开源、免费、兼容性良好<br>缺点：需要单独部署服务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1、unityjdbc破解版<br>2、unityjdbc试用版</td>
+<td>商业化产品</td>
+<td>优点：集成简单、不需要单独部署<br>缺点：收费、_id字段值不显示<br>试用版本地mongo支持需要解决<br>破解版只能简单的查询、子查询等有问题，存在问题比较多</td>
+</tr>
+<tr>
+<td>3</td>
+<td>mongo-bi连接器</td>
+<td>mongo官方</td>
+<td>优点：官方出品、免费、兼容性极好<br>缺点：需要单独部署服务<br>推荐用此方式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>开源手写驱动包</td>
+<td>开源</td>
+<td>优点：灵活性可控<br>缺点：成本高、耗精力</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h1 id="利用presto连接"><a href="#利用presto连接" class="headerlink" title="利用presto连接"></a>利用presto连接</h1><p>​    Presto是一个facebook开源的分布式SQL查询引擎，而且支持跨库查询，当然也支持mongoDB，Davinci通过presto做类似的桥接，然后也能实现mongoDB的jdbc查询，如果公司使用presto，采用这种方案也是不错的选择，兼容性可以。</p>
+<p>​    这里我们重点介绍后面两种，没有实际进行尝试，大家可以尝试一下，简单介绍一下步骤：</p>
+<p>​    第一：首先需要安装presto-server服务，看好版本，支持MongoDB的才可以</p>
+<p>​    第二：配置mongodb.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connector.name=mongodb</span><br><span class="line">mongodb.seeds=ip:port</span><br><span class="line">mongodb.schema-collection=admin</span><br></pre></td></tr></table></figure>
+
+<p>​    第三：Davinci配置数据源    </p>
+<p>​    <code>jdbc:presto://ip:port/mongodb/test</code></p>
+<p>​    第四：view实现JDBC查询</p>
+<p>​    <code>select * from mongodb.数据库名.集合</code></p>
+<h1 id="unityjdbc"><a href="#unityjdbc" class="headerlink" title="unityjdbc"></a>unityjdbc</h1><p>​    由于<a href="http://www.unityjdbc.com/" target="_blank" rel="noopener">unityjdbc</a>是收费的，这里我们用网上的破解版和试用版都试一下。</p>
+<h2 id="官方试用版"><a href="#官方试用版" class="headerlink" title="官方试用版"></a>官方试用版</h2><p>​    第一：试用版，去官网<a href="http://www.unityjdbc.com/" target="_blank" rel="noopener">unityjdbc</a>下载<code>JDBC Driver for MongoDB</code>，这里我们用的是``这个版本下载地址：<a href="http://www.unityjdbc.com/download.php?type=mongodb" target="_blank" rel="noopener">http://www.unityjdbc.com/download.php?type=mongodb</a></p>
+<p>​    第二：下载下来的<code>UnityJDBC_Trial_Install.jar</code> 需要<code>java -jar</code>安装，安装完获取<code>unityJdbc.jar</code>（或者<code>mongodb_unityjdbc_full.jar这个jar</code>包也可以）</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj00.jpg" alt="mongo_uj00"></p>
+<p>​    第三：<code>mongodb-driver</code>的依赖默认是注释掉的，将注释去掉，并将<code>unityJdbc.jar</code>引入到工程里面或者复制进去，在porm里面引入本地依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mongodb --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.mongodb&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mongodb-driver&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;3.6.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;unityjdbc&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;unityjdbc&lt;/artifactId&gt;</span><br><span class="line">	&lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">	&lt;systemPath&gt;$&#123;project.basedir&#125;/lib/unityjdbc.jar&lt;/systemPath&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    第四：Davinci配置数据源（强调一下，我用官方的包，连接本地mongo报hostname的错误，就先用官方的测试库）</p>
+<p><code>jdbc:mongo://localhost:27017/数据库</code> </p>
+<p>官方测试地址 <code>jdbc:mongo://ds029847.mongolab.com:29847/tpch</code></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj01.jpg" alt="mongo-uj01"></p>
+<h3 id="创建view-id不能正常显示）"><a href="#创建view-id不能正常显示）" class="headerlink" title="创建view(_id不能正常显示）"></a>创建view(_id不能正常显示）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj07.jpg" alt="mongo_uj07"></p>
+<h3 id="创建widget"><a href="#创建widget" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj08.jpg" alt="mongo_uj08"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj09.jpg" alt="mongo_uj09"></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj10.jpg" alt="mongo_uj10"></p>
+<h3 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-uj11.jpg" alt="mongo_uj11"></p>
+<h2 id="网传破解版"><a href="#网传破解版" class="headerlink" title="网传破解版"></a>网传破解版</h2><p>试了一下分享出来的破解版，除去上面的安装步骤，直接引入即可</p>
+<p>创建数据源，这个包比试用版好的是本地mongo能直接使用</p>
+<p><code>jdbc:mongo://localhost:27017/数据库</code></p>
+<h3 id="创建view（-id不显示、集合列表不显示）"><a href="#创建view（-id不显示、集合列表不显示）" class="headerlink" title="创建view（_id不显示、集合列表不显示）"></a>创建view（_id不显示、集合列表不显示）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj02.jpg" alt="mongo_uj02"></p>
+<h3 id="创建widget-1"><a href="#创建widget-1" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo_uj03.jpg" alt="mongo_uj03"></p>
+<p>从错误上来就不能很好的兼容，子查询关联查询更是不能正常使用</p>
+<h1 id="mongo-bi连接器"><a href="#mongo-bi连接器" class="headerlink" title="mongo-bi连接器"></a>mongo-bi连接器</h1><p>​    mongo官方没有提供mongo的JDBC驱动，但是提供了mongo-bi-connector，允许使用所选的BI工具通过标准SQL查询对MongoDB数据进行可视化。</p>
+<p>​    搜了一下资料，BI Connector 可以使用 SQL 或 ODBC 数据源方式直接访问 MongoDB，MongoDB 早期版本直接使用 Postgresql FDW 来实现 SQL 到 MQL 的转换，后来实现更加轻量级的 mongosqld 来支持 BI 工具的连接。这里我们就尝试一下mongosqld，来验证一下。</p>
+<h3 id="下载并安装mongo-bi-connector"><a href="#下载并安装mongo-bi-connector" class="headerlink" title="下载并安装mongo-bi-connector"></a>下载并安装mongo-bi-connector</h3><p>​    官方下载：<a href="https://www.mongodb.com/try/download/bi-connector，支持windows、linux版本" target="_blank" rel="noopener">https://www.mongodb.com/try/download/bi-connector，支持windows、linux版本</a></p>
+<p>​    默认安装即可</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>​    默认配置即可，如果有mongo做了限制，或者调整端口，修改<code>mongosqld-config.yml</code>，详细配置看官网</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">net:</span><br><span class="line">  bindIp: &quot;127.0.0.1&quot; # To bind to multiple IP addresses</span><br><span class="line">  port: 3307</span><br><span class="line">  mongodb:</span><br><span class="line">  net:</span><br><span class="line">    uri: &quot;mongodb://127.0.0.1:27017&quot;</span><br><span class="line">    ssl:</span><br><span class="line">      enabled: false</span><br><span class="line">    auth:</span><br><span class="line">      username: xxx</span><br><span class="line">      password: xxx</span><br><span class="line">      source: xxx</span><br><span class="line">      mechanism: SCRAM-SHA-1</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动mongosqld"><a href="#启动mongosqld" class="headerlink" title="启动mongosqld"></a>启动mongosqld</h3><p>​    我使用的windows版本双击<code>mongosqld.exe</code>运行即可</p>
+<h3 id="maven引入依赖包"><a href="#maven引入依赖包" class="headerlink" title="maven引入依赖包"></a>maven引入依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 这个包必须有 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;5.1.44&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 非必须，这个是JDBC认证插件，如果你做测试或者你的mongo本身在裸奔，就没必要了 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;5.1.42&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建数据源"><a href="#创建数据源" class="headerlink" title="创建数据源"></a>创建数据源</h3><p>备注：这里使用mysql即可</p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi01.jpg" alt="mongo-bi01"></p>
+<h3 id="创建view（-id和集合列表均正常）"><a href="#创建view（-id和集合列表均正常）" class="headerlink" title="创建view（_id和集合列表均正常）"></a>创建view（_id和集合列表均正常）</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi02.jpg" alt="mongo-bi02"></p>
+<h3 id="创建widget-2"><a href="#创建widget-2" class="headerlink" title="创建widget"></a>创建widget</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi03.jpg" alt="mongo-bi03"></p>
+<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi04.jpg" alt="mongo-bi04"></p>
+<h3 id="子查询-1"><a href="#子查询-1" class="headerlink" title="子查询"></a>子查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi05.jpg" alt="mongo-bi05"></p>
+<h3 id="关联查询-1"><a href="#关联查询-1" class="headerlink" title="关联查询"></a>关联查询</h3><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/08/mongo-bi06.jpg" alt="mongo-bi06"></p>
+<h1 id="开源手写驱动包"><a href="#开源手写驱动包" class="headerlink" title="开源手写驱动包"></a>开源手写驱动包</h1><p>​    这个绝对是一个解决方案，其实工作中就会封装mongo的一些比如关联查询类似的组件，写这个驱动包也未必没有优势，我觉着如果上面的方案兼容sql的场景如果存在问题，那么自己写的驱动包改造就容易的多，第三方的包就没那么好改了。</p>
+<p>​    这里推荐一个mongo的JDBC开源驱动包，如果有自己想写的想法仅供参考。</p>
+<p>​    连接：<a href="https://gitee.com/f4haofeng/mongodb-jdbc/tree/master/src/main/java/com/mongodb" target="_blank" rel="noopener">https://gitee.com/f4haofeng/mongodb-jdbc/tree/master/src/main/java/com/mongodb</a></p>
+<h1 id="综上所述"><a href="#综上所述" class="headerlink" title="综上所述"></a>综上所述</h1><p>​    其实，表格里面已经比较了，根据个人需求选择即可，还是推荐使用mongo官方的BI连接器的方式，虽然我们没有对性能进行比较，但从使用性、兼容性、子查询、关联查询等方面比较，BI连接器的方式完全能够胜任。</p>
+<h1 id="交流学习"><a href="#交流学习" class="headerlink" title="交流学习"></a>交流学习</h1><p>学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BI/" rel="tag"># BI</a>
+          
+            <a href="/tags/Davinci/" rel="tag"># Davinci</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/20/davinci-dev-newel/" rel="next" title="Davinci-二次开发系列07：BI新元素尝试">
+                <i class="fa fa-chevron-left"></i> Davinci-二次开发系列07：BI新元素尝试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/03/github-custom-home/" rel="prev" title="github自定义主页秀">
+                github自定义主页秀 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NjA0OC8yMjU1OQ"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="dumplingbao">
+            
+              <p class="site-author-name" itemprop="name">dumplingbao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dumplingbao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:bmm_java@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9877ae06aeaa" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/3005093235/profile?topnav=1&wvr=6" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5d5a62176fb9a06b2548e58c/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.acfun.cn/u/2176158.aspx" title="AcFun-九星之歌" target="_blank">AcFun-九星之歌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://space.bilibili.com/16873486/" title="B站-铃木爱理暗中观察团团长" target="_blank">B站-铃木爱理暗中观察团团长</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jandan.net/" title="煎蛋" target="_blank">煎蛋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用presto连接"><span class="nav-number">1.</span> <span class="nav-text">利用presto连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unityjdbc"><span class="nav-number">2.</span> <span class="nav-text">unityjdbc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方试用版"><span class="nav-number">2.1.</span> <span class="nav-text">官方试用版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view-id不能正常显示）"><span class="nav-number">2.1.1.</span> <span class="nav-text">创建view(_id不能正常显示）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建widget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">2.1.3.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联查询"><span class="nav-number">2.1.4.</span> <span class="nav-text">关联查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网传破解版"><span class="nav-number">2.2.</span> <span class="nav-text">网传破解版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view（-id不显示、集合列表不显示）"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建view（_id不显示、集合列表不显示）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">创建widget</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongo-bi连接器"><span class="nav-number">3.</span> <span class="nav-text">mongo-bi连接器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并安装mongo-bi-connector"><span class="nav-number">3.0.1.</span> <span class="nav-text">下载并安装mongo-bi-connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">3.0.2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动mongosqld"><span class="nav-number">3.0.3.</span> <span class="nav-text">启动mongosqld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven引入依赖包"><span class="nav-number">3.0.4.</span> <span class="nav-text">maven引入依赖包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据源"><span class="nav-number">3.0.5.</span> <span class="nav-text">创建数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建view（-id和集合列表均正常）"><span class="nav-number">3.0.6.</span> <span class="nav-text">创建view（_id和集合列表均正常）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建widget-2"><span class="nav-number">3.0.7.</span> <span class="nav-text">创建widget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询-1"><span class="nav-number">3.0.8.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联查询-1"><span class="nav-number">3.0.9.</span> <span class="nav-text">关联查询</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#开源手写驱动包"><span class="nav-number">4.</span> <span class="nav-text">开源手写驱动包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综上所述"><span class="nav-number">5.</span> <span class="nav-text">综上所述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交流学习"><span class="nav-number">6.</span> <span class="nav-text">交流学习</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dumplingbao</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
