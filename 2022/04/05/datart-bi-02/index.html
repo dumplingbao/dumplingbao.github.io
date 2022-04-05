@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo,travis ci,">
+  <meta name="keywords" content="BI,Datart,">
 
 
 
@@ -81,27 +81,24 @@
 
 
 
-<meta name="description" content="概述​    对于一个程序猿来说，软件开发是本职工作，你会经常听到”发布到测试服务器测试一下“、”今晚弄完打个包发布到正式环境上“，你会发现集成部署已然成为程序员的必备技能，更何况还有转岗专门做实施的。 ​    持续集成实际就是解决这些中间环节，自动化完成，就像构建、测试、集成类的工作，程序猿只需要提交代码剩下的活就自动干了。 ​    持续集成是一种软件开发实践，即团队开发成员经常集成他们的工">
-<meta name="keywords" content="hexo,travis ci">
+<meta name="description" content="概述今天整理了两个为未能参赛的作品，个人感觉还是比较好的两个点，就索性整理发出来。">
+<meta name="keywords" content="BI,Datart">
 <meta property="og:type" content="article">
-<meta property="og:title" content="持续集成部署-Travis CI">
-<meta property="og:url" content="https://dumplingbao.github.io/2019/08/22/travis-ci/index.html">
+<meta property="og:title" content="datart系列02：图表插件开发作品">
+<meta property="og:url" content="https://dumplingbao.github.io/2022/04/05/datart-bi-02/index.html">
 <meta property="og:site_name" content="diss带码">
-<meta property="og:description" content="概述​    对于一个程序猿来说，软件开发是本职工作，你会经常听到”发布到测试服务器测试一下“、”今晚弄完打个包发布到正式环境上“，你会发现集成部署已然成为程序员的必备技能，更何况还有转岗专门做实施的。 ​    持续集成实际就是解决这些中间环节，自动化完成，就像构建、测试、集成类的工作，程序猿只需要提交代码剩下的活就自动干了。 ​    持续集成是一种软件开发实践，即团队开发成员经常集成他们的工">
+<meta property="og:description" content="概述今天整理了两个为未能参赛的作品，个人感觉还是比较好的两个点，就索性整理发出来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-master.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-githubtoken.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-token.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-public.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-finish.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-History.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-mark.png">
-<meta property="og:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-pic.png">
-<meta property="og:updated_time" content="2021-11-26T18:18:19.597Z">
+<meta property="og:image" content="https://cdn.disscode.cn/blog/datart/02/xkcd01.jpg">
+<meta property="og:image" content="https://cdn.disscode.cn/blog/datart/02/xkcd02.jpg">
+<meta property="og:image" content="https://cdn.disscode.cn/blog/datart/02/xkcd03.jpg">
+<meta property="og:image" content="https://cdn.disscode.cn/blog/datart/02/cesium01.jpg">
+<meta property="og:image" content="https://cdn.disscode.cn/blog/datart/02/cesium04.jpg">
+<meta property="og:updated_time" content="2022-04-05T15:11:35.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="持续集成部署-Travis CI">
-<meta name="twitter:description" content="概述​    对于一个程序猿来说，软件开发是本职工作，你会经常听到”发布到测试服务器测试一下“、”今晚弄完打个包发布到正式环境上“，你会发现集成部署已然成为程序员的必备技能，更何况还有转岗专门做实施的。 ​    持续集成实际就是解决这些中间环节，自动化完成，就像构建、测试、集成类的工作，程序猿只需要提交代码剩下的活就自动干了。 ​    持续集成是一种软件开发实践，即团队开发成员经常集成他们的工">
-<meta name="twitter:image" content="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-master.png">
+<meta name="twitter:title" content="datart系列02：图表插件开发作品">
+<meta name="twitter:description" content="概述今天整理了两个为未能参赛的作品，个人感觉还是比较好的两个点，就索性整理发出来。">
+<meta name="twitter:image" content="https://cdn.disscode.cn/blog/datart/02/xkcd01.jpg">
 
 
 
@@ -131,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://dumplingbao.github.io/2019/08/22/travis-ci/">
+  <link rel="canonical" href="https://dumplingbao.github.io/2022/04/05/datart-bi-02/">
 
 
 
@@ -145,7 +142,7 @@
   </script>
 
 
-  <title>持续集成部署-Travis CI | diss带码</title>
+  <title>datart系列02：图表插件开发作品 | diss带码</title>
   
 
 
@@ -325,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2019/08/22/travis-ci/">
+    <link itemprop="mainEntityOfPage" href="https://dumplingbao.github.io/2022/04/05/datart-bi-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dumplingbao">
@@ -342,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">持续集成部署-Travis CI</h1>
+          <h1 class="post-title" itemprop="name headline">datart系列02：图表插件开发作品</h1>
         
 
         <div class="post-meta">
@@ -354,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T10:01:17+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-05T11:00:00+08:00">
+                2022-04-05
               </time>
             
 
@@ -377,8 +374,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/持续集成/" itemprop="url" rel="index">
-                    <span itemprop="name">持续集成</span>
+                  <a href="/categories/Datart/" itemprop="url" rel="index">
+                    <span itemprop="name">Datart</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化工具</span>
                   </a>
                 </span>
 
@@ -419,45 +427,17 @@
       
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>​    对于一个程序猿来说，软件开发是本职工作，你会经常听到”发布到测试服务器测试一下“、”今晚弄完打个包发布到正式环境上“，你会发现集成部署已然成为程序员的必备技能，更何况还有转岗专门做实施的。</p>
-<p>​    持续集成实际就是解决这些中间环节，自动化完成，就像构建、测试、集成类的工作，程序猿只需要提交代码剩下的活就自动干了。</p>
-<p>​    持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。（来自百度百科）</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>今天整理了两个为未能参赛的作品，个人感觉还是比较好的两个点，就索性整理发出来。</p>
 <a id="more"></a>
 
-<p>​    持续集成部署工具：</p>
-<ul>
-<li><p>Gitlab CI</p>
-</li>
-<li><p>Drone CI</p>
-</li>
-<li><p>Jenkins</p>
-</li>
-<li><p>Travis CI</p>
-</li>
-</ul>
-<p>这里不去介绍各自特点，有兴趣可以自己研究一下，只介绍一下Travis CI，市场份额最大的一个，不过好多人说是因为Travis CI绑定github的原因，所以也是主要说Travis CI结合github实现持续集成部署。</p>
-<h2 id="Travis-CI"><a href="#Travis-CI" class="headerlink" title="Travis CI"></a>Travis CI</h2><p>github建两个分支：一个放源代码，一个放编译后的文件</p>
-<p>这里以hexo搭建博客为例</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-master.png" alt="blog-master"></p>
-<h2 id="设置GitHub-Token"><a href="#设置GitHub-Token" class="headerlink" title="设置GitHub_Token"></a>设置GitHub_Token</h2><p>先到github上添加token</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-githubtoken.png" alt="blog-githubtoken"></p>
-<p>到Travis上添加token</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-token.png" alt="blog-token"></p>
-<h2 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h2><p>配置Travis CI实现自动编译发布</p>
-<p>到Travis官网，进入设置，打开要发布的公开仓库</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-public.png" alt="blog-public"></p>
-<p>创建<code>.travis.yml</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">language: node_js</span><br><span class="line">node_js: stable</span><br><span class="line"></span><br><span class="line">cache:</span><br><span class="line">  directories:</span><br><span class="line">    - node_modules</span><br><span class="line"></span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">    - hexo</span><br><span class="line"></span><br><span class="line">before_install:</span><br><span class="line">  - npm install -g hexo-cli</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># S: Build Lifecycle</span><br><span class="line">install:</span><br><span class="line">  - npm install</span><br><span class="line">  - npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># before_script:</span><br><span class="line"> # - npm install -g gulp</span><br><span class="line">    </span><br><span class="line">script:</span><br><span class="line">  - hexo clean</span><br><span class="line">  - hexo generate</span><br><span class="line"></span><br><span class="line">after_script:</span><br><span class="line">#  - cd ./public</span><br><span class="line">#  - git init</span><br><span class="line">  - git config user.name &quot;gattia&quot;</span><br><span class="line">  - git config user.email &quot;gattia.su@gmail.com&quot;</span><br><span class="line">#  - git add .</span><br><span class="line">#  - git commit -m &quot;Update docs&quot;</span><br><span class="line">#  - git push --force --quiet &quot;$&#123;Travis&#125;@$&#123;GH_REF&#125;&quot; master:master</span><br><span class="line">  - sed -i &quot;s/Travis/$&#123;Travis&#125;/g&quot; ./_config.yml</span><br><span class="line">  - hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>注意部署路径，修改提交测试一下</p>
-<p>发布完成</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-finish.png" alt="blog-finish"></p>
-<p>可以查看发布历史</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-History.png" alt="blog-History"></p>
-<p>点击项目右上角的build按钮，选择Markdown</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-mark.png" alt="blog-mark"></p>
-<p>将其复制到github项目下README中，图标开通成功</p>
-<p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/Travis/blog-pic.png" alt="blog-pic"><br>参考链接：<a href="https://segmentfault.com/a/1190000016603414?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016603414?utm_source=tag-newest</a></p>
+<h2 id="作品：手绘风格（D3）"><a href="#作品：手绘风格（D3）" class="headerlink" title="作品：手绘风格（D3）"></a>作品：手绘风格（D3）</h2><p>这个上一篇中说到了，也是时间的问题，未能找到原因，本以为是iframe嵌套导致的，后来官方给了去掉iframe的配置的方法进行了尝试，发现不是这个原因。</p>
+<p>其实到现在也没有完全定位不能正常的渲染的原因，今天就换了种实现方式，放弃直接用开源的轮子，直接写源代码到插件里面，发现能够正常展示了，后续在把其它图表的补充完整。效果如下：</p>
+<p><img src="https://cdn.disscode.cn/blog/datart/02/xkcd01.jpg" alt="xkcd01"></p>
+<p><img src="https://cdn.disscode.cn/blog/datart/02/xkcd02.jpg" alt="xkcd01"></p>
+<p><img src="https://cdn.disscode.cn/blog/datart/02/xkcd03.jpg" alt="xkcd01"></p>
+<h2 id="作品：3D地图（CesiumJs）"><a href="#作品：3D地图（CesiumJs）" class="headerlink" title="作品：3D地图（CesiumJs）"></a>作品：3D地图（CesiumJs）</h2><p>关于Threejs、WebGL、CesiumJs这里不做赘述，虽然CesiumJs受众相对较小，而且偏重GIS，但是利用cesiumjs做数字孪生应该也有很多了，所以就集成到datar插件试一下，而且CesiumJs号称永久开源免费，但是这个完全不在参赛作品计划内，原因很简单，用到了付费插件，虽然费用很低，做项目没有任何问题，但是参赛开源就不好了。但是CesiumJs作为datart插件集成还是很简单的，单纯的3D地球，肯定满足不了实际场景，但是花点实际研究研究API搞点特效出来，还是不难的，而且CesiumJs好用，效果出众，下面就看一下效果：</p>
+<p><img src="https://cdn.disscode.cn/blog/datart/02/cesium01.jpg" alt="xkcd01"></p>
+<p><img src="https://cdn.disscode.cn/blog/datart/02/cesium04.jpg" alt="xkcd01"></p>
 
       
     </div>
@@ -475,9 +455,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/BI/" rel="tag"># BI</a>
           
-            <a href="/tags/travis-ci/" rel="tag"># travis ci</a>
+            <a href="/tags/Datart/" rel="tag"># Datart</a>
           
         </div>
       
@@ -505,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/20/char-xkcd/" rel="next" title="手绘风格的图表库（char.xkcd）">
-                <i class="fa fa-chevron-left"></i> 手绘风格的图表库（char.xkcd）
+              <a href="/2022/03/27/datart-bi-01/" rel="next" title="datart系列01：图表插件开发作品大赛">
+                <i class="fa fa-chevron-left"></i> datart系列01：图表插件开发作品大赛
               </a>
             
           </div>
@@ -514,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/29/node-orm/" rel="prev" title="Node之ORM框架">
-                Node之ORM框架 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -719,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Travis-CI"><span class="nav-number">2.</span> <span class="nav-text">Travis CI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置GitHub-Token"><span class="nav-number">3.</span> <span class="nav-text">设置GitHub_Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Travis-CI"><span class="nav-number">4.</span> <span class="nav-text">配置Travis CI</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作品：手绘风格（D3）"><span class="nav-number">2.</span> <span class="nav-text">作品：手绘风格（D3）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作品：3D地图（CesiumJs）"><span class="nav-number">3.</span> <span class="nav-text">作品：3D地图（CesiumJs）</span></a></li></ol></div>
             
 
           </div>
