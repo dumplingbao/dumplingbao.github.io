@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dumplingbao.github.io/"/>
-  <updated>2022-04-05T15:11:35.674Z</updated>
+  <updated>2022-04-15T00:03:00.415Z</updated>
   <id>https://dumplingbao.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>datart系列03：图表插件开发</title>
+    <link href="https://dumplingbao.github.io/2022/04/15/datart-bi-03/"/>
+    <id>https://dumplingbao.github.io/2022/04/15/datart-bi-03/</id>
+    <published>2022-04-15T00:00:00.000Z</published>
+    <updated>2022-04-15T00:03:00.415Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>开篇写过，datart借助自定义插件的方式，实现自定义扩展插件，就有了无限的可能。</p><p>通过最近一段时间的使用，datart自定义插件的方式同时把原来的不可能或很麻烦的二次开发变成了可能。</p><p>本身一些复杂的定制化的需求就需要独立于BI之外去做，借助自定义插件既保留的原来的灵活性，又可以抽离形成标准化，本身BI系统就是希望通过标准化来进行数据的分析展示</p><a id="more"></a><h2 id="示例：库存01"><a href="#示例：库存01" class="headerlink" title="示例：库存01"></a>示例：库存01</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><img src="https://cdn.disscode.cn/blog/datart/03/1m-1.png" alt="1m-1"></p><h3 id="展示效果"><a href="#展示效果" class="headerlink" title="展示效果"></a>展示效果</h3><p><img src="https://cdn.disscode.cn/blog/datart/03/1-01.jpg" alt="1-01"></p><p><img src="https://cdn.disscode.cn/blog/datart/03/1-02.jpg" alt="1-02"></p><h2 id="示例：库存02"><a href="#示例：库存02" class="headerlink" title="示例：库存02"></a>示例：库存02</h2><p><img src="https://cdn.disscode.cn/blog/datart/03/2-01.jpg" alt="2-01"></p><p><img src="https://cdn.disscode.cn/blog/datart/03/2-02.jpg" alt="2-02"></p><h2 id="示例：库存03"><a href="#示例：库存03" class="headerlink" title="示例：库存03"></a>示例：库存03</h2><h3 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h3><p><img src="https://cdn.disscode.cn/blog/datart/03/3m-1.png" alt="3m-1"></p><h3 id="展示效果-1"><a href="#展示效果-1" class="headerlink" title="展示效果"></a>展示效果</h3><p><img src="https://cdn.disscode.cn/blog/datart/03/3-01.jpg" alt="3-01"></p><p><img src="https://cdn.disscode.cn/blog/datart/03/3-02.jpg" alt="3-02"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;开篇写过，datart借助自定义插件的方式，实现自定义扩展插件，就有了无限的可能。&lt;/p&gt;
+&lt;p&gt;通过最近一段时间的使用，datart自定义插件的方式同时把原来的不可能或很麻烦的二次开发变成了可能。&lt;/p&gt;
+&lt;p&gt;本身一些复杂的定制化的需求就需要独立于BI之外去做，借助自定义插件既保留的原来的灵活性，又可以抽离形成标准化，本身BI系统就是希望通过标准化来进行数据的分析展示&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Datart" scheme="https://dumplingbao.github.io/categories/Datart/"/>
+    
+      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
+    
+      <category term="Datart" scheme="https://dumplingbao.github.io/tags/Datart/"/>
+    
+  </entry>
   
   <entry>
     <title>datart系列02：图表插件开发作品</title>
@@ -534,33 +562,6 @@
       <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
     
       <category term="Metabase" scheme="https://dumplingbao.github.io/tags/Metabase/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Davinci-二次开发系列02：widget百度地图扩展</title>
-    <link href="https://dumplingbao.github.io/2020/03/19/davinci-dev-bmap/"/>
-    <id>https://dumplingbao.github.io/2020/03/19/davinci-dev-bmap/</id>
-    <published>2020-03-19T04:00:00.000Z</published>
-    <updated>2021-11-26T18:18:19.595Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Davinci 目前的地图是区域地图，取自json文件，地图目前是写死状态，区域地图下还有气泡图、飞行图和热力图，存在bug且这种写死的状态实在很难满足真实需求。</p><p>Davinci 目前没有集成百度或者高德地图，下面就说一下扩展百度地图的思路，其实也适用于echarts下的图表扩展，只不过地图有点特殊，由于echarts官网有百度地图的demo，所以选择百度地图，扩展起来应该更容易，高德地图也是可以的。</p><a id="more"></a><h2 id="widget介绍"><a href="#widget介绍" class="headerlink" title="widget介绍"></a>widget介绍</h2><p>Davinci 设计理念里面指出，Davinci <strong>围绕 View（数据视图）与 Widget（可视化组件）两个核心概念设计</strong>，其中Widget就是我们说的饼图、柱状图、表格、折线图等等组件，其实对于BI软件来说，数据的图表呈现是很重要的一部分，而且Widget工作台也是Davinci里面最复杂的一块。</p><p>Davinci workbench工作台如图：</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/widget02.png" alt="widget02"></p><h1 id="workbench"><a href="#workbench" class="headerlink" title="workbench"></a>workbench</h1><p>Davinci workbench工作台是很核心的且复杂的一部分，对于echart图表的扩展，主要对其修改即可。</p><h2 id="透视驱动和图表驱动"><a href="#透视驱动和图表驱动" class="headerlink" title="透视驱动和图表驱动"></a>透视驱动和图表驱动</h2><p>透视驱动：以<a href="https://en.wikipedia.org/wiki/Pivot_table" target="_blank" rel="noopener">透视表</a>为基础的可视化展示逻辑，可以简单认为复杂度比较高的，但是也强调了<em>目前透视驱动的配置项完善度不如图表驱动</em>，关于透视表可以看一下之前写的关于透视表PR那篇blog。</p><p>图表驱动：图表驱动即为常规的、基于图表分类的可视化展示逻辑。</p><h2 id="workbench前端代码目录"><a href="#workbench前端代码目录" class="headerlink" title="workbench前端代码目录"></a>workbench前端代码目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">└── webapp</span><br><span class="line">  └── app</span><br><span class="line">    └── containers</span><br><span class="line">      └── Widget                  //widget功能所在文件夹</span><br><span class="line">        ├── component                 //组件</span><br><span class="line">        | ├── Chart（图表驱动）</span><br><span class="line">        | ├── Config</span><br><span class="line">        | ├── Pivot（透视驱动）</span><br><span class="line">        | ├── Widget</span><br><span class="line">        | └── Workbench                   //工作台显示区（图表、数据、样式、配置）</span><br><span class="line">        | | ├── ConfigSections                //各个图表样式（图例、颜色、标签、xy轴等）配置</span><br><span class="line">        | | | ├── SpecSection</span><br><span class="line">        | | | └── TableSection</span><br><span class="line">        | | └── Dropbox</span><br><span class="line">        ├── config                    //初始化配置信息（数据、样式、配置）</span><br><span class="line">        | ├── chart（图表驱动）</span><br><span class="line">        | └── pivot（透视驱动）</span><br><span class="line">        ├── render  //根据信息最后处理（拼装echarts需要的配置）</span><br><span class="line">        | ├── chart（图表驱动）</span><br><span class="line">        | └── pivot（透视驱动）</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure><h2 id="echarts组件扩展"><a href="#echarts组件扩展" class="headerlink" title="echarts组件扩展"></a>echarts组件扩展</h2><p>概括起来就三个步骤</p><ol><li><p>扩展图表驱动图标</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/widget-icon.jpg" alt="widget-icon"></p></li><li><p>扩展图表样式（也可以用原有的，一般每个图表都有自己特有的一些样式配置）</p><p>可以参见<code>webapp/app/containers/Widget/component/Workbench/ConfigSections/SpecSection/specs</code>下的任意一个</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/widget-style.jpg" alt="widget-style"></p></li><li><p>扩展图表echarts拼装</p><p>可以参见<code>webapp/app/containers/Widget/render/chart</code>下的任意一个</p></li></ol><h1 id="百度地图扩展效果"><a href="#百度地图扩展效果" class="headerlink" title="百度地图扩展效果"></a>百度地图扩展效果</h1><h2 id="气泡根据数据变化大小和颜色"><a href="#气泡根据数据变化大小和颜色" class="headerlink" title="气泡根据数据变化大小和颜色"></a>气泡根据数据变化大小和颜色</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/simple-bubble.jpg" alt="widget-bubble"></p><h2 id="气泡根据数据变化颜色，大小不变"><a href="#气泡根据数据变化颜色，大小不变" class="headerlink" title="气泡根据数据变化颜色，大小不变"></a>气泡根据数据变化颜色，大小不变</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/simple%3Dbubble.jpg" alt="simple=bubble"></p><h2 id="气泡水波效果"><a href="#气泡水波效果" class="headerlink" title="气泡水波效果"></a>气泡水波效果</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/simple-wave.jpg" alt="simple-wave"></p><h2 id="绿色雨滴效果"><a href="#绿色雨滴效果" class="headerlink" title="绿色雨滴效果"></a>绿色雨滴效果</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/green-rain.jpg" alt="green-rain"></p><h2 id="黑色热力效果"><a href="#黑色热力效果" class="headerlink" title="黑色热力效果"></a>黑色热力效果</h2><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/01/night-heat.jpg" alt="night-heat"></p><h1 id="几个推荐和注意"><a href="#几个推荐和注意" class="headerlink" title="几个推荐和注意"></a>几个推荐和注意</h1><h2 id="百度地图秘钥"><a href="#百度地图秘钥" class="headerlink" title="百度地图秘钥"></a>百度地图秘钥</h2><p>需要去百度地图开放平台申请秘钥，并引入百度地图插件</p><p>放到app下面index.html里即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://api.map.baidu.com/api?v=2.0&amp;ak=秘钥&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="react引入echarts百度地图扩展"><a href="#react引入echarts百度地图扩展" class="headerlink" title="react引入echarts百度地图扩展"></a>react引入echarts百度地图扩展</h2><p>可以放到app.tsx里面，也可以放到widget组件chart.tsx里面（推荐）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;echarts/extension/bmap/bmap&apos;</span><br></pre></td></tr></table></figure><h2 id="图标使用阿里的iconfont"><a href="#图标使用阿里的iconfont" class="headerlink" title="图标使用阿里的iconfont"></a>图标使用阿里的iconfont</h2><p>Davinci 使用的就是阿里的iconfont，所以这了也建议使用，存放在assets/font下面，像ttf和woff文件需要找专门的工具做导入，比较多容易搜到。</p><h2 id="echarts地图和其它图表切换问题"><a href="#echarts地图和其它图表切换问题" class="headerlink" title="echarts地图和其它图表切换问题"></a>echarts地图和其它图表切换问题</h2><p>比如饼图切换柱状图，直接clear就行，但是百度地图不能直接clear所以需要dispose以下然后再创建，目前没有找到更好的办法。</p><h2 id="数据和echarts组装参见官网"><a href="#数据和echarts组装参见官网" class="headerlink" title="数据和echarts组装参见官网"></a>数据和echarts组装参见官网</h2><p>空气质量-百度地图地址：<a href="https://www.echartsjs.com/examples/zh/editor.html?c=effectScatter-bmap" target="_blank" rel="noopener">https://www.echartsjs.com/examples/zh/editor.html?c=effectScatter-bmap</a></p><h2 id="地图主题使用地图编辑器"><a href="#地图主题使用地图编辑器" class="headerlink" title="地图主题使用地图编辑器"></a>地图主题使用地图编辑器</h2><p>官方编辑器，个性化地图：<a href="http://lbsyun.baidu.com/apiconsole/custommap" target="_blank" rel="noopener">http://lbsyun.baidu.com/apiconsole/custommap</a></p><p>如果想要现成的推荐使用，百度地图个性在线编辑器：<a href="https://developer.baidu.com/map/custom/" target="_blank" rel="noopener">https://developer.baidu.com/map/custom/</a></p><p>可以自动生成配置的json文件，强烈推荐！！！</p><h2 id="中心坐标和缩放比例"><a href="#中心坐标和缩放比例" class="headerlink" title="中心坐标和缩放比例"></a>中心坐标和缩放比例</h2><p>目前中心坐标和缩放比例手动输入，不能从百度地图自动获取</p><h2 id="气泡大小随数值大小变化问题"><a href="#气泡大小随数值大小变化问题" class="headerlink" title="气泡大小随数值大小变化问题"></a>气泡大小随数值大小变化问题</h2><p>数据量级跨度较大的数据，不能很好的展示气泡大小显示效果，可以用最大最小值做一些简单的处理，期待有更好的算法规则。</p><h2 id="经纬度设置问题"><a href="#经纬度设置问题" class="headerlink" title="经纬度设置问题"></a>经纬度设置问题</h2><p>百度地图需要经纬度定位，图表维度里面需要拖入经纬度，并且需要提前设置维度类型为经纬度才可以。</p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/02/jwd.jpg" alt="jwd"></p><p><img src="https://ossbao.oss-cn-qingdao.aliyuncs.com/blog/davinci/02/jwd02.jpg" alt="jwd02"></p><h1 id="交流学习"><a href="#交流学习" class="headerlink" title="交流学习"></a>交流学习</h1><p>刚建的群，学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;Davinci 目前的地图是区域地图，取自json文件，地图目前是写死状态，区域地图下还有气泡图、飞行图和热力图，存在bug且这种写死的状态实在很难满足真实需求。&lt;/p&gt;
-&lt;p&gt;Davinci 目前没有集成百度或者高德地图，下面就说一下扩展百度地图的思路，其实也适用于echarts下的图表扩展，只不过地图有点特殊，由于echarts官网有百度地图的demo，所以选择百度地图，扩展起来应该更容易，高德地图也是可以的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化工具" scheme="https://dumplingbao.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="Davinci" scheme="https://dumplingbao.github.io/categories/Davinci/"/>
-    
-    
-      <category term="BI" scheme="https://dumplingbao.github.io/tags/BI/"/>
-    
-      <category term="Davinci" scheme="https://dumplingbao.github.io/tags/Davinci/"/>
     
   </entry>
   
