@@ -396,6 +396,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/27/metabase-bi-tabfa/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/02/27/metabase-bi-tabfa/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -492,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/27/metabase-bi-tabpr/" rel="next" title="Metabase-BI系列08：一个关于透视表的PR">
-                <i class="fa fa-chevron-left"></i> Metabase-BI系列08：一个关于透视表的PR
+              <a href="/2020/01/15/metabase-bi-v033/" rel="next" title="Metabase-BI系列07：V0.33版本焕然一新">
+                <i class="fa fa-chevron-left"></i> Metabase-BI系列07：V0.33版本焕然一新
               </a>
             
           </div>
@@ -502,8 +512,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/19/davinci-dev-kp/" rel="prev" title="Davinci-二次开发系列01：开篇">
-                Davinci-二次开发系列01：开篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/27/metabase-bi-tabpr/" rel="prev" title="Metabase-BI系列08：一个关于透视表的PR">
+                Metabase-BI系列08：一个关于透视表的PR <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,6 +542,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -892,6 +909,43 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'dumplingbao',
+            repo: 'blogissue',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'bb82ecf1a6c82cfa5279707efbb1dbf9560f02ff',
+            
+                client_id: 'd1b4ae26ff946cd60300'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
