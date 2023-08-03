@@ -287,6 +287,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Metabase-BI系列10：新版透视表实现方案]]></title>
+    <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabfa%2F</url>
+    <content type="text"><![CDATA[​ 之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。 ​ 详情可以到github上看一下,PR：Metabase pull request #8427 ​ 效果如下： ​ 实现​ 准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。 ​ 由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。 ​ 作者就是新加了一种可视化图表的类型： ​ ​ 所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。 ​ 注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容 ​ 但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案： 方案一​ Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。 找到代码目录/src/metabase/query_processor/middleware/dev.clj中的代码 123;; 放开columns权限，将columns换个名字就可以了，这里我加了AA(complement :columnsAA)&quot;QP results should no longer include :columns.&quot;)) 方案二​ 如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下： 123456 columns = [] if(cols.length&gt;0)&#123;​ cols.map(item=&gt;&#123;​ columns.push(item.name)​ &#125;) &#125; 备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。]]></content>
+      <categories>
+        <category>可视化工具</category>
+        <category>Metabase</category>
+      </categories>
+      <tags>
+        <tag>BI</tag>
+        <tag>Metabase</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Metabase-BI系列09：透视表PR功能实现解析]]></title>
     <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabjx%2F</url>
     <content type="text"><![CDATA[​ 上一篇文章介绍了Metabase透视表的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。 效果呈现 实现原理数据结构Metabase返回的数据结构，通过前端进行封装，版本之间会存在差别 1frontend\src\metabase\meta\types\Dataset.js 12345678export type DatasetData = &#123; cols: Column[],//列信息 columns: ColumnName[],//备注：新版本没有columns字段 rows: Row[],//行信息 rows_truncated?: number, requested_timezone?: string, results_timezone?: string,&#125;; 新增的图表类型由于Metabase组件化的代码，所以作者新增图表类型，不影响原来的功能和代码 1frontend\src\metabase\visualizations\index.js 123import SummaryTable from &quot;./visualizations/SummaryTable&quot;;registerVisualization(SummaryTable); 复杂表头图表设置项1234567const emptyStateSerialized: SummaryTableSettings = &#123; groupsSources: [], columnsSource: [], valuesSources: [], unusedColumns: [], columnNameToMetadata: &#123;&#125;,&#125;; 行显示字段：多个分组嵌套 列显示字段：列字段只能有一个不支持多个进行嵌套 聚合字段（度量） 不可见字段：分组列表里面有，但是手动设置不显示的字段 行和列字段支持功能： 汇总 排序 核心处理在原有的table基础上进行的修改，主要添加了这个js实现计算汇总及后续处理 1frontend\src\metabase\visualizations\lib\summary_table_datasetdata_builder.js 123456789101112131415161718192021222324252627282930313233343536373839export const buildDatasetData = (//格式化数据集 settings: SummaryTableSettings, mainResults: DatasetData, resultsProvider: ResultProvider,): SummaryTableDatasetData =&gt; &#123; const &#123; columnsHeaders, cols, dimensions &#125; = buildColumnHeaders(//生成列标题 settings, mainResults, ); const compressedColumnsHeaders = tryCompressColumnsHeaders(//压缩列标题处理 settings, columnsHeaders, ); const rowAssembler = getRowAssembler(columnsHeaders);//行数据装配 const queryPlan = getQueryPlan(//生成合计 settings, canTotalizeBuilder(mainResults.cols), ); const rows = combineData(rowAssembler, queryPlan, settings, resultsProvider);//合并数据 //生成列索引 const columnIndexToFirstInGroupIndexes = buildColumnIndexToFirstInGroupIndexes( rows, settings, ); //生成行索引 const rowIndexesToColSpans = buildRowIndexesToColSpans(settings, rows, cols); return &#123; columnsHeaders: compressedColumnsHeaders, cols, columns: cols.map(p =&gt; p.name), rows, columnIndexToFirstInGroupIndexes, isGrouped: columnIndex =&gt; columnIndex in columnIndexToFirstInGroupIndexes, rowIndexesToColSpans, dimensions, &#125;;&#125;; js组件（lodash）数据处理Lodash是一个著名的javascript原生库，不需要引入其他第三方依赖，像Jquery的一样，十分简洁，正是利用lodash实现数据的js处理。 1234567891011121314&quot;lodash.flatmap&quot;: &quot;^4.5.0&quot;,&quot;lodash.get&quot;: &quot;^4.1.2&quot;,&quot;lodash.invert&quot;: &quot;^4.3.0&quot;,&quot;lodash.isequal&quot;: &quot;^4.5.0&quot;,&quot;lodash.mapkeys&quot;: &quot;^4.6.0&quot;,&quot;lodash.mapvalues&quot;: &quot;^4.6.0&quot;,&quot;lodash.orderby&quot;: &quot;^4.6.0&quot;,&quot;lodash.partition&quot;: &quot;^4.6.0&quot;,&quot;lodash.range&quot;: &quot;^3.2.0&quot;,&quot;lodash.set&quot;: &quot;^4.1.2&quot;,&quot;lodash.sortby&quot;: &quot;^4.6.0&quot;,&quot;lodash.unset&quot;: &quot;^4.1.2&quot;,&quot;lodash.values&quot;: &quot;^4.3.0&quot;,&quot;lodash.zip&quot;: &quot;^4.2.0&quot;]]></content>
@@ -303,19 +316,6 @@
     <title><![CDATA[Metabase-BI系列08：一个关于透视表的PR]]></title>
     <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabpr%2F</url>
     <content type="text"><![CDATA[概述​ Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。 透视表和交叉表区别​ 关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点 透视表是一种常见的数据汇总工具，进行数据聚合 交叉表是专指分组频率的 交叉表是一种特殊的透视表 Metabase透视表​ Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。 ​ 效果图如下： 介绍这个PRPR：Metabase pull request #8427 2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。 这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。 有184次提交记录 Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论 此复杂表头的表格，支持sql查询方式。 对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化 r-hot用js进行了实现，但是存在js精度不够导致的数据偏差 r-hot对性能进行了优化 有人热衷，有人关注 open了很长时间 最终还是关闭了 这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。 ​ 这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。 ​ sql查询效果图： Metabase透视表展示Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。 必须是两个分组列，才默认开启，可以关闭 超过两个分组列，不支持透视表 新版透视表如下： 旧版效果图：]]></content>
-      <categories>
-        <category>可视化工具</category>
-        <category>Metabase</category>
-      </categories>
-      <tags>
-        <tag>BI</tag>
-        <tag>Metabase</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Metabase-BI系列10：新版透视表实现方案]]></title>
-    <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabfa%2F</url>
-    <content type="text"><![CDATA[​ 之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。 ​ 详情可以到github上看一下,PR：Metabase pull request #8427 ​ 效果如下： ​ 实现​ 准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。 ​ 由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。 ​ 作者就是新加了一种可视化图表的类型： ​ ​ 所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。 ​ 注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容 ​ 但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案： 方案一​ Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。 找到代码目录/src/metabase/query_processor/middleware/dev.clj中的代码 123;; 放开columns权限，将columns换个名字就可以了，这里我加了AA(complement :columnsAA)&quot;QP results should no longer include :columns.&quot;)) 方案二​ 如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下： 123456 columns = [] if(cols.length&gt;0)&#123;​ cols.map(item=&gt;&#123;​ columns.push(item.name)​ &#125;) &#125; 备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。]]></content>
       <categories>
         <category>可视化工具</category>
         <category>Metabase</category>
