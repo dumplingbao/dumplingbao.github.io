@@ -261,6 +261,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Davinci-二次开发系列01：开篇]]></title>
+    <url>%2F2020%2F03%2F19%2Fdavinci-dev-kp%2F</url>
+    <content type="text"><![CDATA[概述Davinci 是宜信出品的DVaaS（数据可视化及服务）的一款BI产品，翻译过来是达芬奇，达芬奇大家都知道著名画家，代表作有《蒙娜丽莎》。所以通过名字就能看出来宜信对着产品的厚望，颇有一种想要成为大师的意思。 百度搜Davinci会搜出DaVinci Resolve这款不知道你知不知道的调色软件，所以看来宜信这名字没起好，导致宜信Davinci目前来看已经藏着了百度第二页。 宜信公司：成立于2006年，专注围绕普惠金融和财富管理。 宜信技术学院：宜信技术团队，2017年，宜信技术学院正式成立，通过分享在金融科技领域的开源成果、研发实践促进金融科技生态圈企业创新升级，确实很牛的样子。 宜信开源主要的开源产品可以在宜信技术学院官网上找到：http://college.creditease.cn/techOpenSource DBus：专注于数据的收集及实时数据流计算 Moonbox：是一个DAAS（Data Virtualization as a Service）平台解决方案 Wormhole：是一个SPAAS（Stream Processing as a Service）平台解决方案 Davinci：是一个DVAAS（Data Visualization as a Service）平台解决方案 宜信技术学院号称利用开源来支撑智能化运维 技术框架Davinci 采用前端分离的方式，后端java系，前端react，图表echarts。 前端：Antd + ES6 + TypeScript + WebPack Antd：Ant Design of React，基于 Ant Design 设计体系的 React UI 组件库，是蚂蚁金服一套开箱即用的高质量 React 组件，Davici 用Reac 实现，此外Ant Design 还有 Angular、Vue 的实现 ES6：新一代js语法，过！ TypeScript：一种由微软开发的开源、跨平台的编程语言，JavaScript的超集，最终会被编译为JavaScript代码 WebPack：打包工具，过！ 后端：springboot + mybatis-plus + maven 后端java，标准的springboot、mybatis-plus框架，容易理解。 此外采用swagger框架生成api接口说明。 图表库：echart，特点就是使用和集成简单，但是没有D3那么灵活。 二次开发Davinci 源代码github地址：https://github.com/edp963/davinci 二次开发完全可以参考Davinci 的使用手册的文档说明，介绍比较详细，这里只说几个注意点。 注意点一：分支这里需要注意一下，目前Davinci默认的分支是dev-0.3，目前Davinci最新维护的版本是0.3版本，所以clone最新dev-0.3版本即可。 注意点二：前端installDavinci 前端启动install的时候，建议使用cnpm install，不要用npm install即使设置使用淘宝源也容易出现问题。 注意点三：前端启动错误前端启动会发现有很多文件报错，有些可能是严格校验导致的，大部分确实存在严格意义上的错误，但是不用管这些错误就可以了，不影响使用和二次开发。 注意点四：前端发布Davinci 前端发布访问的是davinci-ui文件夹下面，前端打包在webapp的build下面，所以如果正式发布，需要将build下的文件拷贝到davinci-ui下面，bin下面未提供自动前端发布的脚本命令，此外由于每次打包生成的前端文件命名不一样，davinci-ui下的原文件删除即可。 注意点五：邮件定时任务除了邮件的邮箱配置正确以外，如果想正常接收，需要安装phantomjs。 点评一下Davinci概览里面已经把架构、设计理念、功能特点等等介绍的挺全面的了，这里在突出强调几个点： 数据行列权限控制的比较全 大屏display功能亮点，大屏数据可视化展示已然成为未来的趋势，目前不完善，提升改造空间大 功能确实很全，透视表功能也比较完善 针对二次开发的优缺点： java系并采用主流框架易于二次开发 架构清晰，易于理解 开源时间短，社区论坛没有，资料相对较少 功能多，bug也多 代码质量略差，有明显多人开发和功能需求增加引起的规范性上的不完美 前端界面尤其移动端效果较差，这个同样也给二次开发带来更大的提升空间 不管怎么说，Davinci还是挺不错的一块BI产品，也比较适合二次开发。 交流学习刚建的群，学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。]]></content>
+      <categories>
+        <category>可视化工具</category>
+        <category>Davinci</category>
+      </categories>
+      <tags>
+        <tag>BI</tag>
+        <tag>Davinci</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Davinci-二次开发系列02：widget百度地图扩展]]></title>
     <url>%2F2020%2F03%2F19%2Fdavinci-dev-bmap%2F</url>
     <content type="text"><![CDATA[概述Davinci 目前的地图是区域地图，取自json文件，地图目前是写死状态，区域地图下还有气泡图、飞行图和热力图，存在bug且这种写死的状态实在很难满足真实需求。 Davinci 目前没有集成百度或者高德地图，下面就说一下扩展百度地图的思路，其实也适用于echarts下的图表扩展，只不过地图有点特殊，由于echarts官网有百度地图的demo，所以选择百度地图，扩展起来应该更容易，高德地图也是可以的。 widget介绍Davinci 设计理念里面指出，Davinci 围绕 View（数据视图）与 Widget（可视化组件）两个核心概念设计，其中Widget就是我们说的饼图、柱状图、表格、折线图等等组件，其实对于BI软件来说，数据的图表呈现是很重要的一部分，而且Widget工作台也是Davinci里面最复杂的一块。 Davinci workbench工作台如图： workbenchDavinci workbench工作台是很核心的且复杂的一部分，对于echart图表的扩展，主要对其修改即可。 透视驱动和图表驱动透视驱动：以透视表为基础的可视化展示逻辑，可以简单认为复杂度比较高的，但是也强调了目前透视驱动的配置项完善度不如图表驱动，关于透视表可以看一下之前写的关于透视表PR那篇blog。 图表驱动：图表驱动即为常规的、基于图表分类的可视化展示逻辑。 workbench前端代码目录123456789101112131415161718192021└── webapp └── app └── containers └── Widget //widget功能所在文件夹 ├── component //组件 | ├── Chart（图表驱动） | ├── Config | ├── Pivot（透视驱动） | ├── Widget | └── Workbench //工作台显示区（图表、数据、样式、配置） | | ├── ConfigSections //各个图表样式（图例、颜色、标签、xy轴等）配置 | | | ├── SpecSection | | | └── TableSection | | └── Dropbox ├── config //初始化配置信息（数据、样式、配置） | ├── chart（图表驱动） | └── pivot（透视驱动） ├── render //根据信息最后处理（拼装echarts需要的配置） | ├── chart（图表驱动） | └── pivot（透视驱动） ... echarts组件扩展概括起来就三个步骤 扩展图表驱动图标 扩展图表样式（也可以用原有的，一般每个图表都有自己特有的一些样式配置） 可以参见webapp/app/containers/Widget/component/Workbench/ConfigSections/SpecSection/specs下的任意一个 扩展图表echarts拼装 可以参见webapp/app/containers/Widget/render/chart下的任意一个 百度地图扩展效果气泡根据数据变化大小和颜色 气泡根据数据变化颜色，大小不变 气泡水波效果 绿色雨滴效果 黑色热力效果 几个推荐和注意百度地图秘钥需要去百度地图开放平台申请秘钥，并引入百度地图插件 放到app下面index.html里即可 1&lt;script src=&quot;http://api.map.baidu.com/api?v=2.0&amp;ak=秘钥&quot;&gt;&lt;/script&gt; react引入echarts百度地图扩展可以放到app.tsx里面，也可以放到widget组件chart.tsx里面（推荐） 1import &apos;echarts/extension/bmap/bmap&apos; 图标使用阿里的iconfontDavinci 使用的就是阿里的iconfont，所以这了也建议使用，存放在assets/font下面，像ttf和woff文件需要找专门的工具做导入，比较多容易搜到。 echarts地图和其它图表切换问题比如饼图切换柱状图，直接clear就行，但是百度地图不能直接clear所以需要dispose以下然后再创建，目前没有找到更好的办法。 数据和echarts组装参见官网空气质量-百度地图地址：https://www.echartsjs.com/examples/zh/editor.html?c=effectScatter-bmap 地图主题使用地图编辑器官方编辑器，个性化地图：http://lbsyun.baidu.com/apiconsole/custommap 如果想要现成的推荐使用，百度地图个性在线编辑器：https://developer.baidu.com/map/custom/ 可以自动生成配置的json文件，强烈推荐！！！ 中心坐标和缩放比例目前中心坐标和缩放比例手动输入，不能从百度地图自动获取 气泡大小随数值大小变化问题数据量级跨度较大的数据，不能很好的展示气泡大小显示效果，可以用最大最小值做一些简单的处理，期待有更好的算法规则。 经纬度设置问题百度地图需要经纬度定位，图表维度里面需要拖入经纬度，并且需要提前设置维度类型为经纬度才可以。 交流学习刚建的群，学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。]]></content>
@@ -274,16 +287,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Davinci-二次开发系列01：开篇]]></title>
-    <url>%2F2020%2F03%2F19%2Fdavinci-dev-kp%2F</url>
-    <content type="text"><![CDATA[概述Davinci 是宜信出品的DVaaS（数据可视化及服务）的一款BI产品，翻译过来是达芬奇，达芬奇大家都知道著名画家，代表作有《蒙娜丽莎》。所以通过名字就能看出来宜信对着产品的厚望，颇有一种想要成为大师的意思。 百度搜Davinci会搜出DaVinci Resolve这款不知道你知不知道的调色软件，所以看来宜信这名字没起好，导致宜信Davinci目前来看已经藏着了百度第二页。 宜信公司：成立于2006年，专注围绕普惠金融和财富管理。 宜信技术学院：宜信技术团队，2017年，宜信技术学院正式成立，通过分享在金融科技领域的开源成果、研发实践促进金融科技生态圈企业创新升级，确实很牛的样子。 宜信开源主要的开源产品可以在宜信技术学院官网上找到：http://college.creditease.cn/techOpenSource DBus：专注于数据的收集及实时数据流计算 Moonbox：是一个DAAS（Data Virtualization as a Service）平台解决方案 Wormhole：是一个SPAAS（Stream Processing as a Service）平台解决方案 Davinci：是一个DVAAS（Data Visualization as a Service）平台解决方案 宜信技术学院号称利用开源来支撑智能化运维 技术框架Davinci 采用前端分离的方式，后端java系，前端react，图表echarts。 前端：Antd + ES6 + TypeScript + WebPack Antd：Ant Design of React，基于 Ant Design 设计体系的 React UI 组件库，是蚂蚁金服一套开箱即用的高质量 React 组件，Davici 用Reac 实现，此外Ant Design 还有 Angular、Vue 的实现 ES6：新一代js语法，过！ TypeScript：一种由微软开发的开源、跨平台的编程语言，JavaScript的超集，最终会被编译为JavaScript代码 WebPack：打包工具，过！ 后端：springboot + mybatis-plus + maven 后端java，标准的springboot、mybatis-plus框架，容易理解。 此外采用swagger框架生成api接口说明。 图表库：echart，特点就是使用和集成简单，但是没有D3那么灵活。 二次开发Davinci 源代码github地址：https://github.com/edp963/davinci 二次开发完全可以参考Davinci 的使用手册的文档说明，介绍比较详细，这里只说几个注意点。 注意点一：分支这里需要注意一下，目前Davinci默认的分支是dev-0.3，目前Davinci最新维护的版本是0.3版本，所以clone最新dev-0.3版本即可。 注意点二：前端installDavinci 前端启动install的时候，建议使用cnpm install，不要用npm install即使设置使用淘宝源也容易出现问题。 注意点三：前端启动错误前端启动会发现有很多文件报错，有些可能是严格校验导致的，大部分确实存在严格意义上的错误，但是不用管这些错误就可以了，不影响使用和二次开发。 注意点四：前端发布Davinci 前端发布访问的是davinci-ui文件夹下面，前端打包在webapp的build下面，所以如果正式发布，需要将build下的文件拷贝到davinci-ui下面，bin下面未提供自动前端发布的脚本命令，此外由于每次打包生成的前端文件命名不一样，davinci-ui下的原文件删除即可。 注意点五：邮件定时任务除了邮件的邮箱配置正确以外，如果想正常接收，需要安装phantomjs。 点评一下Davinci概览里面已经把架构、设计理念、功能特点等等介绍的挺全面的了，这里在突出强调几个点： 数据行列权限控制的比较全 大屏display功能亮点，大屏数据可视化展示已然成为未来的趋势，目前不完善，提升改造空间大 功能确实很全，透视表功能也比较完善 针对二次开发的优缺点： java系并采用主流框架易于二次开发 架构清晰，易于理解 开源时间短，社区论坛没有，资料相对较少 功能多，bug也多 代码质量略差，有明显多人开发和功能需求增加引起的规范性上的不完美 前端界面尤其移动端效果较差，这个同样也给二次开发带来更大的提升空间 不管怎么说，Davinci还是挺不错的一块BI产品，也比较适合二次开发。 交流学习刚建的群，学习Metabase、Davinci等开源BI，群号：72569367，感兴趣的可以加一下。]]></content>
+    <title><![CDATA[Metabase-BI系列10：新版透视表实现方案]]></title>
+    <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabfa%2F</url>
+    <content type="text"><![CDATA[​ 之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。 ​ 详情可以到github上看一下,PR：Metabase pull request #8427 ​ 效果如下： ​ 实现​ 准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。 ​ 由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。 ​ 作者就是新加了一种可视化图表的类型： ​ ​ 所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。 ​ 注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容 ​ 但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案： 方案一​ Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。 找到代码目录/src/metabase/query_processor/middleware/dev.clj中的代码 123;; 放开columns权限，将columns换个名字就可以了，这里我加了AA(complement :columnsAA)&quot;QP results should no longer include :columns.&quot;)) 方案二​ 如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下： 123456 columns = [] if(cols.length&gt;0)&#123;​ cols.map(item=&gt;&#123;​ columns.push(item.name)​ &#125;) &#125; 备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。]]></content>
       <categories>
         <category>可视化工具</category>
-        <category>Davinci</category>
+        <category>Metabase</category>
       </categories>
       <tags>
         <tag>BI</tag>
-        <tag>Davinci</tag>
+        <tag>Metabase</tag>
       </tags>
   </entry>
   <entry>
@@ -303,19 +316,6 @@
     <title><![CDATA[Metabase-BI系列08：一个关于透视表的PR]]></title>
     <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabpr%2F</url>
     <content type="text"><![CDATA[概述​ Excel中经常用到合并单元格，制作复杂表头的表格（透视表）。后台系统、财务系统、报表系统等等对于这种复杂表头的表格还是很刚需的，尤其是像财务这种系统。Excel很擅长这种复杂表头，实现起来很容易，但是软件系统确并那么容易，复杂度越高难度越大，甚至好多系统研究怎么和Excel做集成，一是Excel的强大，二是最终还是要导出Excel的。 透视表和交叉表区别​ 关于透视表和交叉表的区别，你能搜多一些材料，但是不见的能理解。我个人感觉严格的界限也没那么清晰，只要只知道交叉表专指两列（或者多列）分组出现的频率就可以了，更何况交叉表还是一种特殊的透视表呢。概括起来就这么三点 透视表是一种常见的数据汇总工具，进行数据聚合 交叉表是专指分组频率的 交叉表是一种特殊的透视表 Metabase透视表​ Metabase小清晰、简洁干练的风格似乎对这种复杂的东西似乎格格不入，尽管Metabase有透视表的功能，但Metabase的透视表真的是简单而且别具一格，基本算不上透视表的功能。正因为不满足，总有人蠢蠢欲动，今天就讲一篇Metabase开源库中很多人热衷的一个PR,，关于Metabase透视表的实现。 ​ 效果图如下： 介绍这个PRPR：Metabase pull request #8427 2018年8月30日提出，2020年1月31日由于时间问题和性能问题关闭。 这个复杂表头的表格需求肯定是有的，r-hot进行了尝试，将查询字段按顺序进行分组，并能对分组进行排序，还能显示分组统计。 有184次提交记录 Metabase 源码维护者进行讨论过，查询较多，导致后端沉重，复杂计算存在问题，并提交高级别讨论 此复杂表头的表格，支持sql查询方式。 对于平均值汇总没有意义，平均值理论应该是先汇总在求值，除非增加新的请求，即使你只要计数和汇总，Metabase聚合是公共组件，就得特殊处理，所以这个确实影响Metabase的标准化 r-hot用js进行了实现，但是存在js精度不够导致的数据偏差 r-hot对性能进行了优化 有人热衷，有人关注 open了很长时间 最终还是关闭了 这个PR转眼已经过去一年多了，从代码提交来看甚至更早了，所以这个是在v0.33版本（新版本）之前的版本上（大概是v0.30版本）上进行改造的，关于版本历史和v0.33版本可以一查看我的Metabase系列里面文章的介绍。不管怎么说这个pr还是值得关注的，尽管平均值汇总的问题和Metabase标准化的问题不可避免的会存在。 ​ 这个版本你可以下载下来跑起来看，关于最新版本上的效果，下一篇文章会给出解决方案。这篇重点还是介绍这个pr。既然需求有，或许早晚会出来一版，如果有需求也可以先用r-hot这个版本的实现，一些汇总统计的需求还是满足的。 ​ sql查询效果图： Metabase透视表展示Metabase透视表是现有的功能，感觉就像交叉表，复杂表头不支持。 必须是两个分组列，才默认开启，可以关闭 超过两个分组列，不支持透视表 新版透视表如下： 旧版效果图：]]></content>
-      <categories>
-        <category>可视化工具</category>
-        <category>Metabase</category>
-      </categories>
-      <tags>
-        <tag>BI</tag>
-        <tag>Metabase</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Metabase-BI系列10：新版透视表实现方案]]></title>
-    <url>%2F2020%2F02%2F27%2Fmetabase-bi-tabfa%2F</url>
-    <content type="text"><![CDATA[​ 之前已经介绍了复杂表头表格的开源PR，时间较早，基于Metabase V0.30版本的实现，而Metabase V0.33版本之后变化较大，所以如果在新版上实现PR中Metabase 复杂表头表格功能需要做改造。当然如果实力允许，你也可以按照自己的思路去实现。 ​ 详情可以到github上看一下,PR：Metabase pull request #8427 ​ 效果如下： ​ 实现​ 准备工作：到r-hot下面找到fork下来的Metabase下面，找到summaryTable这个分支，clone一份。 ​ 由于Metabase 架构完善，高度组件化，所以不用担心对代码的影响，耦合性相对很低。 ​ 作者就是新加了一种可视化图表的类型： ​ ​ 所以，可以顺着这个新增的可视化组件，找到需要的文件，透视表所用到的组件大部分以summary开头或者包含summary，这里就不一一列出了，然后放到最新版的Metabase源码对应目录下面，然后编译启动就可以了。 ​ 注意：Metabase透视表功能用到了一些开源的npm组件，需要引入，也可以看我上一篇文章实现解析里面提到的内容 ​ 但是由于Metabase新旧版本返回的数据结构有所变化所以需要处理之后才能实现正常的功能，所以给出了下面的两种解决方案： 方案一​ Metabase为什么把columns去掉不得知，也不像是因为用不到就就去掉的，起码在我看来保留这么一个设计还是很方便的，透视表PR就充分利用了这一点。新版的虽然说是去掉了，但是也不是完全去掉，只是屏蔽掉了。所以方案一就是把columns放出来就可以了，透视表的功能就能正常使用。 找到代码目录/src/metabase/query_processor/middleware/dev.clj中的代码 123;; 放开columns权限，将columns换个名字就可以了，这里我加了AA(complement :columnsAA)&quot;QP results should no longer include :columns.&quot;)) 方案二​ 如果考虑官方既然已经屏蔽了，考虑以后代码更新，你不想放开colums，那就需要在透视表用的代码里面对columns进行处理，其中一种方式就是cols里面获取，当然你也可以用其他方式处理甚至是替换columns处理的方式，推荐一种处理方式如下： 123456 columns = [] if(cols.length&gt;0)&#123;​ cols.map(item=&gt;&#123;​ columns.push(item.name)​ &#125;) &#125; 备注：里面用到columns的地方挺多，需要处理的地方挺多，目前不确定会不会带来其它问题，但是就目前来看这种处理方式效率会低，本来这种js实现的透视表效率就是一直讨论的问题，所以我建议还是采用方案一的方式效果更好。]]></content>
       <categories>
         <category>可视化工具</category>
         <category>Metabase</category>
